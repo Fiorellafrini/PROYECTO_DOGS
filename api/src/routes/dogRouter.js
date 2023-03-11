@@ -1,26 +1,41 @@
 const { Router } = require('express');
-// const { createDog } = require("../Controllers/dogsControllers")
-// const { allDogs } = require("../Controllers/joinDB")
-
-
 const dogRouter = Router();
+const { searchDogsInApiAndDB } = require('../Controllers/dogControllers');
+const { Dog, Temperament , dog_temperament } = require("../db");
+
+
+
 
 
 // #### **📍 GET | /dogs**
 // -  Obtiene un arreglo de objetos, donde cada objeto es la raza de un perro.
 
 dogRouter.get('/getAll', async (req,res) => {
-    res.send("estoy en getAll")
+            try {
+        const allDogs = await searchDogsInApiAndDB(Dog);
+        res.status(200).json(allDogs);   
+    } catch (error) {
+        res.status(404).send('Hubo un problema')
+    }
 });
 
 
-    //     try {
-//         const allCountries = await getAll();
-//         res.status(200).json(allCountries);   
+
+// recipesRoutes.get("/getAllRecipes", async (req, res) => {
+//     try {
+//       const AllRecipes = await searchRecipesInApiAndDB(Recipe);
+//       res.status(200).send(AllRecipes);
 //     } catch (error) {
-//         res.status(404).send('Hubo un problema')
+//       res.status(401).send(error.message);
 //     }
-// })
+//   });
+  
+//   module.exports = recipesRoutes;
+  
+  
+
+
+
 
 // #### **📍 GET | /dogs/:idRaza**
 // -  Esta ruta obtiene el detalle de una raza específica. Es decir que devuelve un objeto con la información pedida en el detalle de un perro.

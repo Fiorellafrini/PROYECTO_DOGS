@@ -14,30 +14,15 @@ sequelize.define('dog', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  min_height: {
+  height: {
     type: DataTypes.STRING,
-    allowNull: false
-  },
-  max_height: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  min_weight: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  max_weight: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  // height: {
-  //   type: DataTypes.STRING,
-  //   allowNull: false,
-  //   },
+    allowNull: false,
+    },
 
-  //   weight: {
-  //     type: DataTypes.STRING,
-  //     allowNull: false,
+  weight: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   life_span: {
     type: DataTypes.STRING,
     allowNull: true
