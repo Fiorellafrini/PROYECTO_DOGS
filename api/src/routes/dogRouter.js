@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const dogRouter = Router();
-const { searchDogsInApiAndDB } = require('../Controllers/dogControllers');
+const { searchDogsInApiAndDB, getId } = require('../Controllers/dogControllers');
 const { Dog, Temperament , dog_temperament } = require("../db");
 
 
@@ -21,31 +21,51 @@ dogRouter.get('/getAll', async (req,res) => {
 
 
 
-// recipesRoutes.get("/getAllRecipes", async (req, res) => {
-//     try {
-//       const AllRecipes = await searchRecipesInApiAndDB(Recipe);
-//       res.status(200).send(AllRecipes);
-//     } catch (error) {
-//       res.status(401).send(error.message);
-//     }
-//   });
-  
-//   module.exports = recipesRoutes;
-  
-  
-
-
-
-
 // #### **📍 GET | /dogs/:idRaza**
 // -  Esta ruta obtiene el detalle de una raza específica. Es decir que devuelve un objeto con la información pedida en el detalle de un perro.
 // -  La raza es recibida por parámetro (ID).
 // -  Tiene que incluir los datos de los temperamentos asociadas a esta raza.
 // -  Debe funcionar tanto para los perros de la API como para los de la base de datos.
 
-dogRouter.get('/:idRaza', async(req, res)=> {
-    res.send("estoy en id")
-})
+// dogRouter.get('/:idRaza', async(req, res)=> {
+//     // res.send("estoy en id")
+//     const { id } = req.params;
+//     const source = isNaN(id) ? "db" : "api"
+
+//     try {
+//         const dog = await geId (id, source)
+//         res.status(200).json(dog);
+//     } catch (error) {
+//         res.status(400).send(error.message);
+        
+//     }
+// })
+
+dogRouter.get('/:id', async (req,res) =>{
+//     try {
+//     const {id} = req.params
+//       let dog = await getId(id);
+//       res.status(200).json(dog);
+//     } catch (error) {
+//       res.status(404).send(error.message);
+//     }
+//   });
+
+ 
+// Buscar receta por id
+// recipesGetId.get("/recipes/:id", async (req, res) => {
+    const { id } = req.params;
+    const source = isNaN(id) ? "db" : "api"
+     
+    try {
+        const dog = await getId(id, source);
+        res.status(200).json(dog.data);
+      } catch (error) {
+        res.status(400).send(error.message);
+      }
+    });
+    
+  
 
 // #### **📍 GET | /dogs/name?="..."**
 // -  Esta ruta debe obtener todas aquellas razas de perros que coinciden con el nombre recibido por query. (No es necesario que sea una coincidencia exacta).

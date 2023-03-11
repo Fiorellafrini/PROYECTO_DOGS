@@ -23,7 +23,10 @@ try {
             // createInDb: false,
     };
 })
+// await dog.bulkCreate(dogsApiData)
+
 return dogsApiData;
+
     } catch (error){
         return {error:error.message};
     }
