@@ -25,14 +25,17 @@ sequelize.define('dog', {
     },
   life_span: {
     type: DataTypes.STRING,
-    allowNull: true
+    // allowNull: true,
+    defaultValue: "10 - 12"
+
   },
   breed_group: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true,
   },
   bred_for: {
     type: DataTypes.STRING,
+    allowNull:true
   },
   image: {
     type: DataTypes.TEXT,

@@ -20,10 +20,12 @@ try {
             bred_for: dog.bred_for,
             origin: dog.origin,
             temperament: dog.temperament,
+
             // createInDb: false,
     };
 })
 // await dog.bulkCreate(dogsApiData)
+console.log(dogsApiData);
 
 return dogsApiData;
 

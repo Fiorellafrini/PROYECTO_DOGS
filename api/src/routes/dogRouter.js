@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const dogRouter = Router();
-const { searchDogsInApiAndDB, getId } = require('../Controllers/dogControllers');
+const { searchDogsInApiAndDB, getId, searchByName } = require('../Controllers/dogControllers');
+const getDogsDb = require('../dataTotalDogs/getDogsDb');
 const { Dog, Temperament , dog_temperament } = require("../db");
 
 
@@ -19,6 +20,15 @@ dogRouter.get('/getAll', async (req,res) => {
     }
 });
 
+// dogRouter.get("/getAll", async (req, res) => {
+//   try {
+//       const allTemps = await searchDogsInApiAndDB(Dog);
+//       res.status(200).json(allTemps)
+//   } catch (error) {
+//       res.status(400).json({message: "no se cargaaa"})
+//   }
+// })
+
 
 
 // #### **📍 GET | /dogs/:idRaza**
@@ -27,33 +37,7 @@ dogRouter.get('/getAll', async (req,res) => {
 // -  Tiene que incluir los datos de los temperamentos asociadas a esta raza.
 // -  Debe funcionar tanto para los perros de la API como para los de la base de datos.
 
-// dogRouter.get('/:idRaza', async(req, res)=> {
-//     // res.send("estoy en id")
-//     const { id } = req.params;
-//     const source = isNaN(id) ? "db" : "api"
-
-//     try {
-//         const dog = await geId (id, source)
-//         res.status(200).json(dog);
-//     } catch (error) {
-//         res.status(400).send(error.message);
-        
-//     }
-// })
-
 dogRouter.get('/:id', async (req,res) =>{
-//     try {
-//     const {id} = req.params
-//       let dog = await getId(id);
-//       res.status(200).json(dog);
-//     } catch (error) {
-//       res.status(404).send(error.message);
-//     }
-//   });
-
- 
-// Buscar receta por id
-// recipesGetId.get("/recipes/:id", async (req, res) => {
     const { id } = req.params;
     const source = isNaN(id) ? "db" : "api"
      
@@ -74,9 +58,20 @@ dogRouter.get('/:id', async (req,res) =>{
 // -  Debe buscar tanto los de la API como los de la base de datos.
 
 
-dogRouter.get('/', async(req, res)=> {
-    res.send("estoy en name")
-})
+// dogRouter.get('/', async(req, res)=> {
+//     res.send("estoy en name")
+// })
+
+  //buscamos un dogs por nombre
+  dogRouter.get("/", async (req, res) => {
+    try {
+      const { name } = req.query;
+      const dog = await searchByName(name);
+      res.status(200).json(dog);
+    } catch (error) {
+      res.status(400).send(error.message);
+    }
+  });
 
 
 
@@ -84,9 +79,43 @@ dogRouter.get('/', async(req, res)=> {
 // -  Esta ruta recibirá todos los datos necesarios para crear un nuevo perro y relacionarlo con los temperamentos asociados.
 // -  Toda la información debe ser recibida por body.
 // -  Debe crear la raza de perro en la base de datos, y esta debe estar relacionada con los temperamentos indicados (al menos uno).
-dogRouter.post('/', async(req, res)=> {
-    res.send("estoy en post")
-})
+// dogRouter.post('/', async(req, res)=> {
+//     res.send("estoy en post")
+// })
+
+
+//Creamos un dog y la guardamos en la base de datos
+dogRouter.post("/", async (req, res) => {
+    const { name, image, height, weight, life_span, breed_group, bred_for, origin, temperament } = req.body; //los datos que recibo por body son los modelos
+
+  // VALIDACION DE DATOS
+    if (!name || !height || !weight ) res.status(400).json({mge: "Faltan datos"})
+    // no pongo todas las prop de modelos porque los que dicen defaultvalue no los pongo ya que se crean solas las que pase por defecto.
+
+    try {
+      //agrego  la newraza a mi base de datos, con un llamado asyn
+    const newDog = await Dog.create({ name, image, height, weight, life_span, breed_group, bred_for, origin }); 
+
+
+    //los metodos se guardan en el prototipo, consologue lo de abajo, paso el insomnia y me consologuea los metodos., los metodos se crean cuando se crea la relacion n:n. y sequelize genera los metodos para poder hacer la relacion.
+
+//  console.log("MODELO", Dog.__proto__);
+//  console.log("ENTIDAD", newDog.__proto__);
+
+     await newDog.addTemperament(temperament); 
+    //   relaciona el dog new con el temperamento que se encuentre
+    // const aux = Dog.findByPk(newDog.id, {include: [{model: Temperament}],
+    // })
+
+    res.status(200).send(newDog);
+    // res.send(aux)
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+});
+
+
+
 
 
 module.exports = dogRouter;
