@@ -1,13 +1,12 @@
 require("dotenv").config();
 const axios = require("axios");
 
-//llamo a la api, y despues me traigo lo que necesito(lo que tengo en modelos)
-// tengo un arreglo con los dogs de la api
+//Llamo a la api, y despues me traigo lo que necesito(lo que tengo en modelos)
+//Tengo un arreglo con los dogs de la api
 const getDogsApi = async () => {
 try {
     const dogsApi = await axios.get("https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ")
 //    console.log(api);
-//    res.json(api.data)
     const dogsApiData= await dogsApi.data.map((dog) => {
         return {
             id: dog.id,
@@ -20,13 +19,8 @@ try {
             bred_for: dog.bred_for,
             origin: dog.origin,
             temperaments: dog.temperament,
-
-            // createInDb: false,
     };
 })
-// await dog.bulkCreate(dogsApiData)
-// console.log(dogsApiData);
-
 return dogsApiData;
 
     } catch (error){

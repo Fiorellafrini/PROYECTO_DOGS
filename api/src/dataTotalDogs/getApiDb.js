@@ -1,39 +1,46 @@
-const {getDogsApi} = require("./getDogsApi")
-const {getDogsDb} = require("./getDogsDb")
+const { getDogsApi } = require("./getDogsApi")
+const { getDogsDb } = require("./getDogsDb")
 
 
-
-//junto todos los datos
+//Junto todos los datos
 const getApiDb = async () => {
     try{
 
-        let dataApi = await getDogsApi();
+        const dataApi = await getDogsApi();
         let dataDB = await getDogsDb();       
 
- 
-        dataDB = await dataDB.map((breed) => {
-            return {
-                id: breed.dataValues.id,
-                name: breed.dataValues.name,
-                // height: breed.dataValues.heigth.metric,
-                // weight: breed.dataValues.weigth.metric,
-                life_span: breed.dataValues.life_span,
-                breed_group: breed.dataValues.breed_group,
-                image: breed.dataValues.image,
-                origin: breed.dataValues.origin,
-                bred_for: breed.dataValues.bred_for,
-               
-        temperaments: breed.dataValues.temperaments.map((item) => item.name)
-                // temperaments: breed.dataValues.temperaments.map( t => t.name ).join(", "),
-            };
-        });
+            // SI YO ACTIVO LO SIGUIENTE LA INFORMACION (LINEA 26 A 38) ME LLEGA TEMP COMO LA API, SINO  ME LLEGA ASI:
+            // "temperaments": [
+            //     {
+            //         "name": "Active",
+            //         "dog_temperament": {
+            //             "dogId": "fc1ee0bf-e97d-4247-9a08-90515e06dcb5",
+            //             "temperamentId": 1
+            //         }
+            //     }
+            // ]
 
-
+            // dataDB = await dataDB.map((dog) => {
+            //     return {
+            //         id: dog.dataValues.id,
+            //         name: dog.dataValues.name,
+            //         // height.metric: dog.dataValues.heigth.metric,
+            //         // weight.metric: dog.dataValues.weigth.metric,
+            //         life_span: dog.dataValues.life_span,
+            //         breed_group: dog.dataValues.breed_group,
+            //         image: dog.dataValues.image,
+            //         origin: dog.dataValues.origin,
+            //         bred_for: dog.dataValues.bred_for,
+            //         temperaments: dog.dataValues.temperaments.map((item) => item.name)
+            //     };
+            // });
 
         // console.log("dataaaaaaaaaaa", dataDB);
-    // const allDogs = dataApi.concat(dataDB)
-        const allDogs = [...dataDB, ...dataApi]; 
+
+        const allDogs = dataApi.concat(dataDB)
+        // const allDogs = [...dataDB, ...dataApi]; 
         //todo lo que tenga en dataDB y todo lo que tenga en dataApi
+
         return allDogs;
     }catch(error){
         console.log(error.message);

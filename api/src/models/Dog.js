@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
 sequelize.define('dog', {
   id: {
     type: DataTypes.UUID,
-    allowNull: true, //DEYSE PUSO FALSE
+    allowNull: true,
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
@@ -25,7 +25,6 @@ sequelize.define('dog', {
     },
   life_span: {
     type: DataTypes.STRING,
-    // allowNull: true,
     defaultValue: "10 - 12"
 
   },
@@ -45,10 +44,6 @@ sequelize.define('dog', {
     type: DataTypes.STRING,
     allowNull:true,
   }
-  // createInDb: {
-  //   type: DataTypes.BOOLEAN,
-  //   allowNull: false,
-  //   defaultValue: true,
-  // }
+
 }, {timestamps: false});
 };
