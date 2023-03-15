@@ -94,4 +94,24 @@ const createDog = async (
 };
 
 
-module.exports= {searchDogsInApiAndDB, searchByName, createDog}
+//------------------/delete/:id------------------------
+
+const deleteDog = async (id) => {
+   
+  const result = Dog.findAll({
+      where: {
+        id: {
+          [Op.eq]: id,
+        },
+      },
+    });
+    await Dog.destroy({
+      where: {
+        id: id,
+      },
+    });
+  
+    return result;
+  };
+
+module.exports= {searchDogsInApiAndDB, searchByName, createDog, deleteDog}
