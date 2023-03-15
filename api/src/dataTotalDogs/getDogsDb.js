@@ -7,11 +7,11 @@ const getDogsDb = async () => {
     try {
         return await Dog.findAll({
             include: [{
-                model:Temperament,
+                model: Temperament,
                 attributes: ["name"],
-                through: {
-                    attributes: []
-                }
+                // through: {
+                //     attributes: []
+                // }
             }]
         })
     } catch (error) {

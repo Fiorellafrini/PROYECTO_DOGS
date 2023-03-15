@@ -19,13 +19,13 @@ try {
             image: dog.image.url, 
             bred_for: dog.bred_for,
             origin: dog.origin,
-            temperament: dog.temperament,
+            temperaments: dog.temperament,
 
             // createInDb: false,
     };
 })
 // await dog.bulkCreate(dogsApiData)
-console.log(dogsApiData);
+// console.log(dogsApiData);
 
 return dogsApiData;
 
@@ -34,4 +34,4 @@ return dogsApiData;
     }
 };
 
-module.exports = { getDogsApi};
+module.exports = {getDogsApi};
