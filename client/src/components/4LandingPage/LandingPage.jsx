@@ -1,9 +1,15 @@
+import { Link } from "react-router-dom";
+
 const LandingPage = () => {
     return(
         <div>
-            <h1>LandingPage</h1>
+            <h1>Welcome to Dogs APP</h1>
+
+            <button>
+            <Link to="/home">Home</Link>
+            </button>
         </div>
     )
 }
 
-export default LandingPage;
+export default LandingPage; 

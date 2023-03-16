@@ -4,13 +4,14 @@ const  {Dog, Temperament } = require("../db");
 const getDogsDb = async () => {
     try {
         return await Dog.findAll({
-            include: [{
-                model: Temperament,
-                attributes: ["name"],
-                // through: {
-                //     attributes: []
-                // }
-            }]
+            include:  Temperament,
+        //     [{
+        //         model: Temperament,
+        //         attributes: ["name"],
+        //         // through: {
+        //         //     attributes: []
+        //         // }
+        //     }]
         })
     } catch (error) {
         console.log(error.message)

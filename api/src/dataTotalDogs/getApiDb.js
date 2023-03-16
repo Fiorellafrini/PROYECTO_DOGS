@@ -20,20 +20,20 @@ const getApiDb = async () => {
             //     }
             // ]
 
-            // dataDB = await dataDB.map((dog) => {
-            //     return {
-            //         id: dog.dataValues.id,
-            //         name: dog.dataValues.name,
-            //         // height.metric: dog.dataValues.heigth.metric,
-            //         // weight.metric: dog.dataValues.weigth.metric,
-            //         life_span: dog.dataValues.life_span,
-            //         breed_group: dog.dataValues.breed_group,
-            //         image: dog.dataValues.image,
-            //         origin: dog.dataValues.origin,
-            //         bred_for: dog.dataValues.bred_for,
-            //         temperaments: dog.dataValues.temperaments.map((item) => item.name)
-            //     };
-            // });
+            dataDB = await dataDB.map((dog) => {
+                return {
+                    id: dog.dataValues.id,
+                    name: dog.dataValues.name,
+                    // height.metric: dog.dataValues.heigth.metric,
+                    // weight.metric: dog.dataValues.weigth.metric,
+                    life_span: dog.dataValues.life_span,
+                    breed_group: dog.dataValues.breed_group,
+                    image: dog.dataValues.image,
+                    origin: dog.dataValues.origin,
+                    bred_for: dog.dataValues.bred_for,
+                    temperaments: dog.dataValues.temperaments.map((item) => item.name)
+                };
+            });
 
         // console.log("dataaaaaaaaaaa", dataDB);
 

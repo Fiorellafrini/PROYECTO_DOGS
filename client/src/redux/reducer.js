@@ -9,7 +9,7 @@ const initialState = {
     temperaments: [],      
 };
 
-const reducer = (state= initialState, action) => {
+const rootreducer = (state= initialState, action) => {
     switch (action.type) {
         case GET_DOGS:
             return{
@@ -23,4 +23,4 @@ const reducer = (state= initialState, action) => {
 }
 
 
-export default reducer;
+export default rootreducer;

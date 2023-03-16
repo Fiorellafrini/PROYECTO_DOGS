@@ -1,5 +1,6 @@
 import './App.css';
-import { Route } from "react-router-dom"
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom"
 import Home from './components/1Home/Home';
 import LandingPage from "./components/4LandingPage/LandingPage"
 import About from "./components/5About/About"
@@ -8,6 +9,7 @@ import Details from "./components/2Details/Details"
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="App">
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/home" component={Home} />
@@ -15,6 +17,7 @@ function App() {
           <Route exact path="/create" component={Create} />
           <Route exact path="/dogs/:id" component={Details} />
     </div>
+    </BrowserRouter>
   );
 }
 
