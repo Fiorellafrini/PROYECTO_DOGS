@@ -4,7 +4,7 @@ import axios from "axios;"
 
 export const getDogs = () => {
     return async function(dispatch){// como hago una peticion a la api me retorna una fn
-        let response = await axios(`http://localhost:3001/dogs/getAll`); //ACA HAGO LA CONEXION
+        let response = await axios(`http://localhost:3001/dogs/getAll`); //ACA HAGO LA CONEXION// response es la respuesta que me da axios, es el obj con todo
 
         return dispatch({ type: GET_DOGS, payload: response.data }) // retorno un obj con la info, como es muy grande me interesa quedarme solo con data
     }

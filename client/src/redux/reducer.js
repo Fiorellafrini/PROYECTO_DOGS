@@ -1,4 +1,4 @@
-import { GET_DOGS, GET_DETAILS } from "./action-types";
+import { GET_DOGS } from "./action-types";
 
 const initialState = {
     pageDogs: [],
@@ -13,7 +13,7 @@ const reducer = (state= initialState, action) => {
     switch (action.type) {
         case GET_DOGS:
             return{
-                ...state,
+                ...state, // copia del estado, para no perderlo
                 dogs: action.payload // action. payload me trae todo el array con los dogs. Estoy haciendo que en mi estado global se me guarden todos los dogs que son la respuesta de la api
             }
     
