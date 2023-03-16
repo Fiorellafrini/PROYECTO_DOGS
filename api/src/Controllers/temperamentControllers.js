@@ -63,7 +63,7 @@ const getAllTemp = async (req, res) => {
         // console.log(dbTemperaments)
         res.status(200).json(dbTemperaments)
     } catch (error) {
-        res.status(400).json({error:error.message})
+        (error.message)
     }
 }
 

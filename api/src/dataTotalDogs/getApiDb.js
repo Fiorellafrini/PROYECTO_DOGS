@@ -37,7 +37,7 @@ const getApiDb = async () => {
 
         // console.log("dataaaaaaaaaaa", dataDB);
 
-        const allDogs = dataApi.concat(dataDB)
+        const allDogs = dataDB.concat(dataApi)
         // const allDogs = [...dataDB, ...dataApi]; 
         //todo lo que tenga en dataDB y todo lo que tenga en dataApi
 
