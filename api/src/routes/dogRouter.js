@@ -37,7 +37,16 @@ dogRouter.get('/:id', async (req,res) =>{
   filtredBreed.length > 0
   ? res.status(200).send(filtredBreed)
   : res.status(404).send(`Dog not found`);
-// console.log(allBreeds);
+console.log(allBreeds);
+
+// dogRouter.get('/:id', async (req,res) =>{
+//     const {id} = req.params
+//     try {
+//       const allBreeds = await getApiDb(id)
+//       res.status(200).json(allBreeds)
+//     } catch (error) {
+//       res.status(400).send({error: error.message})
+//     }
 
 })
 

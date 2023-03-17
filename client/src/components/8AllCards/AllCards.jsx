@@ -3,22 +3,27 @@ import { useEffect } from "react";
 import { getDogs } from "../../redux/action"; //me traigo la action 
 import Card from "../7Card/Card";
 import React from 'react';
+// import styles from './AllCards.module.css'
+
 
 
 
 const AllCards = () => {
 
     const dispatch = useDispatch()
-    const allDogs = useSelector((state)=> state.allDogs)//trae info del estdo global
+    const dogs = useSelector((state)=> state.dogs)//trae info del estdo global
 
     useEffect(() =>{ //cuando se monta
         dispatch(getDogs()) //le digo que busque la info de getDogs
     },[dispatch])
 
+    // console.log(allDogs);
+
+   
     return(
         <div>
             <div>
-            {allDogs ? allDogs.map(dog => 
+            {dogs ? dogs.map(dog => 
                         <Card
                             name={dog.name}
                             id={dog.id}
@@ -38,5 +43,5 @@ const AllCards = () => {
         </div>
     )}
 
-
+        
 export default AllCards;

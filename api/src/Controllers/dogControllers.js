@@ -18,7 +18,13 @@ async function searchDogsInApiAndDB() {
 
 // <=============== controller getId ===============>
 
-
+// const getId = async(id) => {
+//   const allBreeds = await getApiDb();
+//   // if(!data) throw Error ('No hay data')
+//   const filtredBreed = allBreeds.filter(e =>e.id == id);
+// if(filtredBreed.length < 0) throw Error ('No hay dogs con ese id')
+// return filtredBreed
+// }
 // <=============== controller searchByName ===============>
       
 async function searchByName(name) {
