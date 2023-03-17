@@ -1,6 +1,6 @@
 import { GET_DOGS } from "./action-types";
 import { GET_DETAILS } from "./action-types";
-// import axios from "axios";// si quiero traerme los personajes del back a mi front voy a usar axios o fetch 
+import axios from "axios";// si quiero traerme los personajes del back a mi front voy a usar axios o fetch 
 
 
 
@@ -21,27 +21,20 @@ export const getDogs = () => {
     }  
 }
 
-// export const getDetails = (id) => {
-//     return async function(dispatch){
-//         let response = await axios(`http://localhost:3001/dogs/${id}`)
-//             return dispatch({ type: GET_DETAILS, payload: response.data })
-//     }
-// }
-    //     fetch(`http://localhost:3001/dogs/${id}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         dispatch({type: GET_DETAILS, payload: data})
-    //     })
-    // }
-    // }
-    export const getDetails = (id) => {
-        return (dispatch) => {
-          fetch(`http://localhost:3001/dogs/${id}`)
-            .then((response) => response.json())
-            .then((data) =>
-              dispatch({ type: GET_DETAILS, payload: data }))
-            .catch((error) => {
-              // console.log(error);
-            })
-        };
-      };
+export const getDetails = (id) => {
+    return async function(dispatch){
+        const response = await axios(`http://localhost:3001/dogs/${id}`);
+             return dispatch({ type: GET_DETAILS, payload: response.data })
+    }
+}
+    // export const getDetails = (id) => {
+    //     return (dispatch) => {
+    //       fetch(`http://localhost:3001/dogs/${id}`)
+    //         .then((response) => response.json())
+    //         .then((data) =>
+    //           dispatch({ type: GET_DETAILS, payload: data }))
+    //         .catch((error) => {
+    //           // console.log(error);
+    //         })
+    //     };
+    //   };

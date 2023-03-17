@@ -23,14 +23,14 @@ const AllCards = () => {
     return(
         <div>
             <div>
-            {dogs ? dogs.map(dog => 
+            {dogs.length > 0 ? dogs.map(dog => 
                         <Card
                             name={dog.name}
                             id={dog.id}
                             key={dog.id}
                             image={dog.image}
-                            weight={dog.weight.metric} 
-                            height={dog.height.metric}
+                            weight={dog.weight}
+                            height={dog.weight}
                             breed_group={dog.breed_group}
                             origin={dog.origin}                 
                             temperaments={dog.temperaments}

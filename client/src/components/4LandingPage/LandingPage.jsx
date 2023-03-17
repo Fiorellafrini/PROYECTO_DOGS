@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import video from "../13Extras/2.mp4"
+// import video from "../13Extras/2.mp4"
 import styles from "../4LandingPage/LandingPage.module.css"
 
 const LandingPage = () => {
     return(
-        <div>
-                <div>
+        <div className={styles.body}>
+                {/* <div> */}
                     <h1>Welcome to Dogs APP</h1>
 
                     <button>
@@ -13,13 +13,13 @@ const LandingPage = () => {
                     </button>
 
                     <button>
-                    <Link to="/about">Home</Link>
+                    <Link to="/about">About</Link>
                     </button>
-                </div>
+                {/* </div> */}
 
-            <video autoPlay muted loop className={styles.video}>
+            {/* <video autoPlay muted loop className={styles.video}>
              <source src={video} type="video/mp4"></source>
-            </video>
+            </video> */}
        
         </div>
     )

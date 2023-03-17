@@ -3,7 +3,7 @@ import { GET_DETAILS, GET_DOGS } from "./action-types";
 const initialState = {
     // pageDogs: [],
     dogs: [],
-    details: [],
+    details: {},
     // copyDogs: [],
     // filters: { origin: "allDogs", temperaments: "allDogs"},
     // temperaments: [],      
@@ -19,6 +19,7 @@ const rootReducer = (state= initialState, action) => {
                 dogs: [...action.payload] // action. payload me trae todo el array con los dogs. Estoy haciendo que en mi estado global se me guarden todos los dogs que son la respuesta de la api
             }
         case GET_DETAILS:
+            // console.log("Details received:", action.payload);
             return {
                 ...state,
                 details: action.payload

@@ -1,11 +1,11 @@
 import AllCards from "../8AllCards/AllCards";
 import React from "react";
+import styles from "../1Home/Home.module.css"
 
 
 const Home = () => {
     return(
-        <div>
-            {/* <h1>Home</h1> */}
+        <div className={styles.body}>
             <AllCards></AllCards>
         </div>
     )

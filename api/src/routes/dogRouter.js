@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const dogRouter = Router();
-const { searchDogsInApiAndDB, searchByName, createDog, deleteDog } = require('../Controllers/dogControllers');
+const { searchDogsInApiAndDB, searchByName, createDog } = require('../Controllers/dogControllers');
 const { getApiDb} = require('../dataTotalDogs/getApiDb');
 const { getDogsApi } = require('../dataTotalDogs/getDogsApi');
 const { Dog, Temperament } = require("../db");
@@ -110,11 +110,12 @@ dogRouter.post("/", async (req, res) => {
 });
 
 //RUTA EXTRA DELETE ID
-dogRouter.get('/delete/:id', async (req,res) =>{
+dogRouter.delete('/delete/:id', async (req,res) =>{
   try {
     const { id } = req.params;
-    const dogDelete = await deleteDog(id);
-    res.status(200).send({message: "Dog eliminado", element: dogDelete})
+    const dogDelete = await Dog.findByPk(id);
+    dogDelete.destroy()
+    res.status(200).send(dogDelete)
   } catch (error) {
     res.status(400).send(error.message);
   }

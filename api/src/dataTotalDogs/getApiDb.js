@@ -24,8 +24,9 @@ const getApiDb = async () => {
                 return {
                     id: dog.dataValues.id,
                     name: dog.dataValues.name,
-                    // height.metric: dog.dataValues.heigth.metric,
-                    // weight.metric: dog.dataValues.weigth.metric,
+                
+                    // height: dog.dataValues.heigth.metric,
+                    // weight: dog.dataValues.weigth.metric,
                     life_span: dog.dataValues.life_span,
                     breed_group: dog.dataValues.breed_group,
                     image: dog.dataValues.image,

@@ -1,4 +1,4 @@
-.video {
+/* .video {
     position: fixed;
     height: 900px;
     top:50%;
@@ -6,4 +6,33 @@
     transform: translateX(-50%) translateY(-50%);
     z-index: -1;
   }
-   
+    */
+
+  .body {
+    /* background-image: url("https://images8.alphacoders.com/650/650205.jpg"); */
+    /* background-image: url("https://images7.alphacoders.com/346/346900.jpg"); */
+    /* background-image: url("https://images2.alphacoders.com/116/1165968.jpg"); */
+    /* background-image: url("https://images7.alphacoders.com/860/860273.jpg"); */
+    /* background-image: url("https://images5.alphacoders.com/364/364184.jpg"); */
+    /* background-image: url("https://images2.alphacoders.com/116/1165968.jpg"); */
+    /* padding: 30em;
+    padding: 30em;
+    height: 200px;
+    width: 500px;
+    background-position:center;  
+    background-size:contain;
+    background-repeat: no-repeat;
+  color:aliceblue;
+    
+} */
+
+  background-image: url("https://mail.google.com/mail/u/0/?tab=om#inbox/FMfcgzGslbKpnmcRFGTdNmfrlBNwNGzl?projector=1&messagePartId=0.4");
+    /* "https://images7.alphacoders.com/346/346900.jpg"); */
+  background-position:center;  
+  background-size: auto;
+  background-repeat: no-repeat;
+color:aliceblue;
+padding: 2em;
+    height: 780px;
+    width: 1435px;
+}
