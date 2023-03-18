@@ -1,4 +1,4 @@
-import { GET_DETAILS, GET_DOGS } from "./action-types";
+import { CLEAN_DETAILS, GET_DETAILS, GET_DOGS, CLEAN_CARDS } from "./action-types";
 
 const initialState = {
     // pageDogs: [],
@@ -23,8 +23,18 @@ const rootReducer = (state= initialState, action) => {
             return {
                 ...state,
                 details: action.payload
-
         }
+        case CLEAN_DETAILS: //piso el valor de detailñs con un obj vacio
+            return {
+                ...state,
+                details: {}
+            }
+        case CLEAN_CARDS:
+            return {
+                ...state,
+                dogs: []
+            }
+
     
         default:
             return {...state} // una copia del estado inicial

@@ -1,9 +1,9 @@
 import { useDispatch, useSelector} from "react-redux"
 import { useEffect } from "react";
-import { getDogs } from "../../redux/action"; //me traigo la action 
+import { getDogs, cleanCards } from "../../redux/action"; //me traigo la action 
 import Card from "../7Card/Card";
 import React from 'react';
-// import styles from './AllCards.module.css'
+import styles from './AllCards.module.css'
 
 
 
@@ -15,6 +15,8 @@ const AllCards = () => {
 
     useEffect(() =>{ //cuando se monta
         dispatch(getDogs()) //le digo que busque la info de getDogs
+        return () => dispatch(cleanCards()) //cuando desmonto el componente deja un arr vacio, unmount
+ 
     },[dispatch])
 
     // console.log(allDogs);
@@ -22,7 +24,7 @@ const AllCards = () => {
    
     return(
         <div>
-            <div>
+            <div className={styles.cards}>
             {dogs.length > 0 ? dogs.map(dog => 
                         <Card
                             name={dog.name}

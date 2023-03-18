@@ -1,6 +1,9 @@
 export const GET_DOGS = "GET_DOGS";
 // export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const GET_DETAILS = "GET_DETAILS";
+export const CLEAN_DETAILS = "CLEAN_DETAILS";
+export const CLEAN_CARDS = "CLEAN_CARDS";
+
 // export const PAGE_DOGS = "SET_PAGE_CHARACTER";
 // export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS";
 // export const SEARCH_NAME = "SEARCH_NAME";

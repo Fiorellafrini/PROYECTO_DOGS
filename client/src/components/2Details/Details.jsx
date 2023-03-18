@@ -1,46 +1,36 @@
 import React from "react";
-import { getDetails } from "../../redux/action";
+import { getDetails, cleanDetails } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 // import Loading from "../11Loading/Loading";
-// import styles from "..2Details/Details.module.css"
+import styles from "../2Details/Details.module.css"
 
 const Details = () => {
-    const { id } = useParams();
-    const dogsDetails
-    // {name, 
-    //     image, 
-    //     height, 
-    //     weight, 
-    //     life_span, 
-    //     breed_group, 
-    //     bred_for, 
-    //     origin, 
-    //     temperaments}
-         = useSelector((state) => state.details)
-    // const details = useSelector(state => state.details)
+    const { id } = useParams(); // lo sacamos de la ruta con useparams
+    const dogsDetails= useSelector((state) => state.details)
     const dispatch = useDispatch();
 
 
   
 // console.log(id);
 
-    useEffect(()=> {
-        dispatch(getDetails(id))
-    }, [dispatch, id])
+    useEffect(()=> {// ciclos de vida 
+        dispatch(getDetails(id)) //cuando se monta, didmount
+
+        return () => dispatch(cleanDetails()) //cuando desmonto el componente deja un obj vacio, unmount
+    }, [dispatch, id]) //update
 
     return(
-        <div>
+        <div className={styles.cardsGrid}>
             {dogsDetails.length > 0 ?
             <div>
                 
-                <Link to= {`/home`}><button>Home</button></Link>
 
-            <h1>Name: {dogsDetails[0].name ? dogsDetails[0].name : ' Data not found' }</h1>
+            <h1 className={styles.name}>Name: {dogsDetails[0].name ? dogsDetails[0].name : ' Data not found' }</h1>
 
-            <img src={dogsDetails[0].image ? dogsDetails[0].image : ' Data not found'} alt=""></img>
+            <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : ' Data not found'} alt=""></img>
            
             <p>Height: {dogsDetails[0].height? dogsDetails[0].height : ' Data not found'}</p> 
 
@@ -63,9 +53,9 @@ const Details = () => {
           </ div>  */}
 
 
-            {/* // <Link to="/home">
-            //   <button>BACK</button>
-            // </Link> */}
+             <Link to="/home">
+               <button className={styles.link}>BACK</button>
+             </Link>
             {/* </> */}
                 {/* : ""} */}
         </div> : <h1> Loading...</h1> }

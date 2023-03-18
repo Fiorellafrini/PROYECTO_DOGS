@@ -1,5 +1,7 @@
 import { GET_DOGS } from "./action-types";
 import { GET_DETAILS } from "./action-types";
+import { CLEAN_DETAILS } from "./action-types";
+import { CLEAN_CARDS } from "./action-types";
 import axios from "axios";// si quiero traerme los personajes del back a mi front voy a usar axios o fetch 
 
 
@@ -38,3 +40,10 @@ export const getDetails = (id) => {
     //         })
     //     };
     //   };
+export const cleanDetails = () => {
+    return { type: CLEAN_DETAILS}
+}
+
+export const cleanCards = () => {
+    return {type: CLEAN_CARDS}
+}

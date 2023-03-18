@@ -1,7 +1,40 @@
-/* 
-                className={styles.divPrincipal}
-                width= "600px" 
-                height= "400px"
-                src={"https://i.pinimg.com/originals/78/d8/bc/78d8bcedeea91115b4d8352793cc3db5.gif"} alt="" /> */
+.cardsGrid {
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/1012/886/475/gradient-digital-art-minimalism-simple-wallpaper-preview.jpg");
+    padding: 2em;
+    height: 100%;;
+    width: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 
-/* (https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.petsmart.com%2F&psig=AOvVaw3-o5QLQNfQIIPIhdQSy9GG&ust=1679171239444000&source=images&cd=vfe&ved=0CA8QjRxqFwoTCODnybzm4_0CFQAAAAAdAAAAABAF") */
+  }
+
+
+.link button{
+  background: #3068a36c;
+  border: none;
+  padding: 15px 25px 15px 25px;
+  font-family: "fontnew2";
+  font-size: 30px;
+  color: rgb(0, 0, 0);
+  margin-bottom: 25px;
+  margin-left: 5px;
+  transition: all ease-in-out 0.2s;
+  border-radius: 50%;
+}
+
+.link button:hover {
+  background: rgba(236, 228, 228, 0.585);
+}  
+
+
+/* @font-face {
+  font-family: "fontnew2";
+  src: url("../../components/images-font/Ascrada.ttf")
+}
+
+@font-face {
+  font-family: "fontnew";
+  src: url('../images-font/Heaters.otf');
+
+} */
