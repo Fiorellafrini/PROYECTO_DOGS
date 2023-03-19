@@ -1,11 +1,14 @@
 .body {
-    background-image: url("https://c4.wallpaperflare.com/wallpaper/1012/886/475/gradient-digital-art-minimalism-simple-wallpaper-preview.jpg");
+    /* background-image: url("https://us.123rf.com/450wm/zinako/zinako1708/zinako170800365/84804752-impresionante-tarjeta-de-felicitaci%C3%B3n-con-siluetas-de-perros-de-dibujos-animados-diferentes-razas.jpg"); */
+    /* background-image: url("https://img.freepik.com/vector-gratis/fondo-patron-animal-transparente-ilustracion-vector-impresion-pata-linda_53876-156206.jpg?w=740&t=st=1679166366~exp=1679166966~hmac=522468214cacfc84f59f2d2ef7a9874a4f5bfdef7dbab07b98d67cee81b4e0b3"); */
+    /* background-image: url("https://img.freepik.com/foto-gratis/adorable-bulldog-blanco-retrato-cachorro-banner-social_53876-148022.jpg?w=826&t=st=1679165503~exp=1679166103~hmac=4f636f2c3578e54638259c882dc96a401b644093759ca397dada38e54fca2c83"); */
+    background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
     padding: 2em;
-    height: 100%;;
-    width: 100%;
     background-attachment: fixed;
-    background-size: cover;
+    background-size:cover;
     background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.452);
+
 
 }
 

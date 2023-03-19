@@ -43,9 +43,7 @@ const getAllTemp = async (req, res) => {
 
         const apiInfo = 
         (await axios.get("https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ")).data
-        
-        // await axios.get("https://api.thedogapi.com/v1/breeds?api_key={live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ}")
-        
+            
         const temperaments = apiInfo.map(breed => breed.temperament).join().split(",").sort()
         // console.log(temperaments)
         await temperaments.filter((temp, ind) => temperaments.indexOf(temp) === ind)
@@ -70,35 +68,3 @@ const getAllTemp = async (req, res) => {
 
 module.exports= {getAllTemp};
 
-//---------------------------------------------------------------------------------
-// const getAllTemp = async (req, res) => {
-
-//     try{
-//     // const getAllTemp = async () => {
-//     const dogs = await getDogsApi();
-//     const temp = dogs.map(dog => dog.temperaments).join().split(",");
-//     const tempDB = temp.map(element => element.trim());
-
-//     tempDB.forEach(element => {
-//         if(element) {
-//             Temperament.findOrCreate({
-//                 where: {
-//                     name: element
-//                 }
-//             })
-            
-//         }
-        
-//     })
-    
-//     const allTemperaments = await Temperament.findAll();
-//     // return allTemperaments;
-
-//         res.status(200).json(allTemperaments)
-//     } catch (error) {
-//         res.status(400).json({error:error.message})
-//     }
-// }
-
-
-// module.exports= {getAllTemp};

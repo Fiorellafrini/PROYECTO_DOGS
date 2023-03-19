@@ -13,9 +13,20 @@ const LandingPage = () => {
                         to the Dogs Api!
                     </div>
                     
-                    <div className={styles.land}>
-                        <Link  to="/home"><button>HOME</button></Link>
-                        <Link to="/about"><button>ABOUT</button></Link>
+                    {/* <div className={styles.button}>
+                        <Link  to="/home" ><button>HOME</button></Link>
+                        <Link to="/about" ><button>ABOUT</button></Link>
+                    </div> */}
+
+
+                    <div className={styles.button}>
+                        <Link  to="/home">
+                            <button>HOME</button>
+                        </Link>
+
+                        <Link to="/about">
+                            <button>ABOUT</button>
+                        </Link>
                     </div>
 
                     <video autoPlay muted loop className={styles.video}>
