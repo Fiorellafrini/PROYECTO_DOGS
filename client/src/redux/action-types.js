@@ -3,6 +3,7 @@ export const GET_DOGS = "GET_DOGS";
 export const GET_DETAILS = "GET_DETAILS";
 export const CLEAN_DETAILS = "CLEAN_DETAILS";
 export const CLEAN_CARDS = "CLEAN_CARDS";
+export const SEARCH_DOGS_BY_NAME="SEARCH_COUNTRIES_BY_NAME"
 
 // export const PAGE_DOGS = "SET_PAGE_CHARACTER";
 // export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS";
