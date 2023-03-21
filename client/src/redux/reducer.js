@@ -57,7 +57,7 @@ const rootReducer = (state= initialState, action) => {
         case SEARCH_DOGS_BY_NAME:
             return {
                ...state,
-                 dogs: action.payload,
+                 copyDogs: action.payload,
                      };
 
 
@@ -77,18 +77,7 @@ const rootReducer = (state= initialState, action) => {
             })
         }
             
-        //   case ORDER_BY_WEIGHT_MIN:
-           
-        //     const dogsMin = state.dogs.filter((dog) => !isNaN (parseInt(dog.weight.split(' - ')[0]))); 
-
-        //     const orderWeightMin = action.payload === "asc"
-        //       ? dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? 1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? -1 : 0)
-        //       : dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? -1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? 1 : 0);
-        //     return {
-        //       ...state,
-        //       copyDogs: [...orderWeightMin],
-        //     };
-
+     
 
             case ORDER_BY_WEIGHT_MIN:
                 const dogsMin = state.dogs.filter((dog) => {
@@ -155,21 +144,7 @@ const rootReducer = (state= initialState, action) => {
                     };
                   
 
-            // case ORDER_BY_WEIGHT_MAX:
-            //     if (dogsMax !== undefined && dogsMax !== null) {
-            //         dogsMax.sort((a, b) => a.split('-')[0] - b.split('-')[0]);
-            //       }
-            //     // const dogsMax = state.dogs.filter((dog) => !isNaN(parseInt(dog.weight.split(' - ')[1]))); 
-            //     const dogsMax = state.copyDogs
-
-            //     const orderWeightMax = action.payload === "asc"
-            //       ? dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? 1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? -1 : 0)
-            //       : dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? -1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? 1 : 0);
-            //     return {
-            //       ...state,
-            //       copyDogs: [...orderWeightMax],
-            //     };
-    
+       
 
             // En este ejemplo, la lista de perros se filtra primero para eliminar cualquier perro que tenga un valor de NaN en su propiedad weight. Luego, se ordena la lista filtrada. Si solo hay un perro con un valor de NaN en su propiedad weight, este perro se eliminará de la lista y no se incluirá en la lista ordenada.
 
