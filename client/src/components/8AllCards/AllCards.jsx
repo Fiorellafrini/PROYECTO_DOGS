@@ -13,7 +13,10 @@ const AllCards = () => {
     const dispatch = useDispatch()
     
     // const dogs = useSelector(state => state.order);
-    const dogs = useSelector((state)=> state.dogs)//trae info del estdo global
+
+    // const dogs = useSelector((state)=> state.dogs)//trae info del estdo global
+    const dogs = useSelector((state)=> state.copyDogs)//trae info del estdo global
+
 
     useEffect(() =>{ //cuando se monta
         dispatch(getDogs()) //le digo que busque la info de getDogs

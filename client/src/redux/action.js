@@ -8,6 +8,7 @@ import { GET_TEMPERAMENTS } from "./action-types";
 import { FILTER_BY_TEMPERAMENTS } from "./action-types";
 import { ORDER_BY_WEIGHT_MIN } from "./action-types";
 import { ORDER_BY_WEIGHT_MAX } from "./action-types";
+import { FILTER_BY_CREATION } from "./action-types";
 
 // import { CREATE_DOG } from "./action-types";
 // import { FILTER_BY_CREATION } from "./action-types";
@@ -82,11 +83,20 @@ export const getDogsName = (name) => {
 //     };
 //   };
 
-// export const filterByTemperament = (payload) => {
-//     return { type: FILTER_BY_TEMPERAMENTS, payload };
-//   };
+export function getTemperaments (){
+return async function (dispatch){
+    const response = await axios.get("http://localhost:3001/temperaments")
+    return dispatch({
+        type: GET_TEMPERAMENTS,
+        payload: response.data
+    })
+}
+}
 
-  
+export const filterTemperament = (payload) => {
+    return { type: FILTER_BY_TEMPERAMENTS, payload };
+  };
+
 export const orderByName = (payload) => {
     return { type: ORDER_BY_NAME, payload };
   };
@@ -94,8 +104,14 @@ export const orderByName = (payload) => {
 export const orderByWeightMin = (payload) => {
     return { type: ORDER_BY_WEIGHT_MIN, payload };
   };
+  
 export const orderByWeightMax = (payload) => {
     return { type: ORDER_BY_WEIGHT_MAX, payload };
   };
+
+export function filterByCreation (payload){
+    return {type: FILTER_BY_CREATION, payload
+    }
+}
 
   

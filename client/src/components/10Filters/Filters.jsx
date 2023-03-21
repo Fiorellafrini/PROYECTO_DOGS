@@ -4,11 +4,14 @@ import { useState } from 'react';
 import {useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 // import { useRef } from 'react';
+import { useEffect } from 'react';
+
 
 import {
-    cleanCards,
-    filterByTemperament, 
+    // cleanCards,
+    filterTemperament, 
     getDogs, 
+    getTemperaments, 
     // filterByCreation, 
     orderByName,
     orderByWeightMax,
@@ -23,20 +26,26 @@ export default function Filters() {
     // const [setOrder] = useState('')
 
 //   const weight = useRef();
+const allTemperaments = useSelector ((state) => state.temperaments)
 
+const [selectedOption, setSelectedOption] = useState("default");
 
     const history = useHistory()
 
-    // const handleOrder = (e) => {
-    //     e.target.name === "orderByName" && dispatch(orderByName(e.target.value))
-    //   }
+
+    useEffect(() => {
+        if (!allTemperaments || allTemperaments.length === 0) {
+            // dispatch(getDogs())
+            dispatch(getTemperaments())
+        }
+    },[])
 
 
-    //   function handleTemperament(event) {
-    //     event.preventDefault();
-    //     dispatch(filterByTemperament(event.target.value))
-    //     history.push("/home")
-    // };
+      function handleTemperament(event) {
+        event.preventDefault();
+        dispatch(filterTemperament(event.target.value))
+        history.push("/home")
+    };
 
     // const temperamentsSort = useSelector((state) => state.temperaments)?.sort(
     //     function (a, b) {
@@ -77,6 +86,16 @@ export default function Filters() {
     return (
         <div className={style.container}>
 
+
+                    <select name="filterTemperament" defaultValue="Default" onChange={(event) => handleTemperament(event)} >
+                        <option key="Temperaments" value="" hidden>Filter By Temperament</option>
+                        <option key="All" value="All">All</option>
+                        {
+                            allTemperaments?.map((temperament, i) => {
+                                return <option key={temperament.name + i} value={temperament.name}>{temperament.name}</option>
+                            })
+                            }
+                    </select>
                 {/* <select onChange={(event) => handleCreated(event)} >
                     <option value="allDogs">Dogs</option>
                     <option value="Created">My Dogs</option>
@@ -99,7 +118,8 @@ export default function Filters() {
 
 
                 <select className={style.selectList} name="orderByName"
-                defaultValue={"default"} 
+                // defaultValue={"default"} 
+                value={selectedOption} 
                 onChange={handleOrder}>
                     <option value="default" disabled>Order by name</option>
                     <option value="Ascendent">A-Z</option>
@@ -108,7 +128,7 @@ export default function Filters() {
 
         
                 <select className={style.selectList} name="orderByWeightMin"
-                defaultValue={"default"} 
+                value={selectedOption} 
                 onChange={handleOrderWeightMin}>
                     <option value="default" disabled>  Order Weight Min </option>
                     <option value='asc'> - Weight</option>

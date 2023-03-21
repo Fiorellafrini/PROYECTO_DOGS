@@ -21,7 +21,6 @@ const initialState = {
     dogsMin:'',
     details: {},
     copyDogs: [],
-    filters: { origin: "allDogs", temperaments: "allDogs"},
     temperaments: [],      
 };
 
@@ -32,8 +31,8 @@ const rootReducer = (state= initialState, action) => {
         case GET_DOGS:
             return {
                 ...state, // copia del estado, para no perderlo
-                dogs: [...action.payload], // action. payload me trae todo el array con los dogs. Estoy haciendo que en mi estado global se me guarden todos los dogs que son la respuesta de la api
-                copyDogs: [...action.payload]
+                dogs: action.payload, // action. payload me trae todo el array con los dogs. Estoy haciendo que en mi estado global se me guarden todos los dogs que son la respuesta de la api
+                copyDogs: action.payload
             }
         case GET_DETAILS:
             // console.log("Details received:", action.payload);
@@ -62,7 +61,7 @@ const rootReducer = (state= initialState, action) => {
         case ORDER_BY_NAME:
         return {
             ...state,
-            dogs: [...state.dogs].sort((a,b) => {
+            copyDogs: [...state.copyDogs].sort((a,b) => {
             if (action.payload === 'Ascendent') {
                 if (a.name < b.name) return -1;
                 if (a.name > b.name) return 1;
@@ -74,15 +73,15 @@ const rootReducer = (state= initialState, action) => {
             }
             })
         }
-
+            
           case ORDER_BY_WEIGHT_MIN:
-            const dogsMin = state.dogs.filter((dog) => !isNaN(parseInt(dog.weight.split(' - ')[0]))); 
+            const dogsMin = state.dogs.filter((dog) => !isNaN (parseInt(dog.weight.split(' - ')[0]))); 
             const orderWeightMin = action.payload === "asc"
               ? dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? 1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? -1 : 0)
               : dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? -1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? 1 : 0);
             return {
               ...state,
-              dogs: [...orderWeightMin],
+              copyDogs: [...orderWeightMin],
             };
         
             case ORDER_BY_WEIGHT_MAX:
@@ -92,7 +91,7 @@ const rootReducer = (state= initialState, action) => {
                   : dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? -1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? 1 : 0);
                 return {
                   ...state,
-                  dogs: [...orderWeightMax],
+                  copyDogs: [...orderWeightMax],
                 };
     
 
@@ -101,31 +100,32 @@ const rootReducer = (state= initialState, action) => {
             // La comparación de los números se realiza utilizando los operadores matemáticos < y > y devuelve un valor numérico que indica la posición relativa de los perros en la lista ordenada. Si el peso del primer perro es mayor que el peso del segundo perro, la función devuelve un valor positivo (1); si el peso del segundo perro es mayor que el peso del primer perro, la función devuelve un valor negativo (-1); y si los pesos son iguales, la función devuelve 0.
 
             
-        // case GET_TEMPERAMENTS:
-        // return {
-        //     ...state,
-        //     temperaments: action.payload,
-        // };
+        case GET_TEMPERAMENTS:
+        return {
+            ...state,
+            temperaments: action.payload,
+        };
 
-
-        // case FILTER_BY_TEMPERAMENTS:
-        //     if (state.filters.origin !== "allDogs") {
-        //       allDogs = state.filters.origin === "Api"
-        //       ? allDogs.filter(dog => !isNaN(dog.id))
-        //       : allDogs.filter(dog => isNaN(dog.id))
-        //     }
-        //     if (action.payload !== "allDogs") {
-        //     allDogs = action.payload === "allDogs" 
-        //     ? allDogs 
-        //     : allDogs.filter(element => element.temperaments?.toUpperCase().includes(action.payload.toUpperCase()));
-        //     }
-    
-        //     return {
-        //       ...state,
-        //       copyDogs: [ ...allDogs ],
-        //       filters: { ...state.filters, temperaments: action.payload }
-        //     }
-
+        case FILTER_BY_TEMPERAMENTS:
+            // if (state.dogs.length < state.copyDogs.length) {
+            //     return {
+            //         ...state,
+            //         dogs: state.copyDogs
+            //     }
+            // }
+            if (action.payload === "All") {
+                return {
+                    ...state,
+                    dogs: state.copyDogs
+                }
+            }
+            const filteredTemperaments = state.dogs.filter((element) => 
+                element.temperaments?.includes(action.payload) ? element : null
+            )
+            return {
+               ...state,
+                copyDogs: filteredTemperaments
+            }
 
           
                     

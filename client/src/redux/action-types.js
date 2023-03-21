@@ -12,5 +12,5 @@ export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS";
 
 // export const PAGE_DOGS = "SET_PAGE_CHARACTER";
 // export const DELETE_DOG = "DELETE_DOG";
-// export const CREATE_DOG = "CREATE_DOG";
-// export const FILTER_BY_CREATION = "FILTER_BY_CREATION";
+export const CREATE_DOG = "CREATE_DOG";
+export const FILTER_BY_CREATION = "FILTER_BY_CREATION";
