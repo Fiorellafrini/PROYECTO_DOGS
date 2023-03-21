@@ -81,7 +81,10 @@ const createDog = async (
     life_span, 
     breed_group, 
     bred_for, 
-    origin})
+    origin,
+    // createdInDb: true // agregar el campo createdInDb y asignarle el valor de true. entonces cuando creo un perro en bd se le asigna este valor. que luego lo uso en el front
+  
+    })
     
   //console.log(newDog);
 

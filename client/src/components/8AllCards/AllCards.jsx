@@ -42,9 +42,11 @@ const AllCards = () => {
                             breed_group={dog.breed_group}
                             origin={dog.origin}                 
                             temperaments={dog.temperaments}
+                            // createInDb={dog.createInDb} // agregue el createId en modelo, y en el post
                         />
                     )
                     :
+
                     <h1>Loading...</h1>
                 }
             </div>

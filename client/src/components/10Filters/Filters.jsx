@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 
 
 import {
+    filterByCreation,
     // cleanCards,
     filterTemperament, 
     getDogs, 
@@ -25,7 +26,6 @@ export default function Filters() {
     // const [setCurrentPageOrder] = useState(1);
     // const [setOrder] = useState('')
 
-//   const weight = useRef();
 const allTemperaments = useSelector ((state) => state.temperaments)
 
 const [selectedOption, setSelectedOption] = useState("default");
@@ -38,7 +38,7 @@ const [selectedOption, setSelectedOption] = useState("default");
             // dispatch(getDogs())
             dispatch(getTemperaments())
         }
-    },[])
+    },[dispatch])
 
 
       function handleTemperament(event) {
@@ -47,20 +47,16 @@ const [selectedOption, setSelectedOption] = useState("default");
         history.push("/home")
     };
 
-    // const temperamentsSort = useSelector((state) => state.temperaments)?.sort(
-    //     function (a, b) {
-    //         if (a < b) return -1;
-    //         else return 1;
-    //     }
-    //   );
-
+    function handleCreated (event) {
+        event.preventDefault()
+        // dispatch(setPage(1))
+        dispatch(filterByCreation(event.target.value))
+        history.push("/home")
+    }
 
       function handleOrder(e) {
         e.preventDefault();
         dispatch(orderByName(e.target.value))
-        // dispatch(getDogs())
-
-        // dispatch(cleanCards())
         // setCurrentPageOrder(1);
         // setOrder(`Ordenado ${e.target.value}`)
         history.push("/home")
@@ -87,7 +83,7 @@ const [selectedOption, setSelectedOption] = useState("default");
         <div className={style.container}>
 
 
-                    <select name="filterTemperament" defaultValue="Default" onChange={(event) => handleTemperament(event)} >
+                <select name="filterTemperament" defaultValue="Default" onChange={(event) => handleTemperament(event)} >
                         <option key="Temperaments" value="" hidden>Filter By Temperament</option>
                         <option key="All" value="All">All</option>
                         {
@@ -95,52 +91,38 @@ const [selectedOption, setSelectedOption] = useState("default");
                                 return <option key={temperament.name + i} value={temperament.name}>{temperament.name}</option>
                             })
                             }
-                    </select>
-                {/* <select onChange={(event) => handleCreated(event)} >
-                    <option value="allDogs">Dogs</option>
-                    <option value="Created">My Dogs</option>
-                    <option value="Api">Api Dogs</option>
-                </select> */}
-
-                {/* <select className={style.temp} onChange={(event) => handleTemperament(event)}>
-                        <option value="allDogs">Temperaments</option>
-                        {temperamentsSort
-                            .sort((a, b) => a.name.localeCompare(b.name))
-                            .map((temp) => {
-                            return (
-                                <option value={temp.name} key={temp.id}>
-                                    {temp.name}
-                                </option>
-                            );
-                        })}
                 </select>
-   */}
 
+                <select name="filterByCreation" defaultValue="Default" onChange={(event) => handleCreated(event)} >
+                    <option value="allDogs">Api+Db</option>
+                    <option value="Created">Data Base</option>
+                    <option value="Api">Api</option>
+                </select>
 
                 <select className={style.selectList} name="orderByName"
-                // defaultValue={"default"} 
-                value={selectedOption} 
-                onChange={handleOrder}>
-                    <option value="default" disabled>Order by name</option>
-                    <option value="Ascendent">A-Z</option>
-                    <option value="Descendent">Z-A</option>
+                    // defaultValue={"default"} 
+                    value={selectedOption} 
+                    onChange={handleOrder}>
+                        <option value="default" disabled>Order by name</option>
+                        <option value="Ascendent">A-Z</option>
+                        <option value="Descendent">Z-A</option>
                 </select>
 
         
                 <select className={style.selectList} name="orderByWeightMin"
-                value={selectedOption} 
-                onChange={handleOrderWeightMin}>
-                    <option value="default" disabled>  Order Weight Min </option>
-                    <option value='asc'> - Weight</option>
-                    <option value='dec'> + Weight</option>
+                    value={selectedOption} 
+                    onChange={handleOrderWeightMin}>
+                        <option value="default" disabled>  Order Weight Min </option>
+                        <option value='asc'> - Weight</option>
+                        <option value='dec'> + Weight</option>
                 </select>
 
                 <select className={style.selectList} name="orderByWeightMax"
-                defaultValue={"default"} 
-                onChange={handleOrderWeightMax}>
-                    <option value="default" disabled>  Order Weight Max</option>
-                    <option value='asc'> - Weight</option>
-                    <option value='dec'> + Weight</option>
+                    defaultValue={"default"} 
+                    onChange={handleOrderWeightMax}>
+                        <option value="default" disabled>  Order Weight Max</option>
+                        <option value='asc'> - Weight</option>
+                        <option value='dec'> + Weight</option>
                 </select>
         </div>
     );

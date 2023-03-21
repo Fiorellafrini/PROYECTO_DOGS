@@ -44,7 +44,12 @@ sequelize.define('dog', {
   origin:{
     type: DataTypes.STRING,
     allowNull:true,
-  }
+  },
+  // createInDb: {
+  //   type: DataTypes.BOOLEAN,
+  //   allowNull: false,
+  //   defaultValue: true,
+  // }
 
 }, {timestamps: false});
 };

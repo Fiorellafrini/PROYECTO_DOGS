@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.container {
+    /* position: absolute; */
+    display: flex;
+    /* margin-top: 140px; */
+    margin-left: 14em;
+    margin-right: 30px;
+
+    gap: 6em;
+    background-color: rgba(244, 0, 0, 0);
+}
+  
+
+select {
+    background-color: rgba(240, 248, 255, 0);
+    border: solid 0.2px rgba(255, 255, 255, 0);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    padding: 3px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition-duration: 0.2s;
+}
+
+select:hover {
+    /* border-radius: 6px; */
+    /* box-shadow: 0px 0px 5px #ffffff; */
+    border: solid 0.2px white;
+    padding: 3px;
+    transition-duration: 0.4s;
+}
+
+select option {
+    padding: 10px 20px;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    background-color: #fffdf9;
+    white-space: pre-wrap;
+    display: flex;
+    margin-top: 100px;
+    color: #bd7b00;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+    
+  
+  select::-webkit-scrollbar
+  {
+      width: 8px;
+      background-color: #F5F5F5;
+      
+  }
+  
+  select::-webkit-scrollbar-thumb
+  {
+      background-color: rgb(225, 225, 225);
+      border-radius: 12px;
+      background-image: -webkit-linear-gradient(90deg,
+                                                rgba(213, 213, 213, 0.2) 25%,
+                                                transparent 25%,
+                                                transparent 50%,
+                                                rgba(181, 181, 181, 0.2) 50%,
+                                                rgba(194, 194, 194, 0.2) 75%,
+                                                transparent 75%,
+                                                transparent)
+  }

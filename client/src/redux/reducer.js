@@ -10,7 +10,8 @@ import { CLEAN_DETAILS,
     ORDER_BY_WEIGHT_MAX,
     // CREATE_DOG,
     GET_TEMPERAMENTS,
-    ORDER_BY_NAME } from "./action-types";
+    ORDER_BY_NAME, 
+    FILTER_BY_CREATION} from "./action-types";
 
 const initialState = {
     pageDogs: [],
@@ -21,11 +22,13 @@ const initialState = {
     dogsMin:'',
     details: {},
     copyDogs: [],
-    temperaments: [],      
+    temperaments: [],   
+    filters: { origin: "allDogs", temperaments: "allDogs"},
+
 };
 
 const rootReducer = (state= initialState, action) => {
-    // let allDogs = state.dogs
+    let allDogs = state.dogs
 
     switch(action.type) {
         case GET_DOGS:
@@ -74,25 +77,98 @@ const rootReducer = (state= initialState, action) => {
             })
         }
             
-          case ORDER_BY_WEIGHT_MIN:
-            const dogsMin = state.dogs.filter((dog) => !isNaN (parseInt(dog.weight.split(' - ')[0]))); 
-            const orderWeightMin = action.payload === "asc"
-              ? dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? 1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? -1 : 0)
-              : dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? -1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? 1 : 0);
-            return {
-              ...state,
-              copyDogs: [...orderWeightMin],
-            };
-        
-            case ORDER_BY_WEIGHT_MAX:
-                const dogsMax = state.dogs.filter((dog) => !isNaN(parseInt(dog.weight.split(' - ')[1]))); 
-                const orderWeightMax = action.payload === "asc"
-                  ? dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? 1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? -1 : 0)
-                  : dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? -1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? 1 : 0);
+        //   case ORDER_BY_WEIGHT_MIN:
+           
+        //     const dogsMin = state.dogs.filter((dog) => !isNaN (parseInt(dog.weight.split(' - ')[0]))); 
+
+        //     const orderWeightMin = action.payload === "asc"
+        //       ? dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? 1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? -1 : 0)
+        //       : dogsMin.sort((a, b) => parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0]) ? -1 : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0]) ? 1 : 0);
+        //     return {
+        //       ...state,
+        //       copyDogs: [...orderWeightMin],
+        //     };
+
+
+            case ORDER_BY_WEIGHT_MIN:
+                const dogsMin = state.dogs.filter((dog) => {
+                  const weight = dog.weight;
+                  if (weight !== undefined && weight !== null && weight.includes(' - ')) {
+                    return !isNaN(parseInt(weight.split(' - ')[0]));
+                  }
+                  return false;
+                });
+              
+                const orderWeightMin =
+                  action.payload === 'asc'
+                    ? dogsMin.sort((a, b) =>
+                        parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
+                          ? 1
+                          : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
+                          ? -1
+                          : 0
+                      )
+                    : dogsMin.sort((a, b) =>
+                        parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
+                          ? -1
+                          : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
+                          ? 1
+                          : 0
+                      );
+              
                 return {
                   ...state,
-                  copyDogs: [...orderWeightMax],
+                  copyDogs: [...orderWeightMin],
                 };
+              
+           
+
+                case ORDER_BY_WEIGHT_MAX:
+                    const dogsMax = state.dogs.filter((dog) => {
+                      const weight = dog.weight;
+                      if (weight !== undefined && weight !== null && weight.includes(' - ')) {
+                        return !isNaN(parseInt(weight.split(' - ')[0]));
+                      }
+                      return false;
+                    });
+                  
+                    const orderWeightMax =
+                      action.payload === 'asc'
+                        ? dogsMax.sort((a, b) =>
+                            parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
+                              ? 1
+                              : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
+                              ? -1
+                              : 0
+                          )
+                        : dogsMax.sort((a, b) =>
+                            parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
+                              ? -1
+                              : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
+                              ? 1
+                              : 0
+                          );
+                  
+                    return {
+                      ...state,
+                      copyDogs: [...orderWeightMax],
+                    };
+                  
+
+            // case ORDER_BY_WEIGHT_MAX:
+            //     if (dogsMax !== undefined && dogsMax !== null) {
+            //         dogsMax.sort((a, b) => a.split('-')[0] - b.split('-')[0]);
+            //       }
+            //     // const dogsMax = state.dogs.filter((dog) => !isNaN(parseInt(dog.weight.split(' - ')[1]))); 
+            //     const dogsMax = state.copyDogs
+
+            //     const orderWeightMax = action.payload === "asc"
+            //       ? dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? 1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? -1 : 0)
+            //       : dogsMax.sort((a, b) => parseInt(a.weight.split(' - ')[1]) > parseInt(b.weight.split(' - ')[1]) ? -1 : parseInt(a.weight.split(' - ')[1]) < parseInt(b.weight.split(' - ')[1]) ? 1 : 0);
+            //     return {
+            //       ...state,
+            //       copyDogs: [...orderWeightMax],
+            //     };
     
 
             // En este ejemplo, la lista de perros se filtra primero para eliminar cualquier perro que tenga un valor de NaN en su propiedad weight. Luego, se ordena la lista filtrada. Si solo hay un perro con un valor de NaN en su propiedad weight, este perro se eliminará de la lista y no se incluirá en la lista ordenada.
@@ -126,10 +202,25 @@ const rootReducer = (state= initialState, action) => {
                ...state,
                 copyDogs: filteredTemperaments
             }
-
-          
                     
-                 
+         
+            case FILTER_BY_CREATION:
+                    allDogs = state.filters.temperaments === "allDogs"
+                    ? [...allDogs]
+                    : allDogs.filter(element => element.temperaments?.toUpperCase().includes(state.filters.temperaments.toUpperCase()));
+                
+                if (action.payload !== "allDogs") {
+                    allDogs = action.payload === "Api"
+                    ? allDogs.filter(dog => !isNaN(dog.id))
+                    : allDogs.filter(dog => isNaN(dog.id))
+                } 
+                
+                return {
+                    ...state,
+                    copyDogs: [ ...allDogs ],
+                    filters: { ...state.filters, origin: action.payload }
+                }
+                
         default:
             return {...state} // una copia del estado inicial
     }
