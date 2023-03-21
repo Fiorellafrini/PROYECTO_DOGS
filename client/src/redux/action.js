@@ -91,11 +91,10 @@ export const orderByName = (payload) => {
     return { type: ORDER_BY_NAME, payload };
   };
 
-
-  export const orderByWeightMin = (payload) => {
+export const orderByWeightMin = (payload) => {
     return { type: ORDER_BY_WEIGHT_MIN, payload };
   };
-  export const orderByWeightMax = (payload) => {
+export const orderByWeightMax = (payload) => {
     return { type: ORDER_BY_WEIGHT_MAX, payload };
   };
 

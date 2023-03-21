@@ -75,32 +75,6 @@ const rootReducer = (state= initialState, action) => {
             })
         }
 
-        // case ORDER_BY_WEIGHT:
-        //     const orderWeight = action.payload === "asc"
-        //   ? [...state.dogs].sort((a, b) => {
-        //     return parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
-        //     ? 1
-        //     : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
-        //     ? -1
-        //     : 0;
-        //   })
-        //   : [...state.dogs].sort((a, b) => {
-        //     return parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
-        //     ? - 1
-        //     : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
-        //     ? 1
-        //     : 0;
-        //   })
-          
-  
-        //   return {
-        //     ...state,
-        //     dogs:[...orderWeight], 
-        //   }
-  
-
-
-
           case ORDER_BY_WEIGHT_MIN:
             const dogsMin = state.dogs.filter((dog) => !isNaN(parseInt(dog.weight.split(' - ')[0]))); 
             const orderWeightMin = action.payload === "asc"
@@ -111,7 +85,6 @@ const rootReducer = (state= initialState, action) => {
               dogs: [...orderWeightMin],
             };
         
-
             case ORDER_BY_WEIGHT_MAX:
                 const dogsMax = state.dogs.filter((dog) => !isNaN(parseInt(dog.weight.split(' - ')[1]))); 
                 const orderWeightMax = action.payload === "asc"

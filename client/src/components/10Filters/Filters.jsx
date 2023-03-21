@@ -107,21 +107,20 @@ export default function Filters() {
                 </select>
 
         
-
                 <select className={style.selectList} name="orderByWeightMin"
                 defaultValue={"default"} 
                 onChange={handleOrderWeightMin}>
                     <option value="default" disabled>  Order Weight Min </option>
-                    <option value='asc'>Rising Weight</option>
-                    <option value='dec'>Decreasing Weight</option>
+                    <option value='asc'> - Weight</option>
+                    <option value='dec'> + Weight</option>
                 </select>
 
                 <select className={style.selectList} name="orderByWeightMax"
                 defaultValue={"default"} 
                 onChange={handleOrderWeightMax}>
                     <option value="default" disabled>  Order Weight Max</option>
-                    <option value='asc'>Rising Weight</option>
-                    <option value='dec'>Decreasing Weight</option>
+                    <option value='asc'> - Weight</option>
+                    <option value='dec'> + Weight</option>
                 </select>
         </div>
     );
