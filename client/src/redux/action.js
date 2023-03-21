@@ -3,6 +3,15 @@ import { GET_DETAILS } from "./action-types";
 import { CLEAN_DETAILS } from "./action-types";
 import { CLEAN_CARDS } from "./action-types";
 import { SEARCH_DOGS_BY_NAME } from "./action-types";
+import { ORDER_BY_NAME } from "./action-types";
+import { GET_TEMPERAMENTS } from "./action-types";
+import { FILTER_BY_TEMPERAMENTS } from "./action-types";
+import { ORDER_BY_WEIGHT_MIN } from "./action-types";
+import { ORDER_BY_WEIGHT_MAX } from "./action-types";
+
+// import { CREATE_DOG } from "./action-types";
+// import { FILTER_BY_CREATION } from "./action-types";
+// import { PAGE_DOGS } from "./action-types";
 import axios from "axios";// si quiero traerme los personajes del back a mi front voy a usar axios o fetch 
 
 
@@ -57,4 +66,37 @@ export const getDogsName = (name) => {
           window.alert("Dogs not found!");
         });
     };
+};
+
+
+// export const getTemperaments = () => {
+//     return (dispatch) => {
+//       fetch(`http://localhost:3001/temperaments`)
+//         .then((response) => response.json())
+//         .then((data) =>
+//           dispatch({ type: GET_TEMPERAMENTS, payload: data })
+//         )
+//         .catch((error) => {
+//           // console.log(error);
+//         })
+//     };
+//   };
+
+// export const filterByTemperament = (payload) => {
+//     return { type: FILTER_BY_TEMPERAMENTS, payload };
+//   };
+
+  
+export const orderByName = (payload) => {
+    return { type: ORDER_BY_NAME, payload };
   };
+
+
+  export const orderByWeightMin = (payload) => {
+    return { type: ORDER_BY_WEIGHT_MIN, payload };
+  };
+  export const orderByWeightMax = (payload) => {
+    return { type: ORDER_BY_WEIGHT_MAX, payload };
+  };
+
+  

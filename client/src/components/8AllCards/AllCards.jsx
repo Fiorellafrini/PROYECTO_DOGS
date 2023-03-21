@@ -11,6 +11,8 @@ import styles from './AllCards.module.css'
 const AllCards = () => {
 
     const dispatch = useDispatch()
+    
+    // const dogs = useSelector(state => state.order);
     const dogs = useSelector((state)=> state.dogs)//trae info del estdo global
 
     useEffect(() =>{ //cuando se monta
@@ -21,7 +23,8 @@ const AllCards = () => {
 
     // console.log(allDogs);
 
-   
+
+
     return(
         <div>
             <div className={styles.cards}>
@@ -45,5 +48,5 @@ const AllCards = () => {
         </div>
     )}
 
-        
+   
 export default AllCards;

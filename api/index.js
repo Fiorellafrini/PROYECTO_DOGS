@@ -24,9 +24,10 @@ const { conn } = require('./src/db.js');
 
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(async() => {
+conn.sync({ force: true }).then(() => {
+  server.listen(3001, async() => {
   await getAllTemp()
-  server.listen(3001, () => {
+
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });

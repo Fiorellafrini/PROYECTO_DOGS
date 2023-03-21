@@ -11,3 +11,5 @@ const store = createStore(
 );// esta línea es para poder hacer peticiones a un server
 
 export default store;
+
+// el store se encarga de manejar el estado global de la api
