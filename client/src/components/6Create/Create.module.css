@@ -1,0 +1,72 @@
+.body {
+    /* background-image: url("https://us.123rf.com/450wm/zinako/zinako1708/zinako170800365/84804752-impresionante-tarjeta-de-felicitaci%C3%B3n-con-siluetas-de-perros-de-dibujos-animados-diferentes-razas.jpg"); */
+    /* background-image: url("https://img.freepik.com/vector-gratis/fondo-patron-animal-transparente-ilustracion-vector-impresion-pata-linda_53876-156206.jpg?w=740&t=st=1679166366~exp=1679166966~hmac=522468214cacfc84f59f2d2ef7a9874a4f5bfdef7dbab07b98d67cee81b4e0b3"); */
+    /* background-image: url("https://img.freepik.com/foto-gratis/adorable-bulldog-blanco-retrato-cachorro-banner-social_53876-148022.jpg?w=826&t=st=1679165503~exp=1679166103~hmac=4f636f2c3578e54638259c882dc96a401b644093759ca397dada38e54fca2c83"); */
+    background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
+    padding: 2em;
+    background-attachment: fixed;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.452);
+    height: 800px;
+
+}
+
+.container {
+    position: relative;
+    top: 10px;
+    width: 12%;
+    display:inline-block;
+
+    /* background-color:rgba(123, 120, 124, 0.342); */
+    /* padding: 90px; */
+    /* font-size: 20px; */
+    /* border-radius: 20px; */
+}
+
+.input {
+    font-family:'Montserrat', sans-serif;
+    border: solid 2px rgb(255, 255, 255);
+    margin-bottom: 8px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.918);
+    font-size: 20px;
+}
+
+.btn {
+    background: #b5842a6c;
+    border: none;
+    padding: 15px 25px 15px 25px;
+    /* font-family: "fontnew2"; */
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    /* margin-bottom: 2; */
+    /* margin-left: 5px; */
+    transition: all ease-in-out 0.2s;
+    border-radius: 50%;
+    display:inline-block ;
+
+  }
+  
+  .btn:hover {
+    background: rgba(154, 147, 147, 0.874);
+  }  
+
+
+  .btn1 {
+    background: #b5842a6c;
+    border: none;
+    padding: 15px 25px 15px 25px;
+    /* font-family: "fontnew2"; */
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 2px;
+    /* margin-left: 5px; */
+    transition: all ease-in-out 0.2s;
+    border-radius: 50%;
+    display:inline-block ;
+  }
+  
+  .btn1:hover {
+    background: rgba(154, 147, 147, 0.874);
+  }  

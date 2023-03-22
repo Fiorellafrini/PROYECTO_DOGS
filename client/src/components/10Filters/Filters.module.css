@@ -3,22 +3,22 @@
 .container {
     /* position: absolute; */
     display: flex;
-    /* margin-top: 140px; */
+    margin-top: 0px;
     margin-left: 14em;
     margin-right: 30px;
 
     gap: 6em;
-    background-color: rgba(244, 0, 0, 0);
+    background-color: rgba(75, 73, 68, 0);
 }
   
 
 select {
-    background-color: rgba(240, 248, 255, 0);
-    border: solid 0.2px rgba(255, 255, 255, 0);
+    background-color:rgba(213, 99, 0, 0.452);
+    border: solid 0.2px rgba(255, 255, 255, 0.856);
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    padding: 3px;
+    padding: 5px;
     cursor: pointer;
     border-radius: 6px;
     transition-duration: 0.2s;
@@ -50,7 +50,7 @@ select option {
   select::-webkit-scrollbar
   {
       width: 8px;
-      background-color: #F5F5F5;
+      background-color: #d68112;
       
   }
   
@@ -59,11 +59,11 @@ select option {
       background-color: rgb(225, 225, 225);
       border-radius: 12px;
       background-image: -webkit-linear-gradient(90deg,
-                                                rgba(213, 213, 213, 0.2) 25%,
-                                                transparent 25%,
-                                                transparent 50%,
-                                                rgba(181, 181, 181, 0.2) 50%,
-                                                rgba(194, 194, 194, 0.2) 75%,
-                                                transparent 75%,
-                                                transparent)
+                                rgb(213, 213, 213) 25%,
+                                transparent 25%,
+                                transparent 50%,
+                                rgba(181, 181, 181, 0.2) 50%,
+                                rgba(194, 194, 194, 0.2) 75%,
+                                transparent 75%,
+                                transparent)
   }

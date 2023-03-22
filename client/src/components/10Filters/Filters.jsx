@@ -9,11 +9,8 @@ import { useEffect } from 'react';
 
 import {
     filterByCreation,
-    // cleanCards,
     filterTemperament, 
-    getDogs, 
     getTemperaments, 
-    // filterByCreation, 
     orderByName,
     orderByWeightMax,
     orderByWeightMin 
@@ -38,7 +35,7 @@ const [selectedOption, setSelectedOption] = useState("default");
             // dispatch(getDogs())
             dispatch(getTemperaments())
         }
-    },[dispatch])
+    },[])
 
 
       function handleTemperament(event) {

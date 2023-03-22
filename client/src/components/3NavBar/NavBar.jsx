@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "../3NavBar/NavBar.module.css";
 import SearchBar from "../9SearchBar/SearchBar"
-import Filters from "../10Filters/Filters";
+// import Filters from "../10Filters/Filters";
 
 
 const NavBar = () => {
@@ -25,14 +25,13 @@ return (
 
 
             <Link to="/create">
-                <button>CREATE</button>
+                <button>CREATE DOG</button>
             </Link>
            
             </nav>
         </div>
         
         <SearchBar></SearchBar>
-        <Filters />
 
 
     </div>

@@ -1,7 +1,7 @@
 .button{
     background: #2f659e00;
     border: none;
-    padding: 5px;
+    padding: 8px;
     font-family: "fontnew2";
     font-size: 25px;
     /* color: rgb(0, 0, 0); */
@@ -14,7 +14,7 @@
   .btn{
     background: #e9000000;
     border:none;
-    padding: 8px;
+    padding: 10px;
     font-family: "fontnew2";
     font-size: 30px;
     color: rgb(0, 0, 0);
@@ -29,7 +29,7 @@
   .input {
     background: #a7a7aaad;
     width: 270px;
-    font-size: 20px;
+    font-size: 25px;
     font-family: monospace;
     margin-left: 90px;
     text-decoration: none;
@@ -52,8 +52,9 @@
 }
   
   .button:hover {
-    font-size: 20px;
-    cursor: pointer;
+    font-size: 25px;
+    background-color: rgba(128, 255, 0, 0.281);
+    /* cursor: pointer; */
   }
   .btn:hover {
     background: rgba(213, 99, 0, 0.452);

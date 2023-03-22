@@ -68,7 +68,7 @@ const createDog = async (
   temperaments ) => {
   
   //Validacion los datos
-    if (!name || !height || !weight ) throw Error("Mandatory data is missing");
+    // if (!name || !height || !weight ) throw Error("Mandatory data is missing");
   //No pongo todas las prop de modelos porque los que dicen defaultvalue o allownull true no los pongo ya que se crean solas.
  
 

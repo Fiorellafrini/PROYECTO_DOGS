@@ -8,7 +8,7 @@ import { CLEAN_DETAILS,
     // PAGE_DOGS,
     ORDER_BY_WEIGHT_MIN,
     ORDER_BY_WEIGHT_MAX,
-    // CREATE_DOG,
+    CREATE_DOG,
     GET_TEMPERAMENTS,
     ORDER_BY_NAME, 
     FILTER_BY_CREATION} from "./action-types";
@@ -195,6 +195,12 @@ const rootReducer = (state= initialState, action) => {
                     copyDogs: [ ...allDogs ],
                     filters: { ...state.filters, origin: action.payload }
                 }
+
+                case CREATE_DOG:
+                    return {
+                      ...state,
+                      ...action.payload
+                    };
                 
         default:
             return {...state} // una copia del estado inicial

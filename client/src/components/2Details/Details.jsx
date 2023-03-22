@@ -30,7 +30,7 @@ const Details = () => {
                 <h1>Name: {dogsDetails[0].name ? dogsDetails[0].name : ' Data not found' }</h1>
 
                 <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : ' Data not found'} alt=""></img>
-                    
+                    <p>Id: {dogsDetails[0].id? dogsDetails[0].id : ' Data not found'}</p> 
                     <p>Height: {dogsDetails[0].height? dogsDetails[0].height : ' Data not found'}</p> 
                     <p>Weight: {dogsDetails[0].weight? dogsDetails[0].weight : ' Data not found'}</p> 
                     <p>Life span: {dogsDetails[0].life_span? dogsDetails[0].life_span : ' Data not found'}</p> 

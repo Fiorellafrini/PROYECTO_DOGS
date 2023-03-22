@@ -9,8 +9,7 @@ import { FILTER_BY_TEMPERAMENTS } from "./action-types";
 import { ORDER_BY_WEIGHT_MIN } from "./action-types";
 import { ORDER_BY_WEIGHT_MAX } from "./action-types";
 import { FILTER_BY_CREATION } from "./action-types";
-
-// import { CREATE_DOG } from "./action-types";
+import { CREATE_DOG } from "./action-types";
 // import { FILTER_BY_CREATION } from "./action-types";
 // import { PAGE_DOGS } from "./action-types";
 import axios from "axios";// si quiero traerme los personajes del back a mi front voy a usar axios o fetch 
@@ -113,5 +112,14 @@ export function filterByCreation (payload){
     return {type: FILTER_BY_CREATION, payload
     }
 }
+
+export const createDog = (newDogs) => {
+    return async function(dispatch) {
+         const response = await axios.post(`http://localhost:3001/dogs/`, newDogs)
+        return dispatch({type: CREATE_DOG, payload: response.data});
+      
+      
+    };
+  };
 
   

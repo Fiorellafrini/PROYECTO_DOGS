@@ -1,6 +1,9 @@
+import styles from "../5About/About.module.css"
+
+
 const About = () => {
     return(
-        <div>
+        <div className={styles.body}>
             <h1>About</h1>
         </div>
     )
