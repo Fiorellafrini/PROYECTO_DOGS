@@ -15,15 +15,31 @@ sequelize.define('dog', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  height: {
+  heightMin: {
     type: DataTypes.STRING,
-    allowNull: false,
-    },
+    allowNull: false
+  },
+  heightMax: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  weightMin: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  weightMax: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  // height: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false,
+  //   },
 
-  weight: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+  // weight: {
+  //     type: DataTypes.STRING,
+  //     allowNull: false,
+  //   },
   life_span: {
     type: DataTypes.STRING,
     defaultValue: "10 - 12"
@@ -39,7 +55,8 @@ sequelize.define('dog', {
   },
   image: {
     type: DataTypes.TEXT,
-    allowNull: true,
+    defaultValue:"https://www.agrocalidad.gob.ec/wp-content/uploads/2020/08/perr.jpg"
+    // allowNull: true,
   },
   origin:{
     type: DataTypes.STRING,

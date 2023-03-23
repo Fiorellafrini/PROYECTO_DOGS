@@ -37,8 +37,10 @@ const AllCards = () => {
                             id={dog.id}
                             key={dog.id}
                             image={dog.image}
-                            weight={dog.weight}
-                            height={dog.weight}
+                            weightMin={dog.weightMin}
+                            weightMax={dog.weightMax}
+                            heightMin={dog.heightMin}
+                            heightMax={dog.heightMax}
                             breed_group={dog.breed_group}
                             origin={dog.origin}                 
                             temperaments={dog.temperaments}

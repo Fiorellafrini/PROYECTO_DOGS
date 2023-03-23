@@ -6,8 +6,8 @@ import { SEARCH_DOGS_BY_NAME } from "./action-types";
 import { ORDER_BY_NAME } from "./action-types";
 import { GET_TEMPERAMENTS } from "./action-types";
 import { FILTER_BY_TEMPERAMENTS } from "./action-types";
-import { ORDER_BY_WEIGHT_MIN } from "./action-types";
-import { ORDER_BY_WEIGHT_MAX } from "./action-types";
+import { ORDER_BY_WEIGHT } from "./action-types";
+// import { ORDER_BY_WEIGHT_MAX } from "./action-types";
 import { FILTER_BY_CREATION } from "./action-types";
 import { CREATE_DOG } from "./action-types";
 // import { FILTER_BY_CREATION } from "./action-types";
@@ -100,22 +100,28 @@ export const orderByName = (payload) => {
     return { type: ORDER_BY_NAME, payload };
   };
 
-export const orderByWeightMin = (payload) => {
-    return { type: ORDER_BY_WEIGHT_MIN, payload };
+// export const orderByWeight = (payload) => {
+//     return { type: ORDER_BY_WEIGHT, payload };
+//   };
+
+  export const orderByWeight = (payload) => {
+    const weightOrder = payload === 'asc' ? 'WeightMin' : 'WeightMax';
+    return { type: ORDER_BY_WEIGHT, payload: weightOrder };
   };
   
-export const orderByWeightMax = (payload) => {
-    return { type: ORDER_BY_WEIGHT_MAX, payload };
-  };
+  
+// export const orderByWeightMax = (payload) => {
+//     return { type: ORDER_BY_WEIGHT_MAX, payload };
+//   };
 
 export function filterByCreation (payload){
     return {type: FILTER_BY_CREATION, payload
     }
 }
 
-export const createDog = (newDogs) => {
+export const createDog = (input) => {
     return async function(dispatch) {
-         const response = await axios.post(`http://localhost:3001/dogs/`, newDogs)
+         const response = await axios.post(`http://localhost:3001/dogs/`, input)
         return dispatch({type: CREATE_DOG, payload: response.data});
       
       

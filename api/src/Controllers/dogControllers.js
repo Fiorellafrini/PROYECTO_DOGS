@@ -56,32 +56,57 @@ async function searchByName(name) {
 // <=============== controller createDog ===============>
 
 // Creamos un dog y la guardamos en la base de datos
-const createDog = async (
-  name, 
-  image, 
-  height, 
-  weight, 
-  life_span, 
-  breed_group, 
-  bred_for, 
-  origin, 
-  temperaments ) => {
+// const createDog = async ( name, heightMin, heightMax, weightMin, weightMax, life_span, image, bred_for, breed_group, origin, temperaments ) => {
+
+  // if (!name || !heightMin || !heightMax || !weightMin || !weightMax) throw Error("Mandatory data is missing");
+
+
+  const createDog = async ( 
+    name, 
+      heightMin, 
+      heightMax, 
+      weightMin,
+      weightMax, 
+      life_span, 
+      breed_group, 
+      bred_for, 
+      image, 
+      origin, 
+      temperaments 
+             ) => {
+    if (!name || !heightMin || !heightMax || !weightMin || !weightMax) {
+      throw new Error("Mandatory data is missing");
+    }
   
-  //Validacion los datos
-    // if (!name || !height || !weight ) throw Error("Mandatory data is missing");
+//   //Validacion los datos
+//     if (!name || !height || !weight ) throw Error("Mandatory data is missing");
+
   //No pongo todas las prop de modelos porque los que dicen defaultvalue o allownull true no los pongo ya que se crean solas.
  
 
  //Agrego el newDog a mi base de datos, con un llamado asyn
   const newDog = await Dog.create({ 
+    // name: name ? name : null, 
+    // heightMin: heightMin ?  heightMin : null,
+    // heightMax: heightMax ?  heightMax : null,
+    // weightMax: weightMax ?  weightMax : null,
+    // weightMin :  weightMin ?  weightMin : null,
+    // life_span: life_span ? life_span : null, 
+    // breed_group: breed_group ? breed_group : null,
+    // bred_for: bred_for ? bred_for : null, 
+    // origin: origin ? origin :null,
+    // image: image ? image : null,
     name, 
-    image,
-    height,
-    weight, 
+    heightMin, 
+    heightMax, 
+    weightMin,
+    weightMax, 
     life_span, 
     breed_group, 
     bred_for, 
-    origin,
+    image, 
+    origin, 
+    temperaments 
     // createdInDb: true // agregar el campo createdInDb y asignarle el valor de true. entonces cuando creo un perro en bd se le asigna este valor. que luego lo uso en el front
   
     })

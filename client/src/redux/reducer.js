@@ -6,8 +6,8 @@ import { CLEAN_DETAILS,
     // FILTER_BY_CREATION,
     FILTER_BY_TEMPERAMENTS,
     // PAGE_DOGS,
-    ORDER_BY_WEIGHT_MIN,
-    ORDER_BY_WEIGHT_MAX,
+    ORDER_BY_WEIGHT,
+    // ORDER_BY_WEIGHT_MAX,
     CREATE_DOG,
     GET_TEMPERAMENTS,
     ORDER_BY_NAME, 
@@ -76,77 +76,37 @@ const rootReducer = (state= initialState, action) => {
             }
             })
         }
-            
-     
 
-            case ORDER_BY_WEIGHT_MIN:
-                const dogsMin = state.dogs.filter((dog) => {
-                  const weight = dog.weight;
-                  if (weight !== undefined && weight !== null && weight.includes(' - ')) {
-                    return !isNaN(parseInt(weight.split(' - ')[0]));
+
+            case ORDER_BY_WEIGHT:
+                const sortedWeight = state.dogs.slice().sort(function(a, b) {
+                  if (parseInt(a.weightMin) < parseInt(b.weightMin)) {
+                    return action.payload === 'WeightMin' ? -1 : 1;
                   }
-                  return false;
+                  if (parseInt(a.weightMin) > parseInt(b.weightMin)) {
+                    return action.payload === 'WeightMin' ? 1 : -1;
+                  }
+                  return 0;
                 });
-              
-                const orderWeightMin =
-                  action.payload === 'asc'
-                    ? dogsMin.sort((a, b) =>
-                        parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
-                          ? 1
-                          : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
-                          ? -1
-                          : 0
-                      )
-                    : dogsMin.sort((a, b) =>
-                        parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
-                          ? -1
-                          : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
-                          ? 1
-                          : 0
-                      );
-              
                 return {
                   ...state,
-                  copyDogs: [...orderWeightMin],
+                  copyDogs: sortedWeight,
                 };
-              
-           
 
-                case ORDER_BY_WEIGHT_MAX:
-                    const dogsMax = state.dogs.filter((dog) => {
-                      const weight = dog.weight;
-                      if (weight !== undefined && weight !== null && weight.includes(' - ')) {
-                        return !isNaN(parseInt(weight.split(' - ')[0]));
-                      }
-                      return false;
-                    });
+//otra forma de hacerlo
+                // case ORDER_BY_WEIGHT:
+                //     const sortedWeight = action.payload === 'WeightMin'
+                //       ? state.dogs.sort(function (a, b) {
+                //           return parseInt(a.weightMin) - parseInt(b.weightMin);
+                //         })
+                //       : state.dogs.sort(function (a, b) {
+                //           return parseInt(b.weightMin) - parseInt(a.weightMin);
+                //         });
                   
-                    const orderWeightMax =
-                      action.payload === 'asc'
-                        ? dogsMax.sort((a, b) =>
-                            parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
-                              ? 1
-                              : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
-                              ? -1
-                              : 0
-                          )
-                        : dogsMax.sort((a, b) =>
-                            parseInt(a.weight.split(' - ')[0]) > parseInt(b.weight.split(' - ')[0])
-                              ? -1
-                              : parseInt(a.weight.split(' - ')[0]) < parseInt(b.weight.split(' - ')[0])
-                              ? 1
-                              : 0
-                          );
-                  
-                    return {
-                      ...state,
-                      copyDogs: [...orderWeightMax],
-                    };
-                  
-
-       
-
-            // En este ejemplo, la lista de perros se filtra primero para eliminar cualquier perro que tenga un valor de NaN en su propiedad weight. Luego, se ordena la lista filtrada. Si solo hay un perro con un valor de NaN en su propiedad weight, este perro se eliminará de la lista y no se incluirá en la lista ordenada.
+                //     return {
+                //       ...state,
+                //       copyDogs: sortedWeight,
+                //     };
 
             // La comparación de los números se realiza utilizando los operadores matemáticos < y > y devuelve un valor numérico que indica la posición relativa de los perros en la lista ordenada. Si el peso del primer perro es mayor que el peso del segundo perro, la función devuelve un valor positivo (1); si el peso del segundo perro es mayor que el peso del primer perro, la función devuelve un valor negativo (-1); y si los pesos son iguales, la función devuelve 0.
 

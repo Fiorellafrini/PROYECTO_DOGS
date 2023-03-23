@@ -24,9 +24,10 @@ const getApiDb = async () => {
                 return {
                     id: dog.dataValues.id,
                     name: dog.dataValues.name,
-                
-                    // height: dog.dataValues.heigth.metric,
-                    // weight: dog.dataValues.weigth.metric,
+                    heightMax: dog.dataValues.heightMax,
+                    heightMin: dog.dataValues.heightMin,
+					weightMin: dog.dataValues.weightMin,
+					weightMax: dog.dataValues.weightMax,
                     life_span: dog.dataValues.life_span,
                     breed_group: dog.dataValues.breed_group,
                     image: dog.dataValues.image,
@@ -36,7 +37,7 @@ const getApiDb = async () => {
                 };
             });
 
-        // console.log("dataaaaaaaaaaa", dataDB);
+        console.log("dataaaaaaaaaaa", dataApi);
 
         const allDogs = dataDB.concat(dataApi)
         // const allDogs = [...dataDB, ...dataApi]; 

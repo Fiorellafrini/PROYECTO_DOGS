@@ -12,8 +12,8 @@ import {
     filterTemperament, 
     getTemperaments, 
     orderByName,
-    orderByWeightMax,
-    orderByWeightMin 
+    // orderByWeightMax,
+    orderByWeight 
 } from '../../redux/action'
 import style from "./Filters.module.css"
 
@@ -59,17 +59,17 @@ const [selectedOption, setSelectedOption] = useState("default");
         history.push("/home")
     };
 
-    function handleOrderWeightMax(e) {
-        e.preventDefault();
-        dispatch(orderByWeightMax(e.target.value))
-        // setCurrentPageOrder(1);
-        // setOrder(`Ordenado ${e.target.value}`)
-        history.push("/home")
-    };
+    // function handleOrderWeightMax(e) {
+    //     e.preventDefault();
+    //     dispatch(orderByWeightMax(e.target.value))
+    //     // setCurrentPageOrder(1);
+    //     // setOrder(`Ordenado ${e.target.value}`)
+    //     history.push("/home")
+    // };
 
-    function handleOrderWeightMin(e) {
+    function handleOrderWeight(e) {
         e.preventDefault();
-        dispatch(orderByWeightMin(e.target.value))
+        dispatch(orderByWeight(e.target.value))
         // setCurrentPageOrder(1);
         // setOrder(`Ordenado ${e.target.value}`)
         history.push("/home")
@@ -106,21 +106,21 @@ const [selectedOption, setSelectedOption] = useState("default");
                 </select>
 
         
-                <select className={style.selectList} name="orderByWeightMin"
+                <select className={style.selectList} name="orderByWeight"
                     value={selectedOption} 
-                    onChange={handleOrderWeightMin}>
-                        <option value="default" disabled>  Order Weight Min </option>
+                    onChange={handleOrderWeight}>
+                        <option value="default" disabled>  Order Weight </option>
                         <option value='asc'> - Weight</option>
                         <option value='dec'> + Weight</option>
                 </select>
 
-                <select className={style.selectList} name="orderByWeightMax"
+                {/* <select className={style.selectList} name="orderByWeightMax"
                     defaultValue={"default"} 
                     onChange={handleOrderWeightMax}>
                         <option value="default" disabled>  Order Weight Max</option>
                         <option value='asc'> - Weight</option>
                         <option value='dec'> + Weight</option>
-                </select>
+                </select> */}
         </div>
     );
 };

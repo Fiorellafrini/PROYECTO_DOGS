@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom";
 import styles from "../7Card/Card.module.css"
 
-const Card = ({ id, name, image, weight, temperaments }) => {
+const Card = ({ id, name, image, weightMin, weightMax,temperaments }) => {
     return(
         <div className={styles.card}>
             <Link className={styles.link} to={`/dogs/${id}`}>
@@ -10,7 +10,9 @@ const Card = ({ id, name, image, weight, temperaments }) => {
 
             <img className={styles.img} src={image} alt={image}></img>            
 
-            <h1 className={styles.wei}>Weight: {weight}Kg.</h1>
+            <h1 className={styles.wei}>Weight Min: {weightMin} Kg.</h1>
+            <h1 className={styles.wei}>Weight Max: {weightMax} Kg.</h1>
+
             
             <h1 className={styles.temp}>Temperaments: {temperaments}</h1>
             </Link>

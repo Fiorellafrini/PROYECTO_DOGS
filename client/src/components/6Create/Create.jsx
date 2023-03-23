@@ -1,7 +1,9 @@
 import styles from "../6Create/Create.module.css"
 import { useState } from "react"
 import validation from "./Validation"
-import { Link, useHistory } from "react-router-dom";
+import { Link,
+    //  useHistory
+     } from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux"
 import {createDog, getTemperaments} from "../../redux/action"
 import { useEffect } from "react";
@@ -10,8 +12,24 @@ const Create = () => {
 
 //Para traerme los temperaments
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const allTemperament = useSelector(state=>state.temperaments);
+
+    // const getTemperamentsString = (temperaments) => {
+    //     return temperaments.map((temperament) => temperament.name).join(", ");
+    //   };
+
+    const findTemperamentId = (name) => {
+        const temperament = allTemperament.find((t) => t.name === name);
+        return temperament ? temperament.id : null;
+      };
+
+// //creo estos dos estados porque en el front hice height y weigth . no los hice con min y max.
+//     const [heightMin, setHeightMin] = useState('');
+//     const [heightMax, setHeightMax] = useState('');
+//     const [weightMin, setWeightMin] = useState('');
+//     const [weightMax, setWeightMax] = useState('');
+
 
     useEffect(() => {
         if (allTemperament.length < 1) {
@@ -31,7 +49,7 @@ const [input, setInput] = useState({ //esto es un estado local, que va a ser un 
     weightMin: "",
     weightMax: "",
     temperaments: [],
-    lifeSpan: "",
+    life_span: "",
 })
 
 
@@ -43,21 +61,47 @@ const [error, setErrors] = useState({
     weightMin: "",
     weightMax: "",
     temperaments: [],
-    lifeSpan: "",
+    life_span: "",
 })
 
 
-const handleTemperament = (event) => {
-    event.preventDefault()
-    const temp = input.temperaments.find((element) => element === event.target.value)
-    if (!temp) {
-        setInput({
-            ...input,
-            temperaments: [...input.temperaments, event.target.value]
-        })
-    }
-}
+// const handleTemperament = (event) => {
+//     event.preventDefault()
+//     // const value = parseInt(event.target.value); // convertir a número
+// // const temperamentsConver = temperaments.map(palabra => parseInt(palabra));
 
+//     const temp = input.temperaments.find((element) => element === event.target.value)
+//     if (!temp) {
+//         setInput({
+//             ...input,
+//             temperaments: [...input.temperaments, event.target.value]
+//         })
+//     }
+// }
+
+
+
+// Esta función toma el nombre del temperamento como argumento y devuelve el id correspondiente si lo encuentra en el array allTemperament. Si no lo encuentra, devuelve null.
+
+// Luego, en la función handleSelectChange, puedes llamar a esta función para obtener el id del temperamento seleccionado y agregarlo al array temperaments del estado input:
+  
+const handleTemperament = (e) => {
+    const temperamentName = e.target.value;
+    const temperamentId = findTemperamentId(temperamentName);
+    if (temperamentId) {
+      setInput({
+        ...input,
+        temperaments: [...input.temperaments, temperamentId],
+      });
+    }
+  };
+  
+//  
+  
+  
+  
+  
+  
 
 
 //Controlador de evento
@@ -74,6 +118,42 @@ const hanbleInputChange = (event) => { //cada vez que haya un cambio en el input
     )
 }
 
+
+
+
+
+
+// //tengo que hacer este handle por lo que me falta el min y max 
+// const handleHeightChange = (event) => {
+//     // Actualizar el estado local de heightMin o heightMax según corresponda
+//     if (event.target.name === 'heightMin') {
+//       setHeightMin(event.target.value);
+//     } else if (event.target.name === 'heightMax') {
+//       setHeightMax(event.target.value);
+//     //   console.log('Height max value:', event.target.value);
+
+//     }
+//       // Actualizar la propiedad 'height' del objeto 'input'
+//   setInput({
+//     ...input,
+//     height: `${heightMin} - ${heightMax}`
+//   });
+// }
+//     const handleWeightChange = (event) => {
+//         // Actualizar el estado local de heightMin o heightMax según corresponda
+//         if (event.target.name === 'weightMin') {
+//           setWeightMin(event.target.value);
+//         } else if (event.target.name === 'weightMax') {
+//           setWeightMax(event.target.value);
+
+//         }
+//   // Actualizar la propiedad 'height' del objeto 'input'
+//   setInput({
+//     ...input,
+//     weight: `${weightMin} - ${weightMax}`
+//   });
+//     }
+
 //hago un onclose para eliminar los temp  que no quiero cuando los selecciono
 const onclose = (event) => {
     event.preventDefault()
@@ -89,7 +169,7 @@ const handleSubmit = (event) => {
     event.preventDefault()
     alert("Created successfully")
     dispatch(createDog(input)) // le paso el input pq es lo q creo el usuario
-    history("/home")
+    // history("/home")
 }
 
 
@@ -112,9 +192,10 @@ const handleSubmit = (event) => {
             
             {/* / -  Altura **(diferenciar entre altura mínima y máxima de la raza)**. */}
             <label htmlFor="heightMin">Height Min</label>
-            <input className={styles.input} type="text" name="heightMin" value={input.heightMin} onChange={hanbleInputChange}></input>
+            <input className={styles.input} type="number" name="heightMin" value={input.heightMin} onChange={hanbleInputChange}></input>
             {error.heightMin && <p style={{color:"red"}}>{error.heightMin}</p>}
 
+   
 
             <label htmlFor="heightMax">Height Max</label>
             <input className={styles.input} type="text" name="heightMax" value={input.heightMax} onChange={hanbleInputChange}></input>
@@ -125,7 +206,9 @@ const handleSubmit = (event) => {
             {/* Peso **(diferenciar entre peso mínimo y máximo de la raza)**. */}
             <label htmlFor="weightMin">Weight Min</label>
             <input className={styles.input} type="text" name="weightMin" value={input.weightMin} onChange={hanbleInputChange}></input>
-            {error.weightMin && <p style={{color:"red"}}>{error.weightMin}</p>}
+            {error.weightMin && <p style={{color:"red"}}>{error.weightMin}</p>}                                    
+
+
 
 
             <label htmlFor="weightMax">Weight Max</label>
@@ -134,25 +217,28 @@ const handleSubmit = (event) => {
 
 
 
-            <label htmlFor="lifeSpan">Life Span </label>
-            <input className={styles.input} type="text" name="lifeSpan" value={input.lifeSpan} onChange={hanbleInputChange}></input>
-            {error.lifeSpan && <p style={{color:"red"}}>{error.lifeSpan}</p>}
+            <label htmlFor="life_span">Life Span </label>
+            <input className={styles.input} type="text" name="life_span" value={input.life_span} onChange={hanbleInputChange}></input>
+            {error.life_span && <p style={{color:"red"}}>{error.life_span}</p>}
 
 
             {/* -  Posibilidad de seleccionar/agregar varios temperamentos en simultáneo. */}
             <label htmlFor="temperaments">Temperaments</label>
-            {/* <input className={styles.input} type="text" name="temperaments" value={input.temperaments} onChange={handleTemperament}></input>
-            {error.temperaments && <p style={{color:"red"}}>{error.temperaments}</p>}  NO TENGO INPUT PQ TENGO QUE SELECCIONAR, NO ESCRIBIR */}
+            {/* NO TENGO INPUT PQ TENGO QUE SELECCIONAR, NO ESCRIBIR  */}
             <select name="filterByTemperament" value={""} onChange={(event) => handleTemperament(event)} >
                             <option key="Temperaments" value="" hidden>Select Temperament</option>
                             {allTemperament.length > 0 && allTemperament.map((temperaments, i) => {
-                                return <option key={temperaments.name + i} value={temperaments.name}>{temperaments.name}</option>
+                                return <option key={temperaments.name + i} value={temperaments.name}>{temperaments.name}
+                                </option>
                             })
                             }
                         </select>
                         <div className={styles.divTemp}>{input.temperaments?.length > 0 && input.temperaments?.map((temp) => {
                             return <span ><button value={temp} onClick={(event) => onclose(event)} className={styles.closeButton}>X</button> {temp + " "}</span>
                         })}</div>
+
+
+
 
         <button className={styles.btn} type="submit" onClick={hanbleInputChange}>CREATE</button>
 
@@ -165,3 +251,38 @@ const handleSubmit = (event) => {
 }
 
 export default Create;
+
+
+
+
+// const handleHeightChange = (event) => {
+//     if (event.target.name === 'heightMin') {
+//       setHeightMin(event.target.value);
+//       console.log('Height min value:', event.target.value);
+//     } else if (event.target.name === 'heightMax') {
+//       setHeightMax(event.target.value);
+//       console.log('Height max value:', event.target.value);
+//     }
+  
+//     setInput({
+//       ...input,
+//       height: `${heightMin} - ${heightMax}`
+//     });
+//   }
+  
+//   const handleWeightChange = (event) => {
+//     if (event.target.name === 'weightMin') {
+//       setWeightMin(event.target.value);
+//       console.log('Weight min value:', event.target.value);
+//     } else if (event.target.name === 'weightMax') {
+//       setWeightMax(event.target.value);
+//       console.log('Weight max value:', event.target.value);
+//     }
+  
+//     setInput({
+//       ...input,
+//       weight: `${weightMin} - ${weightMax}`
+//     });
+//   }
+  
+  

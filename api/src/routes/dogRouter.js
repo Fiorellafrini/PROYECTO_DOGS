@@ -81,24 +81,29 @@ dogRouter.post("/", async (req, res) => {
   //los datos que recibo por body son los modelos 
   const { 
       name, 
-      image, 
-      height, 
-      weight, 
+      heightMin, 
+      heightMax, 
+      weightMin,
+      weightMax, 
       life_span, 
       breed_group, 
       bred_for, 
+      image, 
       origin, 
-      temperaments } = req.body;
+      temperaments }
+       = req.body;
   
   try {
         const newDog = await createDog(
           name, 
-          image, 
-          height, 
-          weight, 
+          heightMin, 
+          heightMax, 
+          weightMin,
+          weightMax, 
           life_span, 
           breed_group, 
           bred_for, 
+          image, 
           origin, 
           temperaments ); 
 
