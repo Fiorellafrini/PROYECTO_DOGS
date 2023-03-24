@@ -11,16 +11,17 @@
   
 
 select {
-    /* background-color:rgba(213, 99, 0, 0.452); */
-    /* border: solid 0.2px rgba(255, 255, 255, 0.856); */
-    color: rgb(134, 123, 123);
+    background-color: rgba(240, 248, 255, 0);
+    border: solid 0.2px rgba(255, 255, 255, 0);
+    color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
-    padding: 5px;
+    padding: 3px;
     cursor: pointer;
     border-radius: 6px;
     transition-duration: 0.2s;
 }
+
 
 select:hover {
     /* border-radius: 6px; */
@@ -38,7 +39,7 @@ select option {
     white-space: pre-wrap;
     display: flex;
     margin-top: 100px;
-    color: #bd7b00;
+    color: #83590c;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }

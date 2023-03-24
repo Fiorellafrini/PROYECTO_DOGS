@@ -11,7 +11,7 @@ import { FILTER_BY_TEMPERAMENTS } from "./action-types";
 import { ORDER_BY_WEIGHT } from "./action-types";
 
 // import { DELETE_DOG } from "./action-types";
-import { FILTER_BY_CREATION } from "./action-types";
+import { FILTER_BY_ORIGIN } from "./action-types";
 import { CREATE_DOG } from "./action-types";
 import axios from "axios";// si quiero traerme los personajes del back a mi front voy a usar axios o fetch 
 
@@ -115,8 +115,8 @@ export const orderByName = (payload) => {
 //     return { type: ORDER_BY_WEIGHT_MAX, payload };
 //   };
 
-export function filterByCreation (payload){
-    return {type: FILTER_BY_CREATION, payload
+export function filterByOrigin (payload){
+    return {type: FILTER_BY_ORIGIN, payload
     }
 }
 

@@ -6,14 +6,25 @@ import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
 // import Loading from "../11Loading/Loading";
 import styles from "../2Details/Details.module.css"
+import gif from "../13Extras/loa.gif"
+import { useState } from "react";
+
 
 const Details = () => {
     const { id } = useParams(); // lo sacamos de la ruta con useparams
     const dogsDetails= useSelector((state) => state.details)
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(true);
 
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 3000); //  cantidad de tiempo que se muestre el GIF
+        return () => clearTimeout(timer);
+      }, []);
   
+    
 // console.log(id);
 
     useEffect(()=> {// ciclos de vida 
@@ -28,7 +39,6 @@ const Details = () => {
             <div>
                 <div className={styles.parrafo}>
                 <h1>Name: {dogsDetails[0].name ? dogsDetails[0].name : 'Data not found' }</h1>
-
                 <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : 'Data not found'} alt=""></img>
                 <p>Id: {dogsDetails[0].id ? dogsDetails[0].id : 'Data not found'}</p> 
                 <p>HeightMin: {dogsDetails[0].heightMin ? dogsDetails[0].heightMin : 'Data not found' }</p> 
@@ -46,7 +56,11 @@ const Details = () => {
                     <button className={styles.link}>BACK</button>
                 </Link>
            
-            </div> : <h1> Loading...</h1> }
+            </div> :
+             <div class="loading">
+             <img src={gif} alt="Loading..." />
+            </div>
+             }
         </div>
     )
 }

@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 
 import {
-    filterByCreation,
+    filterByOrigin,
     filterTemperament, 
     getTemperaments, 
     orderByName,
@@ -41,16 +41,16 @@ const [selectedOption, setSelectedOption] = useState("default");
         // history.push("/home")
     };
 
-    function handleCreated (event) {
+    function handleOrigin (event) {
         event.preventDefault()
-        dispatch(filterByCreation(event.target.value))
-        history.push("/home")
+        dispatch(filterByOrigin(event.target.value))
+        // history.push("/home")
     }
 
       function handleOrder(e) {
         e.preventDefault();
         dispatch(orderByName(e.target.value))
-        history.push("/home")
+        // history.push("/home")
     };
 
     // function handleOrderWeightMax(e) {
@@ -62,7 +62,7 @@ const [selectedOption, setSelectedOption] = useState("default");
     function handleOrderWeight(e) {
         e.preventDefault();
         dispatch(orderByWeight(e.target.value))
-        history.push("/home")
+        // history.push("/home")
     };
 
  
@@ -80,7 +80,7 @@ const [selectedOption, setSelectedOption] = useState("default");
                             }
                 </select>
 
-                <select name="filterByCreation" defaultValue="Default" onChange={(event) => handleCreated(event)} >
+                <select name="filterByOrigin" defaultValue="Default" onChange={(event) => handleOrigin(event)} >
                     <option value="allDogs">Api+Db</option>
                     <option value="Created">Data Base</option>
                     <option value="Api">Api</option>

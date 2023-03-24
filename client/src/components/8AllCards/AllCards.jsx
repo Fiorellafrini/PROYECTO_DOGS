@@ -4,6 +4,9 @@ import { getDogs, cleanCards } from "../../redux/action"; //me traigo la action
 import Card from "../7Card/Card";
 import React from 'react';
 import styles from './AllCards.module.css'
+import gif from "../13Extras/loa.gif"
+import { useState } from "react";
+
 
 
 
@@ -16,6 +19,15 @@ const AllCards = () => {
 
     // const dogs = useSelector((state)=> state.dogs)//trae info del estdo global
     const dogs = useSelector((state)=> state.copyDogs)//trae info del estdo global
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 3000); //  cantidad de tiempo que se muestre el GIF
+        return () => clearTimeout(timer);
+      }, []);
+
 
 
     useEffect(() =>{ //cuando se monta
@@ -26,10 +38,12 @@ const AllCards = () => {
 
     // console.log(allDogs);
 
-
+       
 
     return(
+        
         <div>
+           
             <div className={styles.cards}>
             {dogs.length > 0 ? dogs.map(dog => 
                         <Card
@@ -48,8 +62,10 @@ const AllCards = () => {
                         />
                     )
                     :
-
-                    <h1>Loading...</h1>
+                    <div class="loading">
+                    <img src={gif} alt="Loading..." />
+                   </div>  
+                    // <h1>Loading...</h1>
                 }
             </div>
         </div>

@@ -33,7 +33,7 @@ const getApiDb = async () => {
                     image: dog.dataValues.image,
                     origin: dog.dataValues.origin,
                     bred_for: dog.dataValues.bred_for,
-                    temperaments: dog.dataValues.temperaments.map((item) => item.name)
+                    temperaments: dog.dataValues.temperaments.map((item) => item.name).join(", ")
                 };
             });
 

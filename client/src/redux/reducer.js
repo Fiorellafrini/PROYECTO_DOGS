@@ -11,7 +11,7 @@ import { CLEAN_DETAILS,
     CREATE_DOG,
     GET_TEMPERAMENTS,
     ORDER_BY_NAME, 
-    FILTER_BY_CREATION} from "./action-types";
+    FILTER_BY_ORIGIN} from "./action-types";
 
 const initialState = {
     dogs: [],
@@ -21,11 +21,10 @@ const initialState = {
     copyDogs: [],
     temperaments: [],   
     // filters: { origin: "allDogs", temperaments: "allDogs"},
-
 };
 
 const rootReducer = (state= initialState, action) => {
-    let allDogs = state.dogs
+    // let allDogs = state.dogs
 
     switch(action.type) {
         case GET_DOGS:
@@ -113,28 +112,7 @@ const rootReducer = (state= initialState, action) => {
             ...state,
             temperaments: action.payload,
         };
-
-        // case FILTER_BY_TEMPERAMENTS:
-        //     // if (state.dogs.length < state.copyDogs.length) {
-        //     //     return {
-        //     //         ...state,
-        //     //         dogs: state.copyDogs
-        //     //     }
-        //     // }
-        //     if (action.payload === "All") {
-        //         return {
-        //             ...state,
-        //             copyDogs: state.dogs
-        //         }
-        //     }
-        //     const filteredTemperaments = state.dogs.filter((element) => 
-        //         element.temperaments?.includes(action.payload) ? element : null
-        //     )
-        //     return {
-        //        ...state,
-        //         copyDogs: filteredTemperaments
-        //     }
-                    
+   
         case FILTER_BY_TEMPERAMENTS:
             let filteredDogs = state.dogs.filter(dog => true); // inicializa el filtro con todos los perros
             if (action.payload !== "All") {
@@ -147,39 +125,35 @@ const rootReducer = (state= initialState, action) => {
                 copyDogs: filteredDogs
             };
 
-         
-            // case FILTER_BY_CREATION:
-            //         // allDogs = state.filters.temperaments === "allDogs"
-            //         // ? [...allDogs]
-            //         // : allDogs.filter(element => element.temperaments?.toUpperCase().includes(state.filters.temperaments.toUpperCase()));
-          
-            //     if (action.payload !== "allDogs") {
-            //         allDogs = action.payload === "Api"
-            //         ? allDogs.filter(dog => !isNaN(dog.id))
-            //         : allDogs.filter(dog => isNaN(dog.id))
-            //     } 
-                
-            //     return {
-            //         ...state,
-            //         copyDogs: [ ...allDogs ],
-            //         filters: { ...state.filters, origin: action.payload }
-            //     }
+//"FILTER_BY_TEMPERAMENTS".
+// let filteredDogs = state.dogs.filter(dog => true);
+// Esta línea inicializa una variable filteredDogs con una copia del array de perros existente en el estado actual.
+// La función filter() se utiliza para crear un nuevo array a partir del array original, seleccionando sólo los elementos que cumplen una determinada condición. En este caso, la condición es simplemente que todos los perros serán seleccionados (ya que se pasa la función () => true como argumento).
+// if (action.payload !== "All") { ... }
+// Esta línea comprueba si el valor del "payload" de la acción es diferente a la cadena "All". Si es así, se procede a filtrar los perros según el temperamento indicado en el "payload".
+// filteredDogs = state.dogs.filter(dog => dog.temperaments?.includes(action.payload));
+// Si el valor del "payload" no es "All", esta línea crea un nuevo array de perros, utilizando la función filter().
+// En cada iteración del bucle, se comprueba si el array de temperamentos del perro actual (dog.temperaments) contiene el valor de temperamento indicado en el "payload" de la acción (action.payload).
+// El operador ?. se utiliza para comprobar si el array de temperamentos existe (es decir, no es undefined), antes de intentar llamar al método includes() en él.
+// return { ...state, copyDogs: filteredDogs };
+// Finalmente, se devuelve un nuevo objeto de estado que contiene una copia de todo el estado anterior (...state), pero con el array de perros reemplazado por el array filtrado (copyDogs: filteredDogs).
+// En resumen, este código se encarga de filtrar los perros según el temperamento seleccionado por el usuario en la aplicación, y actualizar el estado de la aplicación con el nuevo array de perros filtrados.
 
-                case FILTER_BY_CREATION:
-                    let allDogs = state.dogs;
-                    if (action.payload !== "allDogs") {
-                        allDogs = action.payload === "Api"
-                        ? allDogs.filter((dog) => !isNaN(dog.id))
-                        : allDogs.filter((dog) => isNaN(dog.id));
-                    }
-                    return {
-                        ...state,
-                        copyDogs: [...allDogs],
-                };
+        case FILTER_BY_ORIGIN:
+            let allDogs = state.dogs;
+            if (action.payload !== "allDogs") {
+                allDogs = action.payload === "Api"
+                ? allDogs.filter((dog) => !isNaN(dog.id)) //!ISNan es un num
+                : allDogs.filter((dog) => isNaN(dog.id));// ISNan no es un num
+            }
+            return {
+                ...state,
+                copyDogs: [...allDogs], //EL ARRAY ES LA LISTA FILTRADA
+        };
 
-                // Luego, si action.payload no es "allDogs", se filtra la lista de perros según el valor de action.payload.
-                // Si action.payload es "Api", se filtran los perros que tienen un id numérico (es decir, los perros cargados desde la API), y si action.payload es "Created", se filtran los perros que no tienen un id numérico (es decir, los perros creados localmente en la aplicación).
-                // Finalmente, se establece la lista filtrada como copyDogs.
+// Luego, si action.payload no es "allDogs", se filtra la lista de perros según el valor de action.payload.
+// Si action.payload es "Api", se filtran los perros que tienen un id numérico (es decir, los perros cargados desde la API), y si action.payload es "Created", se filtran los perros que no tienen un id numérico (es decir, los perros creados localmente en la aplicación).
+// Finalmente, se establece la lista filtrada como copyDogs.
 
                 case CREATE_DOG:
                     return {
