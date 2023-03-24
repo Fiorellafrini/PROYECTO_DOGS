@@ -3,7 +3,7 @@ import { CLEAN_DETAILS,
     GET_DOGS,
     CLEAN_CARDS,
     SEARCH_DOGS_BY_NAME,
-    // FILTER_BY_CREATION,
+    // DELETE_DOG,
     FILTER_BY_TEMPERAMENTS,
     // PAGE_DOGS,
     ORDER_BY_WEIGHT,
@@ -14,10 +14,7 @@ import { CLEAN_DETAILS,
     FILTER_BY_CREATION} from "./action-types";
 
 const initialState = {
-    pageDogs: [],
     dogs: [],
-    // dogsMax: [],
-    // dogsMin:[],
     dogsMax: '',
     dogsMin:'',
     details: {},
@@ -127,7 +124,7 @@ const rootReducer = (state= initialState, action) => {
             if (action.payload === "All") {
                 return {
                     ...state,
-                    dogs: state.copyDogs
+                    copyDogs: state.dogs
                 }
             }
             const filteredTemperaments = state.dogs.filter((element) => 
@@ -140,10 +137,10 @@ const rootReducer = (state= initialState, action) => {
                     
          
             case FILTER_BY_CREATION:
-                    allDogs = state.filters.temperaments === "allDogs"
-                    ? [...allDogs]
-                    : allDogs.filter(element => element.temperaments?.toUpperCase().includes(state.filters.temperaments.toUpperCase()));
-                
+                    // allDogs = state.filters.temperaments === "allDogs"
+                    // ? [...allDogs]
+                    // : allDogs.filter(element => element.temperaments?.toUpperCase().includes(state.filters.temperaments.toUpperCase()));
+          
                 if (action.payload !== "allDogs") {
                     allDogs = action.payload === "Api"
                     ? allDogs.filter(dog => !isNaN(dog.id))
@@ -156,11 +153,29 @@ const rootReducer = (state= initialState, action) => {
                     filters: { ...state.filters, origin: action.payload }
                 }
 
+        //         if (action.payload !== "dogs") {
+        //         dogs = action.payload === "Api"
+        //         ? dogs.filter(dog => !isNaN(dog.id))
+        //         : dogs.filter(dog => isNaN(dog.id))
+        // }
+        //         return {
+        //             ...state,
+        //             copyDogs: [ ...dogs ],
+        //             // filters: { ...state.filters, origin: action.payload }
+        //         }
+            
+
                 case CREATE_DOG:
                     return {
                       ...state,
                       ...action.payload
                     };
+
+                    // case DELETE_DOG:
+                    //     return {
+                    //       ...state,
+                    //       copyDogs: state.copyDogs.filter(dogs => dogs.id.toString() !== action.payload.toString())
+                    //     };
                 
         default:
             return {...state} // una copia del estado inicial

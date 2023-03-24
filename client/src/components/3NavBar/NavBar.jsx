@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Filters from "../10Filters/Filters";
 import styles from "../3NavBar/NavBar.module.css";
 import SearchBar from "../9SearchBar/SearchBar"
-// import Filters from "../10Filters/Filters";
 
 
 const NavBar = () => {
@@ -32,6 +32,7 @@ return (
         </div>
         
         <SearchBar></SearchBar>
+        <Filters></Filters>
 
 
     </div>

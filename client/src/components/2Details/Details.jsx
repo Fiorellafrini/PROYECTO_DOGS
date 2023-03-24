@@ -27,19 +27,19 @@ const Details = () => {
             {dogsDetails.length > 0 ?
             <div>
                 <div className={styles.parrafo}>
-                <h1>Name: {dogsDetails[0].name ? dogsDetails[0].name : ' Data not found' }</h1>
+                <h1>Name: {dogsDetails[0].name ? dogsDetails[0].name : 'Data not found' }</h1>
 
-                <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : ' Data not found'} alt=""></img>
-                <p>Id: {dogsDetails[0].id? dogsDetails[0].id : ' Data not found'}</p> 
-                <p>HeightMin: {dogsDetails[0].heightMin ? dogsDetails[0].heightMin : ' Data not found' }</p> 
-                <p>HeightMax: {dogsDetails[0].heightMax ? dogsDetails[0].heightMax : ' Data not found'}</p>
-                <p>WeightMin: {dogsDetails[0].weightMin ? dogsDetails[0].weightMin : ' Data not found'}</p>
-                <p>WeightMax: {dogsDetails[0].weightMax ? dogsDetails[0].weightMax : ' Data not found'}</p>
-                <p>Life span: {dogsDetails[0].life_span? dogsDetails[0].life_span : ' Data not found'}</p> 
-                <p>Breed group: {dogsDetails[0].breed_group? dogsDetails[0].breed_group : ' Data not found'}</p> 
-                <p>Bred for: {dogsDetails[0].bred_for? dogsDetails[0].bred_for : ' Data not found'}</p> 
-                <p>Origin: {dogsDetails[0].origin? dogsDetails[0].origin : ' Data not found'}</p>
-                <p>Temperaments: {dogsDetails[0].temperaments? dogsDetails[0].temperaments : ' Data not found'}</p> 
+                <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : 'Data not found'} alt=""></img>
+                <p>Id: {dogsDetails[0].id ? dogsDetails[0].id : 'Data not found'}</p> 
+                <p>HeightMin: {dogsDetails[0].heightMin ? dogsDetails[0].heightMin : 'Data not found' }</p> 
+                <p>HeightMax: {dogsDetails[0].heightMax ? dogsDetails[0].heightMax : 'Data not found'}</p>
+                <p>WeightMin: {dogsDetails[0].weightMin ? dogsDetails[0].weightMin : 'Data not found'}</p>
+                <p>WeightMax: {dogsDetails[0].weightMax ? dogsDetails[0].weightMax : 'Data not found'}</p>
+                <p>Life span: {dogsDetails[0].life_span ? dogsDetails[0].life_span : 'Data not found'}</p> 
+                <p>Breed group: {dogsDetails[0].breed_group ? dogsDetails[0].breed_group : 'Data not found'}</p> 
+                <p>Bred for: {dogsDetails[0].bred_for ? dogsDetails[0].bred_for : 'Data not found'}</p> 
+                <p>Origin: {dogsDetails[0].origin ? dogsDetails[0].origin : 'Data not found'}</p>
+                <p>Temperaments: {dogsDetails[0].temperaments ? dogsDetails[0].temperaments : 'Data not found'}</p> 
                 </div>
 
                 <Link to="/home">

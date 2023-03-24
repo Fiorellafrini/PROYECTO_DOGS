@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 .container {
-    /* position: absolute; */
     display: flex;
     margin-top: 0px;
     margin-left: 14em;
     margin-right: 30px;
-
-    gap: 6em;
+    gap: 5em;
     background-color: rgba(75, 73, 68, 0);
 }
   
 
 select {
-    background-color:rgba(213, 99, 0, 0.452);
-    border: solid 0.2px rgba(255, 255, 255, 0.856);
-    color: white;
+    /* background-color:rgba(213, 99, 0, 0.452); */
+    /* border: solid 0.2px rgba(255, 255, 255, 0.856); */
+    color: rgb(134, 123, 123);
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     padding: 5px;

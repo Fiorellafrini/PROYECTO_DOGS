@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 import {useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-// import { useRef } from 'react';
 import { useEffect } from 'react';
 
 
@@ -20,8 +19,6 @@ import style from "./Filters.module.css"
 
 export default function Filters() {
     const dispatch = useDispatch();
-    // const [setCurrentPageOrder] = useState(1);
-    // const [setOrder] = useState('')
 
 const allTemperaments = useSelector ((state) => state.temperaments)
 
@@ -41,12 +38,11 @@ const [selectedOption, setSelectedOption] = useState("default");
       function handleTemperament(event) {
         event.preventDefault();
         dispatch(filterTemperament(event.target.value))
-        history.push("/home")
+        // history.push("/home")
     };
 
     function handleCreated (event) {
         event.preventDefault()
-        // dispatch(setPage(1))
         dispatch(filterByCreation(event.target.value))
         history.push("/home")
     }
@@ -54,24 +50,18 @@ const [selectedOption, setSelectedOption] = useState("default");
       function handleOrder(e) {
         e.preventDefault();
         dispatch(orderByName(e.target.value))
-        // setCurrentPageOrder(1);
-        // setOrder(`Ordenado ${e.target.value}`)
         history.push("/home")
     };
 
     // function handleOrderWeightMax(e) {
     //     e.preventDefault();
     //     dispatch(orderByWeightMax(e.target.value))
-    //     // setCurrentPageOrder(1);
-    //     // setOrder(`Ordenado ${e.target.value}`)
     //     history.push("/home")
     // };
 
     function handleOrderWeight(e) {
         e.preventDefault();
         dispatch(orderByWeight(e.target.value))
-        // setCurrentPageOrder(1);
-        // setOrder(`Ordenado ${e.target.value}`)
         history.push("/home")
     };
 
@@ -109,7 +99,7 @@ const [selectedOption, setSelectedOption] = useState("default");
                 <select className={style.selectList} name="orderByWeight"
                     value={selectedOption} 
                     onChange={handleOrderWeight}>
-                        <option value="default" disabled>  Order Weight </option>
+                        <option value="default" disabled> Order Weight </option>
                         <option value='asc'> - Weight</option>
                         <option value='dec'> + Weight</option>
                 </select>
