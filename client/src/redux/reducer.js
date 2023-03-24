@@ -20,7 +20,7 @@ const initialState = {
     details: {},
     copyDogs: [],
     temperaments: [],   
-    filters: { origin: "allDogs", temperaments: "allDogs"},
+    // filters: { origin: "allDogs", temperaments: "allDogs"},
 
 };
 
@@ -114,56 +114,72 @@ const rootReducer = (state= initialState, action) => {
             temperaments: action.payload,
         };
 
-        case FILTER_BY_TEMPERAMENTS:
-            // if (state.dogs.length < state.copyDogs.length) {
-            //     return {
-            //         ...state,
-            //         dogs: state.copyDogs
-            //     }
-            // }
-            if (action.payload === "All") {
-                return {
-                    ...state,
-                    copyDogs: state.dogs
-                }
-            }
-            const filteredTemperaments = state.dogs.filter((element) => 
-                element.temperaments?.includes(action.payload) ? element : null
-            )
-            return {
-               ...state,
-                copyDogs: filteredTemperaments
-            }
-                    
-         
-            case FILTER_BY_CREATION:
-                    // allDogs = state.filters.temperaments === "allDogs"
-                    // ? [...allDogs]
-                    // : allDogs.filter(element => element.temperaments?.toUpperCase().includes(state.filters.temperaments.toUpperCase()));
-          
-                if (action.payload !== "allDogs") {
-                    allDogs = action.payload === "Api"
-                    ? allDogs.filter(dog => !isNaN(dog.id))
-                    : allDogs.filter(dog => isNaN(dog.id))
-                } 
-                
-                return {
-                    ...state,
-                    copyDogs: [ ...allDogs ],
-                    filters: { ...state.filters, origin: action.payload }
-                }
-
-        //         if (action.payload !== "dogs") {
-        //         dogs = action.payload === "Api"
-        //         ? dogs.filter(dog => !isNaN(dog.id))
-        //         : dogs.filter(dog => isNaN(dog.id))
-        // }
+        // case FILTER_BY_TEMPERAMENTS:
+        //     // if (state.dogs.length < state.copyDogs.length) {
+        //     //     return {
+        //     //         ...state,
+        //     //         dogs: state.copyDogs
+        //     //     }
+        //     // }
+        //     if (action.payload === "All") {
         //         return {
         //             ...state,
-        //             copyDogs: [ ...dogs ],
-        //             // filters: { ...state.filters, origin: action.payload }
+        //             copyDogs: state.dogs
         //         }
-            
+        //     }
+        //     const filteredTemperaments = state.dogs.filter((element) => 
+        //         element.temperaments?.includes(action.payload) ? element : null
+        //     )
+        //     return {
+        //        ...state,
+        //         copyDogs: filteredTemperaments
+        //     }
+                    
+        case FILTER_BY_TEMPERAMENTS:
+            let filteredDogs = state.dogs.filter(dog => true); // inicializa el filtro con todos los perros
+            if (action.payload !== "All") {
+                filteredDogs = state.dogs.filter(dog =>
+                dog.temperaments?.includes(action.payload)
+                );
+            }
+            return {
+                ...state,
+                copyDogs: filteredDogs
+            };
+
+         
+            // case FILTER_BY_CREATION:
+            //         // allDogs = state.filters.temperaments === "allDogs"
+            //         // ? [...allDogs]
+            //         // : allDogs.filter(element => element.temperaments?.toUpperCase().includes(state.filters.temperaments.toUpperCase()));
+          
+            //     if (action.payload !== "allDogs") {
+            //         allDogs = action.payload === "Api"
+            //         ? allDogs.filter(dog => !isNaN(dog.id))
+            //         : allDogs.filter(dog => isNaN(dog.id))
+            //     } 
+                
+            //     return {
+            //         ...state,
+            //         copyDogs: [ ...allDogs ],
+            //         filters: { ...state.filters, origin: action.payload }
+            //     }
+
+                case FILTER_BY_CREATION:
+                    let allDogs = state.dogs;
+                    if (action.payload !== "allDogs") {
+                        allDogs = action.payload === "Api"
+                        ? allDogs.filter((dog) => !isNaN(dog.id))
+                        : allDogs.filter((dog) => isNaN(dog.id));
+                    }
+                    return {
+                        ...state,
+                        copyDogs: [...allDogs],
+                };
+
+                // Luego, si action.payload no es "allDogs", se filtra la lista de perros según el valor de action.payload.
+                // Si action.payload es "Api", se filtran los perros que tienen un id numérico (es decir, los perros cargados desde la API), y si action.payload es "Created", se filtran los perros que no tienen un id numérico (es decir, los perros creados localmente en la aplicación).
+                // Finalmente, se establece la lista filtrada como copyDogs.
 
                 case CREATE_DOG:
                     return {

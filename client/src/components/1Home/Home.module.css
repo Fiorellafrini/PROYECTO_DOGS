@@ -12,3 +12,12 @@
 
 }
 
+.loader {
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 450px;
+    margin-top: 80px;
+}
