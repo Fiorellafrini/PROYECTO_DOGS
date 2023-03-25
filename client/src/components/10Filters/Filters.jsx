@@ -70,7 +70,9 @@ const [selectedOption, setSelectedOption] = useState("default");
         <div className={style.container}>
 
 
-                <select name="filterTemperament" defaultValue="Default" onChange={(event) => handleTemperament(event)} >
+                <select name="filterTemperament" value={selectedOption}
+                //  defaultValue="Default" 
+                 onChange={(event) => handleTemperament(event)} >
                         <option key="Temperaments" value="" hidden>Filter By Temperament</option>
                         <option key="All" value="All">All</option>
                         {
@@ -80,7 +82,10 @@ const [selectedOption, setSelectedOption] = useState("default");
                             }
                 </select>
 
-                <select name="filterByOrigin" defaultValue="Default" onChange={(event) => handleOrigin(event)} >
+                <select name="filterByOrigin" value={selectedOption}
+                //  defaultValue="Default" 
+                 onChange={(event) => handleOrigin(event)} >
+                    <option value="default" disabled>Order by origin</option>
                     <option value="allDogs">Api+Db</option>
                     <option value="Created">Data Base</option>
                     <option value="Api">Api</option>

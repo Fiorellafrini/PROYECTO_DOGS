@@ -10,6 +10,9 @@ import styles from "../7Card/Card.module.css"
 const Card = ({ id, name, image, weightMin, weightMax,temperaments }) => {
     return(
         <div className={styles.card}>
+
+            {/* <button></button> */}
+
             <Link className={styles.link} to={`/dogs/${id}`}>
             <h1 className={styles.name}>{name}</h1>
             <img className={styles.img} src={image} alt={image}></img>            

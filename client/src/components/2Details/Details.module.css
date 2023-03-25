@@ -4,20 +4,16 @@
     background-attachment: fixed;
     background-size:cover;
     background-repeat: no-repeat;
-    /* background-color: rgba(223, 178, 118, 0.521); */
+ 
+
   }
+.container{
+  width: fit-content;
+  position: relative;
+  display: inline-block;
+  /* top: 20px; */
 
-  /* .cardsGrid {
-    background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
-    padding: 1em; /* Reducir el espacio de relleno */
-    /* background-attachment: fixed; */
-    /* background-size:cover; */
-    
-   
-/* background-repeat: no-repeat; */
-    /* width: 80%; Reducir el ancho de la tarjeta */
-/* } */ 
-
+}
  .img{
     width: 30rem;
     height: 30rem;

@@ -12,7 +12,7 @@ return (
             <nav>
 
             <Link to="/">
-                <button className={styles.b1}>LANDING</button>
+                <button className={styles.b1}> API DOG </button>
             </Link>
 
             {/* <Link to="/home">

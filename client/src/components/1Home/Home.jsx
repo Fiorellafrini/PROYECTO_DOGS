@@ -2,44 +2,22 @@ import AllCards from "../8AllCards/AllCards";
 import React from "react";
 import styles from "../1Home/Home.module.css"
 import Paginado from "../12Paginado/Paginado";
-// import Filters from "../10Filters/Filters";
-// import gif from "../13Extras/loa.gif"
-// import { useState } from "react";
-// import { useEffect } from "react";
 
 
 const Home = () => {
 
 
-
-
-
-    
-    // const [loading, setLoading] = useState(true);
-
-
-    // useEffect(() => {
-    //     const timer = setTimeout(() => {
-    //       setLoading(false);
-    //     }, 3000); //  cantidad de tiempo que se muestre el GIF
-    //     return () => clearTimeout(timer);
-    //   }, []);
   
 
     return(
 
         <div className={styles.body}>
    
-            
-        
-                {/* <Filters /> */}
-
+                <Paginado></Paginado>
                 <AllCards></AllCards>
                 <Paginado></Paginado>
 
-                {/* <div class="loading">
-          <img src={gif} alt="Loading..." />
-         </div> */}
+          
 
         </div>
     )
