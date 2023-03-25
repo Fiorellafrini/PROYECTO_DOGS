@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    align-items: center;
+  }
+  
+  .paginadoContainer {
+    margin-right: 35px;
+  }
+  
+  .paginadoContainer .itens {
+    display: inline-block;
+  }
+  
+  .paginadoContainer .itens .arrow {
+    padding: 6px 8px;
+    min-width: 32px;
+    min-height: 18px;
+    background-color:  rgba(255, 255, 255, 0);;
+    margin-bottom: 5px;
+    border: 1px solid  rgba(255, 203, 114, 0);;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #000000;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border-color: rgb(17, 17, 17) ;
+  }
+  
+  .paginadoContainer .itens .arrow:hover {
+    background-color: rgb(198, 168, 226);
+  }
+  
+  
+  .current {
+    border-color: #000000;
+    background-color: blueviolet;
+    color: rgb(22, 21, 22);
+    padding: 5px 6px;
+    min-width: 32px;
+    min-height: 18px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+  }

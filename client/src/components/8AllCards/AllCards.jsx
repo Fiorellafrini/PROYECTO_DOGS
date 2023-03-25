@@ -18,7 +18,7 @@ const AllCards = () => {
     // const dogs = useSelector(state => state.order);
 
     // const dogs = useSelector((state)=> state.dogs)//trae info del estdo global
-    const dogs = useSelector((state)=> state.copyDogs)//trae info del estdo global
+    const dogs = useSelector((state)=> state.pageDogs)//trae info del estdo global
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {

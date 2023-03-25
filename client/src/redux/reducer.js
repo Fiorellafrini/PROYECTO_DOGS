@@ -5,7 +5,7 @@ import { CLEAN_DETAILS,
     SEARCH_DOGS_BY_NAME,
     // DELETE_DOG,
     FILTER_BY_TEMPERAMENTS,
-    // PAGE_DOGS,
+    PAGE_DOGS,
     ORDER_BY_WEIGHT,
     // ORDER_BY_WEIGHT_MAX,
     CREATE_DOG,
@@ -19,7 +19,8 @@ const initialState = {
     dogsMin:'',
     details: {},
     copyDogs: [],
-    temperaments: [],   
+    temperaments: [],
+    pageDogs:[]   
     // filters: { origin: "allDogs", temperaments: "allDogs"},
 };
 
@@ -89,24 +90,6 @@ const rootReducer = (state= initialState, action) => {
                   copyDogs: sortedWeight,
                 };
 
-//otra forma de hacerlo
-                // case ORDER_BY_WEIGHT:
-                //     const sortedWeight = action.payload === 'WeightMin'
-                //       ? state.dogs.sort(function (a, b) {
-                //           return parseInt(a.weightMin) - parseInt(b.weightMin);
-                //         })
-                //       : state.dogs.sort(function (a, b) {
-                //           return parseInt(b.weightMin) - parseInt(a.weightMin);
-                //         });
-                  
-                //     return {
-                //       ...state,
-                //       copyDogs: sortedWeight,
-                //     };
-
-            // La comparación de los números se realiza utilizando los operadores matemáticos < y > y devuelve un valor numérico que indica la posición relativa de los perros en la lista ordenada. Si el peso del primer perro es mayor que el peso del segundo perro, la función devuelve un valor positivo (1); si el peso del segundo perro es mayor que el peso del primer perro, la función devuelve un valor negativo (-1); y si los pesos son iguales, la función devuelve 0.
-
-            
         case GET_TEMPERAMENTS:
         return {
             ...state,
@@ -166,8 +149,19 @@ const rootReducer = (state= initialState, action) => {
                     //       ...state,
                     //       copyDogs: state.copyDogs.filter(dogs => dogs.id.toString() !== action.payload.toString())
                     //     };
-                
-        default:
+                   
+         
+         
+                   // El filter()método se utiliza para crear una nueva matriz de perros que excluye al perro con el ID coincidente. El filter()método iterará a través de cada perro en la copyDogsmatriz y solo incluirá los perros que no tengan una ID que coincida con el action.payloadvalor. El action.payloadvalor se convierte en una cadena utilizando toString()el método para garantizar la coherencia de tipos.
+        
+                   case PAGE_DOGS:
+                    return {
+                      ...state,
+                      pageDogs: [...state.copyDogs.slice(action.payload.start, action.payload.end)],
+                    };
+              
+        
+                   default:
             return {...state} // una copia del estado inicial
     }
 }

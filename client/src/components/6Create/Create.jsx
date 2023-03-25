@@ -1,14 +1,12 @@
 import styles from "../6Create/Create.module.css";
 import { useState } from "react";
+import { useEffect } from "react";
 import validation from "./Validation";
-import {
-  Link,
-  //  useHistory
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createDog, getTemperaments } from "../../redux/action";
-import { useEffect } from "react";
 // import gif from "../13Extras/loa.gif"
+
 
 const Create = () => {
   //Para traerme los temperaments
@@ -22,7 +20,7 @@ const Create = () => {
     return temperament ? temperament.id : null;
   };
 
- 
+  //El método find() devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada.
 
   //   useEffect(() => {
   //     const timer = setTimeout(() => {
@@ -77,8 +75,6 @@ const Create = () => {
   };
   
 
-  //
-
   //Controlador de evento
   const hanbleInputChange = (event) => {
     //cada vez que haya un cambio en el input se ejecuta  un event que lo maneja esta fn
@@ -116,17 +112,6 @@ const Create = () => {
   }
 
 
-  
-
-//   const handleDelete = (element) => {
-//     setInput({
-//       ...input,
-//       temperaments: input.temperaments.filter((temp) => temp.id !== element.id),
-//     });
-//   }
-  
-
-
   //para crear el perro
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -140,14 +125,17 @@ const Create = () => {
   return (
     <div className={styles.body}>
       <div className={styles.container}>
-        <Link to="/home" className={styles.btn1}>
-          HOME
-        </Link>
+        
+
+        <h1 className={styles.inputTitulo}>FORM TO CREATE DOG </h1>
+
+        <br></br>
+
 
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" className={styles.label}>Name:</label>
           <input
-            className={styles.input}
+            className={styles.inputName}
             type="text"
             name="name"
             value={input.name}
@@ -158,9 +146,9 @@ const Create = () => {
 
 
           {/* / -  Altura **(diferenciar entre altura mínima y máxima de la raza)**. */}
-          <label htmlFor="heightMin">Height Min</label>
+          <label htmlFor="heightMin" className={styles.label}>Height Min:</label>
           <input
-            className={styles.input}
+            className={styles.inputName}
             type="number"
             name="heightMin"
             value={input.heightMin}
@@ -168,9 +156,9 @@ const Create = () => {
           ></input>
           {error.heightMin && <p style={{ color: "red" }}>{error.heightMin}</p>}
 
-          <label htmlFor="heightMax">Height Max</label>
+          <label htmlFor="heightMax" className={styles.label}>Height Max:</label>
           <input
-            className={styles.input}
+            className={styles.inputName}
             type="text"
             name="heightMax"
             value={input.heightMax}
@@ -179,9 +167,9 @@ const Create = () => {
           {error.heightMax && <p style={{ color: "red" }}>{error.heightMax}</p>}
 
           {/* Peso **(diferenciar entre peso mínimo y máximo de la raza)**. */}
-          <label htmlFor="weightMin">Weight Min</label>
+          <label htmlFor="weightMin" className={styles.label}>Weight Min:</label>
           <input
-            className={styles.input}
+            className={styles.inputName}
             type="text"
             name="weightMin"
             value={input.weightMin}
@@ -189,9 +177,9 @@ const Create = () => {
           ></input>
           {error.weightMin && <p style={{ color: "red" }}>{error.weightMin}</p>}
 
-          <label htmlFor="weightMax">Weight Max</label>
+          <label htmlFor="weightMax" className={styles.label}>Weight Max:</label>
           <input
-            className={styles.input}
+            className={styles.inputName}
             type="text"
             name="weightMax"
             value={input.weightMax}
@@ -199,9 +187,9 @@ const Create = () => {
           ></input>
           {error.weightMax && <p style={{ color: "red" }}>{error.weightMax}</p>}
 
-          <label htmlFor="life_span">Life Span </label>
+          <label htmlFor="life_span" className={styles.label}>Life Span: </label>
           <input
-            className={styles.input}
+            className={styles.inputName}
             type="text"
             name="life_span"
             value={input.life_span}
@@ -210,15 +198,16 @@ const Create = () => {
           {error.life_span && <p style={{ color: "red" }}>{error.life_span}</p>}
 
           {/* -  Posibilidad de seleccionar/agregar varios temperamentos en simultáneo. */}
-          <label htmlFor="temperaments">Temperaments</label>
+          <label htmlFor="temperaments" className={styles.label}>Temperaments </label>
           {/* NO TENGO INPUT PQ TENGO QUE SELECCIONAR, NO ESCRIBIR  */}
           <select
             name="filterByTemperament"
+            className={styles.selectT}
             value={""}
             onChange={(event) => handleTemperament(event)}
           >
             <option key="Temperaments" value="" hidden>
-              Select Temperament
+             
             </option>
 
             {allTemperament.length > 0 &&
@@ -251,15 +240,27 @@ const Create = () => {
               })}
           </div>
 
-          <button
-            className={styles.btn}
-            type="submit"
-            onClick={hanbleInputChange}
-          >
-            CREATE
-          </button>
+
+
+          
+
+            <button className={styles.btn}
+                type="submit"
+                onClick={hanbleInputChange}>
+                CREATE ❤
+            </button>
+
+            <button className={styles.btn1}>
+                <Link to="/home" >
+                     HOME
+                 </Link>
+            </button>
+
+
         </form>
       </div>
+
+
       {/* <div class="loading">
           <img src={gif} alt="Loading..." />
          </div> */}
