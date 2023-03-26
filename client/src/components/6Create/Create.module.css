@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
 .body {
   background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
@@ -16,16 +14,16 @@
   position: relative;
   padding: 60px;
   background-color: rgba(145, 14, 150, 0.13);
-  height: 450px;
+  height: 500px;
   display: inline-block;
   top: 20px;
   width: 500px;
 }
 
-.inputTitulo{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.inputTitulo {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   font-size: 2em;
-
 }
 /* @font-face {
   font-family: "fontnew";
@@ -38,9 +36,9 @@
   src: url("../../components/13Extras/Heaters.otf")
 } */
 
-
 input {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 
   /* font-family:'Montserrat', sans-serif; */
   margin-left: 12px;
@@ -51,9 +49,8 @@ input {
   background-color: rgba(255, 255, 255, 0.918);
   color: rgb(143, 83, 0);
   font-size: 15px;
-display: inline-block;
-width: 200px;
-
+  display: inline-block;
+  width: 200px;
 }
 
 .inputName {
@@ -61,13 +58,13 @@ width: 200px;
   width: 270px;
 }
 
-
-.label{
+.label {
   display: inline-block;
-font-size: 18px;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 
-width: 100px;
+  width: 100px;
 }
 
 .btn {
@@ -82,9 +79,8 @@ width: 100px;
   margin-top: 2em;
   /* margin-right: 5em; */
   margin-left: 10em;
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .btn:hover {
@@ -99,35 +95,29 @@ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida San
   color: rgb(0, 0, 0);
   transition: all ease-in-out 0.2s;
   /* border-radius: 50%; */
-  display:block;
-  margin-top: 10PX;
+  display: block;
+  margin-top: 10px;
   margin-right: 5em;
   /* position: absolute; */
-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-  
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-
 
 .btn1:hover {
   background: rgba(154, 147, 147, 0.874);
-} 
-
-
-.selectT {
-    background-color: rgba(201, 12, 226, 0.6);
-    border: solid 0.2px rgba(255, 255, 255, 0.824);
-    color: rgb(12, 12, 12);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    width: 282px;
-    padding: 4px;
-    cursor: pointer;
-    border-radius: 6px;
-    transition-duration: 0.2s;
-    margin-left: 20px;
-    margin-top: 10px;
 }
 
-
-
+.selectT {
+  background-color: rgba(201, 12, 226, 0.6);
+  border: solid 0.2px rgba(255, 255, 255, 0.824);
+  color: rgb(12, 12, 12);
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  width: 282px;
+  padding: 4px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition-duration: 0.2s;
+  margin-left: 20px;
+  margin-top: 10px;
+}

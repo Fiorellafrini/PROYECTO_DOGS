@@ -1,38 +1,36 @@
 .video {
-  position:fixed;
+  position: fixed;
   height: 900px;
-  top:60%;
+  top: 60%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: -1;
 }
- 
-.title1{
-  font-family: "fontnew" ;
+
+.title1 {
+  font-family: "fontnew";
   color: rgb(241, 241, 226);
-  font-size:55px;
+  font-size: 55px;
   float: right;
   padding-top: 0em;
   padding-right: 1em;
-
 }
 
-.title2{
-  font-family: "fontnew" ;
+.title2 {
+  font-family: "fontnew";
   color: rgb(255, 255, 255);
   display: flex;
-  font-size:45px;
-  float:right;
+  font-size: 45px;
+  float: right;
   padding-right: 2em;
   padding-left: 25em;
   /* padding-top: 0em; */
   /* padding-bottom: 90em; */
-  margin-right: 10px
-
+  margin-right: 10px;
 }
 
-.button{
-  float:right;
+.button {
+  float: right;
   padding-right: 9em;
   padding-top: 5em;
 }
@@ -44,7 +42,8 @@
   text-decoration: none;
   background-color: #ffffff00;
   border: none;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   transition: 0.4s;
   border: 1px solid rgba(255, 255, 255, 0.499);
   padding: 5px;
@@ -57,10 +56,7 @@
   border: 1px solid rgba(213, 99, 0, 0.452);
 }
 
-
-
 @font-face {
   font-family: "fontnew";
-  src: url('../13Extras/SimpleThread_PERSONAL_USE_ONLY.otf');
-
+  src: url("../13Extras/SimpleThread_PERSONAL_USE_ONLY.otf");
 }

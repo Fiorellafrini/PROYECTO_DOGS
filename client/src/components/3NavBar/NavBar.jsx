@@ -2,36 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Filters from "../10Filters/Filters";
 import styles from "../3NavBar/NavBar.module.css";
-import SearchBar from "../9SearchBar/SearchBar"
-
+import SearchBar from "../9SearchBar/SearchBar";
 
 const NavBar = () => {
-return (
+  return (
     <div className={styles.bodynav}>
-        {/* <div className={styles.link}> */}
-            <nav>
+      {/* <div className={styles.link}> */}
+      <nav>
+        <div className={styles.b1}>
+        <Link to="/">
+          <button> API DOG </button>
+        </Link>
+        </div>
+            <div className={styles.b2}>
+        <Link to="/create">
+          <button>CREATE DOG</button>
+        </Link>
+        </div>
+      </nav>
+      {/* </div> */}
 
-            <Link to="/">
-                <button className={styles.b1}> API DOG </button>
-            </Link>
-
-            {/* <Link to="/home">
-                <button>HOME</button>
-            </Link> */}
-
-            <Link to="/create">
-                <button className={styles.b2}>CREATE DOG</button>
-            </Link>
-           
-            </nav>
-        {/* </div> */}
-        
-        <SearchBar></SearchBar>
-        <Filters></Filters>
-
-
+      <SearchBar></SearchBar>
+      <Filters></Filters>
     </div>
-)
-}
+  );
+};
 
 export default NavBar;

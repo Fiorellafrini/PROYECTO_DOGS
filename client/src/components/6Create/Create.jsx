@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createDog, getTemperaments } from "../../redux/action";
 import { useHistory } from "react-router-dom";
 
-
 const Create = () => {
   //Para traerme los temperaments
   const dispatch = useDispatch();
@@ -21,7 +20,6 @@ const Create = () => {
   };
 
   //El método find() devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada.
-
 
   useEffect(() => {
     if (allTemperament.length < 1) {
@@ -67,7 +65,6 @@ const Create = () => {
       });
     }
   };
-  
 
   //Controlador de evento
   const hanbleInputChange = (event) => {
@@ -86,42 +83,42 @@ const Create = () => {
   };
 
   //hago un onclose para eliminar los temp  que no quiero cuando los selecciono
-//   const onclose = (event) => {
-//     event.preventDefault();
-//     const newTemp = input.temperaments.filter(
-//       (temp) => temp !== event.target.value
-//     );
-//     setInput({
-//       ...input,
-//       temperaments: newTemp,
-//     });
-//   };
-
+  //   const onclose = (event) => {
+  //     event.preventDefault();
+  //     const newTemp = input.temperaments.filter(
+  //       (temp) => temp !== event.target.value
+  //     );
+  //     setInput({
+  //       ...input,
+  //       temperaments: newTemp,
+  //     });
+  //   };
 
   const handleDelete = (element) => {
     setInput({
       ...input,
-      temperaments: input.temperaments.filter((temperaments) => temperaments !== element),
+      temperaments: input.temperaments.filter(
+        (temperaments) => temperaments !== element
+      ),
     });
-  }
-
+  };
 
   //para crear el perro
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createDog(input)); // le paso el input pq es lo q creo el usuario
     alert("Created successfully");
-      setInput({ // para que luego de llenar los datos y apretar el create, se seteen los datos, es decir q quede todo vacio
-        name: "",
-        heightMin: "",
-        heightMax: "",
-        weightMin: "",
-        weightMax: "",
-        temperaments: [],
-        life_span: ""
-
-      })
-    history.push("/home") //luego de crear vaya a home 
+    setInput({
+      // para que luego de llenar los datos y apretar el create, se seteen los datos, es decir q quede todo vacio
+      name: "",
+      heightMin: "",
+      heightMax: "",
+      weightMin: "",
+      weightMax: "",
+      temperaments: [],
+      life_span: "",
+    });
+    history.push("/home"); //luego de crear vaya a home
   };
 
   //conecto mi estado local con los input con la propiedad value , bindeo el value con el usestate de arriba value={input.name}
@@ -129,15 +126,14 @@ const Create = () => {
   return (
     <div className={styles.body}>
       <div className={styles.container}>
-        
-
         <h1 className={styles.inputTitulo}>FORM TO CREATE DOG </h1>
 
         <br></br>
 
-
         <form onSubmit={handleSubmit}>
-          <label htmlFor="name" className={styles.label}>Name:</label>
+          <label htmlFor="name" className={styles.label}>
+            Name:
+          </label>
           <input
             className={styles.inputName}
             type="text"
@@ -149,9 +145,10 @@ const Create = () => {
           {error.name && <p style={{ color: "red" }}>{error.name}</p>}
           {/* aca renderizo. si tengo algo en input entonces muestro una etiqueta p con el mensaje */}
 
-
           {/* / -  Altura **(diferenciar entre altura mínima y máxima de la raza)**. */}
-          <label htmlFor="heightMin" className={styles.label}>Height Min:</label>
+          <label htmlFor="heightMin" className={styles.label}>
+            Height Min:
+          </label>
           <input
             className={styles.inputName}
             type="number"
@@ -161,7 +158,9 @@ const Create = () => {
           ></input>
           {error.heightMin && <p style={{ color: "red" }}>{error.heightMin}</p>}
 
-          <label htmlFor="heightMax" className={styles.label}>Height Max:</label>
+          <label htmlFor="heightMax" className={styles.label}>
+            Height Max:
+          </label>
           <input
             className={styles.inputName}
             type="number"
@@ -172,7 +171,9 @@ const Create = () => {
           {error.heightMax && <p style={{ color: "red" }}>{error.heightMax}</p>}
 
           {/* Peso **(diferenciar entre peso mínimo y máximo de la raza)**. */}
-          <label htmlFor="weightMin" className={styles.label}>Weight Min:</label>
+          <label htmlFor="weightMin" className={styles.label}>
+            Weight Min:
+          </label>
           <input
             className={styles.inputName}
             type="number"
@@ -182,7 +183,9 @@ const Create = () => {
           ></input>
           {error.weightMin && <p style={{ color: "red" }}>{error.weightMin}</p>}
 
-          <label htmlFor="weightMax" className={styles.label}>Weight Max:</label>
+          <label htmlFor="weightMax" className={styles.label}>
+            Weight Max:
+          </label>
           <input
             className={styles.inputName}
             type="number"
@@ -192,7 +195,9 @@ const Create = () => {
           ></input>
           {error.weightMax && <p style={{ color: "red" }}>{error.weightMax}</p>}
 
-          <label htmlFor="life_span" className={styles.label}>Life Span: </label>
+          <label htmlFor="life_span" className={styles.label}>
+            Life Span:{" "}
+          </label>
           <input
             className={styles.inputName}
             type="text"
@@ -203,7 +208,9 @@ const Create = () => {
           {error.life_span && <p style={{ color: "red" }}>{error.life_span}</p>}
 
           {/* -  Posibilidad de seleccionar/agregar varios temperamentos en simultáneo. */}
-          <label htmlFor="temperaments" className={styles.label}>Temperaments </label>
+          <label htmlFor="temperaments" className={styles.label}>
+            Temperaments{" "}
+          </label>
           {/* NO TENGO INPUT PQ TENGO QUE SELECCIONAR, NO ESCRIBIR  */}
           <select
             name="filterByTemperament"
@@ -211,62 +218,60 @@ const Create = () => {
             value={""}
             onChange={(event) => handleTemperament(event)}
           >
-            <option key="Temperaments" value="" hidden>
-             
-            </option>
+            <option key="Temperaments" value="" hidden></option>
 
             {allTemperament.length > 0 &&
-              allTemperament.map((temperaments, i) => {
+              allTemperament.map((temperaments, indice) => {
                 return (
-                  <option key={temperaments.name + i} value={temperaments.name}>
-                    {temperaments.name}
+                  <option key={temperaments.name + indice} value={temperaments.name}>
+                    {temperaments.name }
                   </option>
                 );
               })}
           </select>
-          {error.temperaments && <p style={{ color: "red" }}>{error.temperaments}</p>}
-
+          {error.temperaments && (
+            <p style={{ color: "red" }}>{error.temperaments}</p>
+          )}
 
           <div className={styles.divTemp}>
             {input.temperaments?.length > 0 &&
               input.temperaments?.map((temp) => {
                 return (
                   <span>
-                       <button value={temp}
-                        className={styles.button} onClick={() => handleDelete(temp)}>X</button>
-                    {temp + " "}
-                    {/* <button
+                    <button
                       value={temp}
-                      onClick={(event) => onclose(event)}
-                      className={styles.closeButton}
+                      className={styles.button}
+                      onClick={() => handleDelete(temp)}
                     >
                       X
-                    </button>{" "}
-                    {temp + " "} */}
+                    </button>
+                    {temp + " "}
                   </span>
                 );
               })}
           </div>
 
-            <button className={styles.btn}
-                type="submit"
-                onClick={hanbleInputChange}
-         
-                >
-                CREATE ❤
-            </button>
+          <button
+            className={styles.btn}
+            type="submit"
+            disabled={
+              input.name === "" ||
+              input.heightMin === "" ||
+              input.heightMax === "" ||
+              input.weightMin === "" ||
+              input.weightMax === "" ||
+              input.life_span === "" ||
+              input.temperaments.length === 0
+            }
+          >
+            CREATE ❤
+          </button>
 
-            <button className={styles.btn1}>
-                <Link to="/home" >
-                     HOME
-                 </Link>
-            </button>
-
-
+          <button className={styles.btn1}>
+            <Link to="/home">HOME</Link>
+          </button>
         </form>
       </div>
-
-
     </div>
   );
 };

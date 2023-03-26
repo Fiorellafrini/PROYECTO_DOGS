@@ -1,24 +1,21 @@
 .cardsGrid {
-    background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
-    padding: 2em;
-    background-attachment: fixed;
-    background-size:cover;
-    background-repeat: no-repeat;
- 
-
-  }
-.container{
+  background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
+  padding: 2em;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.container {
   width: fit-content;
   position: relative;
   display: inline-block;
   /* top: 20px; */
-
 }
- .img{
-    width: 30rem;
-    height: 30rem;
-    border-radius: 2%;
-  } 
+.img {
+  width: 30rem;
+  height: 30rem;
+  border-radius: 2%;
+}
 
 .link {
   background: #b5842a6c;
@@ -35,13 +32,12 @@
 
 .link:hover {
   background: rgba(154, 147, 147, 0.874);
-}  
-
+}
 
 .parrafo {
   color: #000000;
   font-size: 30px;
-  font-family:"fontnew2";
+  font-family: "fontnew2";
   border-radius: 1%;
   box-shadow: 30px 30px 26px 35px rgb(117, 101, 101);
 }
@@ -56,5 +52,3 @@
   src: url('../images-font/Heaters.otf');
 
 } */
-
-

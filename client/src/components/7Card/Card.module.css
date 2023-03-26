@@ -1,55 +1,49 @@
-.name{
-    font-family:"fontnew1";
-    color: rgb(0, 0, 0);
-    font-size: 45px;
-  }
-  
-  .temp{
-    font-family:"fontnew2";
-    color: rgb(3, 2, 2);
-    font-size: 25px;
-  }
+.name {
+  font-family: "fontnew1";
+  color: rgb(0, 0, 0);
+  font-size: 45px;
+}
 
-  .wei{
-    font-family: "fontnew2";
-    color: rgb(3, 2, 2);
-    font-size: 25px;
-  }
-  
-  @font-face {
-    font-family: "fontnew1";
-    src: url('../13Extras/SimpleThread_PERSONAL_USE_ONLY.otf');
-  }
+.temp {
+  font-family: "fontnew2";
+  color: rgb(3, 2, 2);
+  font-size: 25px;
+}
 
-  @font-face {
-    font-family: "fontnew2";
-    src: url("../13Extras/Ascrada.ttf");
-  }
-  
-  .link{
-      text-decoration: none;
-  }
-  
-  
-  .card:hover{
-    box-shadow: 0px 0px 15px 15px #f8f0f0;
-    -webkit-box-shadow: 0px 0px 15px 15px #f4f4f4;
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    /* background-color: rgba(208, 93, 36, 0.697); */
-     background-color: rgb(208, 142, 88);
+.wei {
+  font-family: "fontnew2";
+  color: rgb(3, 2, 2);
+  font-size: 25px;
+}
 
+@font-face {
+  font-family: "fontnew1";
+  src: url("../13Extras/SimpleThread_PERSONAL_USE_ONLY.otf");
+}
 
-    
-  }
+@font-face {
+  font-family: "fontnew2";
+  src: url("../13Extras/Ascrada.ttf");
+}
 
- .card {
+.link {
+  text-decoration: none;
+}
+
+.card:hover {
+  box-shadow: 0px 0px 15px 15px #f8f0f0;
+  -webkit-box-shadow: 0px 0px 15px 15px #f4f4f4;
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  /* background-color: rgba(208, 93, 36, 0.697); */
+  background-color: rgb(208, 142, 88);
+}
+
+.card {
   border: #292727;
- }
- 
+}
 
-    .card img {
-      width: 25rem;
-      height: 20rem;
-
-    }
+.card img {
+  width: 25rem;
+  height: 20rem;
+}
