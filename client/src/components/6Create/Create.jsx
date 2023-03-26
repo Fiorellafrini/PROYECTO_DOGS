@@ -14,10 +14,7 @@ const Create = () => {
   const history = useHistory();
   // const [loading, setLoading] = useState(true);
 
-  const findTemperamentId = (name) => {
-    const temperament = allTemperament.find((t) => t.name === name);
-    return temperament ? temperament.id : null;
-  };
+ 
 
   //El método find() devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada.
 
@@ -55,6 +52,13 @@ const Create = () => {
 
   // Luego, en la función handleSelectChange, puedes llamar a esta función para obtener el id del temperamento seleccionado y agregarlo al array temperaments del estado input:
 
+  const findTemperamentId = (name) => {
+    const temperament = allTemperament.find((t) => t.name === name);
+    return temperament ? temperament.id : null;
+  };
+
+  // La función findTemperamentId recibe un nombre de temperamento como argumento y busca en el arreglo allTemperament el objeto correspondiente que tenga ese nombre. Si se encuentra el objeto, se devuelve su propiedad id. De lo contrario, se devuelve null.
+
   const handleTemperament = (e) => {
     const temperamentName = e.target.value;
     const temperamentId = findTemperamentId(temperamentName);
@@ -65,6 +69,8 @@ const Create = () => {
       });
     }
   };
+
+  // La función handleTemperament es llamada cada vez que el usuario selecciona una opción del menú desplegable. Recibe como argumento un evento que contiene la opción seleccionada. Dentro de la función, se extrae el valor seleccionado (temperamentName) del evento. Luego, se llama a la función findTemperamentId para obtener el id correspondiente al nombre de temperamento seleccionado. Si se encuentra un id, la función actualiza el estado del componente input con un nuevo objeto que incluye el id del temperamento seleccionado en la propiedad temperaments.
 
   //Controlador de evento
   const hanbleInputChange = (event) => {

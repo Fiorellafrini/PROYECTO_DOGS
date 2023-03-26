@@ -38,6 +38,7 @@ const Details = () => {
             {dogsDetails.length > 0 ?
             <div className={styles.container}>
                 <div className={styles.parrafo}>
+                    <br></br>
                 <h1> Name: {dogsDetails[0].name ? dogsDetails[0].name : 'Data not found' }</h1>
                 <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : 'Data not found'} alt=""></img>
                 <p>Id: {dogsDetails[0].id ? dogsDetails[0].id : 'Data not found'}</p> 
@@ -50,9 +51,13 @@ const Details = () => {
                 <p>Bred for: {dogsDetails[0].bred_for ? dogsDetails[0].bred_for : 'Data not found'}</p> 
                 <p>Origin: {dogsDetails[0].origin ? dogsDetails[0].origin : 'Data not found'}</p>
                 <p>Temperaments: {dogsDetails[0].temperaments ? dogsDetails[0].temperaments : 'Data not found'}</p> 
+                <br></br>
                 </div>
+        
 
                 <Link to="/home">
+                <br></br>
+                <br></br>
                     <button className={styles.link}>BACK</button>
                 </Link>
            

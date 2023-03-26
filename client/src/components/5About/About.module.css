@@ -1,30 +1,47 @@
 .body {
-  /* background-image: url("https://us.123rf.com/450wm/zinako/zinako1708/zinako170800365/84804752-impresionante-tarjeta-de-felicitaci%C3%B3n-con-siluetas-de-perros-de-dibujos-animados-diferentes-razas.jpg"); */
-  /* background-image: url("https://img.freepik.com/vector-gratis/fondo-patron-animal-transparente-ilustracion-vector-impresion-pata-linda_53876-156206.jpg?w=740&t=st=1679166366~exp=1679166966~hmac=522468214cacfc84f59f2d2ef7a9874a4f5bfdef7dbab07b98d67cee81b4e0b3"); */
-  /* background-image: url("https://img.freepik.com/foto-gratis/adorable-bulldog-blanco-retrato-cachorro-banner-social_53876-148022.jpg?w=826&t=st=1679165503~exp=1679166103~hmac=4f636f2c3578e54638259c882dc96a401b644093759ca397dada38e54fca2c83"); */
   background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
   padding: 2em;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.452);
-  height: 800px;
+  height: 900px;
 }
-
-/* .container {
-    height: 100vh;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
+.go{
+  font-size: 30px;
+}
 .yellow {
-  color: #ffd700;
+  color: #9729b3;
 }
 
 .red {
   color: #df4759;
 }
+
+.social svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-left: 1.5rem;
+}
+
+  .social a img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .p{
+    position: relative;
+    padding: 60px;
+    background-color: rgba(145, 14, 150, 0.493);
+    height: 500px;
+    display: inline-block;
+    top: 20px;
+    width: 500px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+  }
+    
+  
+  

@@ -3,14 +3,14 @@
 .container {
   display: flex;
   margin-top: 0px;
-  margin-left: 14em;
+  margin-left: 25em;
   margin-right: 30px;
   gap: 5em;
-  background-color: rgba(75, 73, 68, 0);
+  background-color: rgba(189, 45, 182, 0);
 }
 
 select {
-  background-color: rgba(240, 248, 255, 0);
+  background-color: rgba(123, 60, 194, 0.308);
   border: solid 0.2px rgba(255, 255, 255, 0);
   color: white;
   font-family: "Montserrat", sans-serif;
@@ -37,14 +37,14 @@ select option {
   white-space: pre-wrap;
   display: flex;
   margin-top: 100px;
-  color: #83590c;
+  color: #a022b1;
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
 
 select::-webkit-scrollbar {
   width: 8px;
-  background-color: #d68112;
+  background-color: #b512d6;
 }
 
 select::-webkit-scrollbar-thumb {
