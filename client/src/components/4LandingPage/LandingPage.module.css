@@ -60,3 +60,17 @@
   font-family: "fontnew";
   src: url("../13Extras/SimpleThread_PERSONAL_USE_ONLY.otf");
 }
+
+.yellow{
+  display:inline-block; 
+  background-color: #fdfdfd3f;
+  border-radius: 10px;
+  /* position: relative; */
+margin-top: 409px;
+margin-left: 200px;
+font-size: 20px;
+}
+
+.letras{
+  color: rgb(55, 52, 56);
+}

@@ -26,6 +26,21 @@ const LandingPage = () => {
         </Link>
       </div>
 
+
+      <h2 className={styles.yellow}>
+        Developed by
+        <a
+          className={styles.letras}
+          href="https://www.linkedin.com/in/fiorella-frini-697442a7/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          &nbsp;Fiorella Frini&nbsp;
+        </a>
+        with <span className={styles.red}>❤</span>
+      </h2>
+
+
       <video autoPlay muted loop className={styles.video}>
         <source src={video1} type="video/mp4"></source>
       </video>
