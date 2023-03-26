@@ -21,7 +21,7 @@ const initialState = {
     copyDogs: [],
     temperaments: [],
     pageDogs:[]   
-    // filters: { origin: "allDogs", temperaments: "allDogs"},
+
 };
 
 const rootReducer = (state= initialState, action) => {
@@ -76,7 +76,7 @@ const rootReducer = (state= initialState, action) => {
 
 
             case ORDER_BY_WEIGHT:
-                const sortedWeight = state.dogs.slice().sort(function(a, b) {
+                const sortedWeight = state.copyDogs.slice().sort(function(a, b) {
                   if (parseInt(a.weightMin) < parseInt(b.weightMin)) {
                     return action.payload === 'WeightMin' ? -1 : 1;
                   }
@@ -143,6 +143,7 @@ const rootReducer = (state= initialState, action) => {
                       ...state,
                       ...action.payload
                     };
+
 
                     // case DELETE_DOG:
                     //     return {

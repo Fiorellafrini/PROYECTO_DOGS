@@ -34,10 +34,10 @@ const validation  = (input) => {
      if (input.weightMax > 70) error.weightMax = "The weight must be a maximum of 70kg";
      if (input.weightMax < 2) error.weightMax = "The weight must be a minimum weight of 2kg";
   
-    if (!input.lifeSpan) error.lifeSpan = "";
+    if (!input.lifeSpan) error.life_span = "";
     //  if (!/\d/.test(input.lifeSpan)) error.lifeSpan = "Must be a number";
-     if (input.lifeSpan < 5) error.lifeSpan = "Must be a minimum life Span of 5 years old";
-     if (input.lifeSpan > 19) error.lifeSpan = "Must be a maximum of 19 years old";
+     if (input.lifeSpan < 5) error.life_span = "Must be a minimum life Span of 5 years old";
+     if (input.lifeSpan > 19) error.life_span = "Must be a maximum of 19 years old";
   
   
     if (!input.temperaments || input.temperaments.length === 0) error.temperaments = "Please select at least one temperament"

@@ -5,14 +5,14 @@ import validation from "./Validation";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createDog, getTemperaments } from "../../redux/action";
-// import gif from "../13Extras/loa.gif"
+import { useHistory } from "react-router-dom";
 
 
 const Create = () => {
   //Para traerme los temperaments
   const dispatch = useDispatch();
   const allTemperament = useSelector((state) => state.temperaments);
-  // const history = useHistory();
+  const history = useHistory();
   // const [loading, setLoading] = useState(true);
 
   const findTemperamentId = (name) => {
@@ -22,12 +22,6 @@ const Create = () => {
 
   //El método find() devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada.
 
-  //   useEffect(() => {
-  //     const timer = setTimeout(() => {
-  //       setLoading(false);
-  //     }, 3000); //  cantidad de tiempo que se muestre el GIF
-  //     return () => clearTimeout(timer);
-  //   }, []);
 
   useEffect(() => {
     if (allTemperament.length < 1) {
@@ -115,9 +109,19 @@ const Create = () => {
   //para crear el perro
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Created successfully");
     dispatch(createDog(input)); // le paso el input pq es lo q creo el usuario
-    // history("/home")
+    alert("Created successfully");
+      setInput({ // para que luego de llenar los datos y apretar el create, se seteen los datos, es decir q quede todo vacio
+        name: "",
+        heightMin: "",
+        heightMax: "",
+        weightMin: "",
+        weightMax: "",
+        temperaments: [],
+        life_span: ""
+
+      })
+    history.push("/home") //luego de crear vaya a home 
   };
 
   //conecto mi estado local con los input con la propiedad value , bindeo el value con el usestate de arriba value={input.name}
@@ -138,6 +142,7 @@ const Create = () => {
             className={styles.inputName}
             type="text"
             name="name"
+            // autoComplete="off"
             value={input.name}
             onChange={hanbleInputChange}
           ></input>
@@ -159,7 +164,7 @@ const Create = () => {
           <label htmlFor="heightMax" className={styles.label}>Height Max:</label>
           <input
             className={styles.inputName}
-            type="text"
+            type="number"
             name="heightMax"
             value={input.heightMax}
             onChange={hanbleInputChange}
@@ -170,7 +175,7 @@ const Create = () => {
           <label htmlFor="weightMin" className={styles.label}>Weight Min:</label>
           <input
             className={styles.inputName}
-            type="text"
+            type="number"
             name="weightMin"
             value={input.weightMin}
             onChange={hanbleInputChange}
@@ -180,7 +185,7 @@ const Create = () => {
           <label htmlFor="weightMax" className={styles.label}>Weight Max:</label>
           <input
             className={styles.inputName}
-            type="text"
+            type="number"
             name="weightMax"
             value={input.weightMax}
             onChange={hanbleInputChange}
@@ -219,6 +224,9 @@ const Create = () => {
                 );
               })}
           </select>
+          {error.temperaments && <p style={{ color: "red" }}>{error.temperaments}</p>}
+
+
           <div className={styles.divTemp}>
             {input.temperaments?.length > 0 &&
               input.temperaments?.map((temp) => {
@@ -240,13 +248,11 @@ const Create = () => {
               })}
           </div>
 
-
-
-          
-
             <button className={styles.btn}
                 type="submit"
-                onClick={hanbleInputChange}>
+                onClick={hanbleInputChange}
+         
+                >
                 CREATE ❤
             </button>
 
@@ -261,9 +267,6 @@ const Create = () => {
       </div>
 
 
-      {/* <div class="loading">
-          <img src={gif} alt="Loading..." />
-         </div> */}
     </div>
   );
 };

@@ -5,10 +5,8 @@ const { getDogsDb } = require("./getDogsDb")
 //Junto todos los datos
 const getApiDb = async () => {
     try{
-
         const dataApi = await getDogsApi();
         let dataDB = await getDogsDb();       
-
             // SI YO ACTIVO LO SIGUIENTE LA INFORMACION (LINEA 26 A 38) ME LLEGA TEMP COMO LA API, SINO  ME LLEGA ASI:
             // "temperaments": [
             //     {
@@ -19,7 +17,6 @@ const getApiDb = async () => {
             //         }
             //     }
             // ]
-
             dataDB = await dataDB.map((dog) => {
                 return {
                     id: dog.dataValues.id,
@@ -37,7 +34,7 @@ const getApiDb = async () => {
                 };
             });
 
-        console.log("dataaaaaaaaaaa", dataApi);
+        // console.log("dataaaaaaaaaaa", dataApi);
 
         const allDogs = dataDB.concat(dataApi)
         // const allDogs = [...dataDB, ...dataApi]; 

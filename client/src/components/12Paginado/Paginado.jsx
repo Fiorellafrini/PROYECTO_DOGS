@@ -14,7 +14,7 @@ const Paginado = ({ copyDogs, pageDogs}) => {
   let totalPages = Math.ceil(dogs.length / perPage);
 
   const pagination = [];
-  for ( let i = 1; i < totalPages; i++) {
+  for ( let i = 1; i <= totalPages; i++) { //para que me muestre todas la paginas
     pagination.push(i)
   }
 
@@ -99,7 +99,7 @@ return (
               <li key={index} className={styles.itens}>
 
                 <a
-                  className={`${currentPage === data + 1 ? styles.current : styles.arrow}`}
+                  className={`${currentPage === data ? styles.current : styles.arrow}`}
                   onClick={() => setCurrentPage(data)}
                   >
                   {data}

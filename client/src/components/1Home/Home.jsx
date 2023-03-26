@@ -13,7 +13,7 @@ const Home = () => {
 
         <div className={styles.body}>
    
-                <Paginado></Paginado>
+                {/* <Paginado></Paginado> */}
                 <AllCards></AllCards>
                 <Paginado></Paginado>
 
