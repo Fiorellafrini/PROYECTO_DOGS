@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
-// import Loading from "../11Loading/Loading";
 import styles from "../2Details/Details.module.css"
 import gif from "../13Extras/loa.gif"
 import { useState } from "react";
@@ -29,7 +28,6 @@ const Details = () => {
 
     useEffect(()=> {// ciclos de vida 
         dispatch(getDetails(id)) //cuando se monta, didmount
-
         return () => dispatch(cleanDetails()) //cuando desmonto el componente deja un obj vacio, unmount
     }, [dispatch, id]) //update
 
@@ -41,7 +39,7 @@ const Details = () => {
             <div className={styles.container}>
                 <div className={styles.parrafo}>
                     <br></br>
-                <h1> Name: {dogsDetails[0].name ? dogsDetails[0].name : 'Data not found' }</h1>
+                <h1 className={styles.name}> Name: {dogsDetails[0].name ? dogsDetails[0].name : 'Data not found' }</h1>
                 <img className={styles.img} src={dogsDetails[0].image ? dogsDetails[0].image : 'Data not found'} alt=""></img>
                 <p>Id: {dogsDetails[0].id ? dogsDetails[0].id : 'Data not found'}</p> 
                 <p>HeightMin: {dogsDetails[0].heightMin ? dogsDetails[0].heightMin : 'Data not found' } cm.</p> 

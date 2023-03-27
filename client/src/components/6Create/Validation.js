@@ -12,12 +12,10 @@ const validation  = (input) => {
 
 
     if (!input.heightMin) error.heightMin = "";
-    // if (!/\d/.test(input.heightMin)) error.heightMin = "Must be a number";
     if (input.heightMin < 5) error.heightMin = "Must be a minimum height of 5cm";
     if (input.heightMin > 79) error.heightMin = "Must be a maximum of 89cm";
   
     if (!input.heightMax) error.heightMax = "";
-    // if (!/\d/.test(input.heightMax)) error.heightMax = "Must be a number";
     if (input.heightMax > 80) error.heightMax = "The height must be a maximum of 80cm";
     if (input.heightMax < 6) error.heightMax = "The height must be a minimum height of 6cm";
   
@@ -25,19 +23,16 @@ const validation  = (input) => {
     // error.heightMax = 'Maximum height must be bigger than minimum.'
       
      if (!input.weightMin) error.weightMin = "";
-    //  if (!/\d/.test(input.weightMin)) error.weightMin = "Must be a number";
      if (input.weightMin < 1) error.weightMin = "Must be a minimum weight of 1kg";
      if (input.weightMin > 69) error.weightMin = "Must be a a maximum of 69kg";
   
      if (!input.weightMax) error.weightMax = "";
-    //  if (!/\d/.test(input.weightMax)) error.weightMax = "Must be a number";
      if (input.weightMax > 70) error.weightMax = "The weight must be a maximum of 70kg";
      if (input.weightMax < 2) error.weightMax = "The weight must be a minimum weight of 2kg";
   
-    if (!input.lifeSpan) error.life_span = "";
-    //  if (!/\d/.test(input.lifeSpan)) error.lifeSpan = "Must be a number";
-     if (input.lifeSpan < 5) error.life_span = "Must be a minimum life Span of 5 years old";
-     if (input.lifeSpan > 19) error.life_span = "Must be a maximum of 19 years old";
+    if (!input.life_span) error.life_span = "";
+     if (input.life_span < 5) error.life_span = "Must be a minimum life Span of 5 years old";
+     if (input.life_span > 19) error.life_span = "Must be a maximum of 21 years old";
   
   
     if (!input.temperaments || input.temperaments.length === 0) error.temperaments = "Please select at least one temperament"

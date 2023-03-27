@@ -11,10 +11,6 @@ const LandingPage = () => {
 
       <div className={styles.title2}>to the Dogs Api!</div>
 
-      {/* <div className={styles.button}>
-                        <Link  to="/home" ><button>HOME</button></Link>
-                        <Link to="/about" ><button>ABOUT</button></Link>
-                    </div> */}
 
       <div className={styles.button}>
         <Link to="/home">

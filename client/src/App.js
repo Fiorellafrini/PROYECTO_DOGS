@@ -18,8 +18,11 @@ function App() {
     <Switch>
     <div className="App">
 
-      {/* {location.pathname !== "/" && location.pathname !== "/dogs/:id" && <Navbar/>}   */}
-      {location.pathname !== "/" && <NavBar/>}  
+      {location.pathname !== "/" && 
+      !location.pathname.includes("/dogs") &&
+       location.pathname !== "/create"
+      && location.pathname !== "/about" &&
+       <NavBar/>}
 
 
 

@@ -12,7 +12,8 @@
   top: 20px;
   border-radius: 5px;
   line-height: 0.5;
-  width: fit-content;
+  /* width: fit-content; */
+  width: 45em;
   position: relative;
   display: inline-block;
 }
@@ -20,10 +21,12 @@
   width: 25rem;
   height: 25rem;
   border-radius: 2%;
+  border-image: fill;
+  border: 5px solid rgba(0, 0, 0, 0.397);
 }
 
 .link {
-  background: #b5842a6c;
+  background: #e7a62dc2;
   border: none;
   padding: 15px 25px 15px 25px;
   font-size: 30px;
@@ -56,3 +59,8 @@
   src: url('../images-font/Heaters.otf');
 
 } */
+.name{
+font-family: "fontnew1";
+  color: rgb(0, 0, 0);
+  font-size: 45px;
+}
