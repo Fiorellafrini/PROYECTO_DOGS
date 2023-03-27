@@ -26,9 +26,9 @@ const About = () => {
         tecnologia!!!
         <br></br>
         <br></br>
-        Esta Api es mi primer Proyecto creado 100% por mi! Me entusiasmo la
+        Esta Api es mi primer Proyecto creado 100% por mi! Utilizando las tecnologías: React, Redux, Node, Express y Sequelize.Me entusiasmo la
         tematica que me toco y di lo mejor para conseguir cada objetivo exigido
-        en Henry!!!
+        en Henry!!! 
         <br></br>
         <br></br>
         Espero estar a la altura!🚀 Muchas gracias!!!!
