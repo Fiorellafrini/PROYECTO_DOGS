@@ -7,6 +7,7 @@ import { cleanCards, getDogs, getDogsName } from "../../redux/action";
 const SearchBar = () => {
   const dispatch = useDispatch();
 
+
   const [name, setName] = useState(""); //creamos un estado
   //------nombre del estado, nombre de la fn de ese estado, q me permite actualizar el estado= (valor inicial)
   // fn hadler son ejecutadoras de eventos
@@ -25,6 +26,8 @@ const SearchBar = () => {
     dispatch(cleanCards());
     dispatch(getDogs());
   };
+
+
   return (
     <div>
       <input
@@ -48,6 +51,10 @@ const SearchBar = () => {
           Delete Search and Filters 🗑
         </button>
       </Link>
+
+   
+  
+
     </div>
   );
 };

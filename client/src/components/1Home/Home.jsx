@@ -3,11 +3,17 @@ import React from "react";
 import styles from "../1Home/Home.module.css";
 import Paginado from "../12Paginado/Paginado";
 
+
+
 const Home = () => {
+
+
+
   return (
     <div className={styles.body}>
       <AllCards></AllCards>
       <Paginado></Paginado>
+
     </div>
   );
 };

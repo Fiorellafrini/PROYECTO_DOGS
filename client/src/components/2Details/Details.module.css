@@ -8,18 +8,13 @@
 .container {
   position: relative;
   padding: 60px;
-  /* background-color: rgba(145, 14, 150, 0.13); */
-  /* height: 900px; */
   display: inline-block;
   top: 20px;
-  /* width: 700px; */
   border-radius: 5px;
-
   line-height: 0.5;
   width: fit-content;
   position: relative;
   display: inline-block;
-  /* top: 20px; */
 }
 .img {
   width: 25rem;
@@ -45,8 +40,6 @@
 
 .parrafo {
   color: #000000;
-  /* width: fit-content; */
-
   font-size: 30px;
   font-family: "fontnew2";
   border-radius: 1%;

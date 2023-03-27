@@ -5,8 +5,7 @@
   background-attachment: fixed;
 }
 
-.b1 button{
-  /* letter-spacing: 2px; */
+.b1 button {
   font-size: 25px;
   text-decoration: none;
   background-color: #ffffff00;
@@ -15,19 +14,18 @@
     "Lucida Sans", Arial, sans-serif;
   transition: 0.4s;
   display: flex;
-  position: absolute; 
-align-items: center;
+  position: absolute;
+  align-items: center;
 }
 
-
-.b1:hover button{
+.b1:hover button {
   cursor: pointer;
   background-color: rgba(197, 92, 0, 0.452);
   border: 1px solid rgba(213, 99, 0, 0.452);
   border-radius: 50px;
 }
 
-.b2 button{
+.b2 button {
   /* color: #fdfdfd; */
   /* letter-spacing: 2px; */
   font-size: 25px;
@@ -43,33 +41,27 @@ align-items: center;
   display: flex;
   position: absolute;
   margin-left: 60em;
-align-items: center;
-
+  align-items: center;
 }
 
-.b2:hover button{
+.b2:hover button {
   cursor: pointer;
   background-color: rgba(197, 92, 0, 0.452);
   border: 1px solid rgba(213, 99, 0, 0.452);
   border-radius: 50px;
-
 }
 
-
-
-
-button img{
+button img {
   max-width: 90px;
   max-height: 90px;
   margin-right: 8px;
 
-/* 
+  /* 
   max-width: 90px;
   max-height: 90px;
   display: flex;
   position:sticky */
 }
-
 
 /*    
    @font-face {

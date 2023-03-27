@@ -1,13 +1,9 @@
 .button {
   background: #2f659e00;
   border: none;
-  padding: 8px;
+  padding: 8x;
   font-family: "fontnew2";
   font-size: 25px;
-  /* color: rgb(0, 0, 0); */
-  /* margin-bottom: 5px; */
-  /* transition: all ease-in-out 0.2s; */
-  /* border-radius: 3px; */
 }
 
 .btn {
@@ -17,11 +13,7 @@
   font-family: "fontnew2";
   font-size: 30px;
   color: rgb(0, 0, 0);
-
-  /* color: rgb(0, 0, 0); */
   margin-bottom: 10px;
-  /* transition: all ease-in-out 0.2s; */
-  /* border-radius: 3px; */
 }
 
 .input {
@@ -29,10 +21,10 @@
   width: 270px;
   font-size: 25px;
   font-family: monospace;
-  margin-left: 90px;
+  margin-left: 85px;
   text-decoration: none;
   font-weight: 400;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   text-transform: capitalize;
   transition: all ease-in-out 0.2s;
 }
@@ -40,7 +32,6 @@
 .input::placeholder {
   font-size: 20px;
   color: rgba(255, 246, 246, 0.466);
-  /* background: rgba(0, 128, 0, 0.219); */
 }
 .input:hover {
   background: rgba(238, 238, 238, 0.789);
@@ -49,10 +40,13 @@
 .button:hover {
   font-size: 25px;
   background-color: rgba(128, 255, 0, 0.281);
-  /* cursor: pointer; */
+  border-radius: 50%;
+
 }
 .btn:hover {
   background: rgba(213, 99, 0, 0.452);
+  border-radius: 10px;
+
 }
 /* font-size: 20px;
     cursor: pointer;

@@ -8,7 +8,6 @@ import {
   FILTER_BY_TEMPERAMENTS,
   PAGE_DOGS,
   ORDER_BY_WEIGHT,
-  // ORDER_BY_WEIGHT_MAX,
   CREATE_DOG,
   GET_TEMPERAMENTS,
   ORDER_BY_NAME,
@@ -26,8 +25,6 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-  // let allDogs = state.dogs
-
   switch (action.type) {
     case GET_DOGS:
       return {
@@ -143,6 +140,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         ...action.payload,
       };
+
+    // case DELETE_DOG:
+    //   return {
+    //     ...state,
+    //     dogs: state.dogs.filter((dog) => dog.id !== action.payload),
+    //     copyDogs: state.copyDogs.filter((dog) => dog.id !== action.payload),
+    //   };
 
     // case DELETE_DOG:
     //     return {

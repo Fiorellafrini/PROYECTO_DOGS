@@ -6,10 +6,8 @@ import { SEARCH_DOGS_BY_NAME } from "./action-types";
 import { ORDER_BY_NAME } from "./action-types";
 import { GET_TEMPERAMENTS } from "./action-types";
 import { FILTER_BY_TEMPERAMENTS } from "./action-types";
-// import { ORDER_BY_WEIGHT_MIN } from "./action-types";
-// import { ORDER_BY_WEIGHT_MAX } from "./action-types";
 import { ORDER_BY_WEIGHT } from "./action-types";
-
+// import { DELETE_DOG } from "./action-types";
 import { PAGE_DOGS } from "./action-types";
 import { FILTER_BY_ORIGIN } from "./action-types";
 import { CREATE_DOG } from "./action-types";
@@ -56,6 +54,7 @@ export const cleanDetails = () => {
 export const cleanCards = () => {
   return { type: CLEAN_CARDS };
 };
+
 export const getDogsName = (name) => {
   return function (dispatch) {
     fetch(`http://localhost:3001/dogs?name=${name}`)
@@ -98,18 +97,10 @@ export const orderByName = (payload) => {
   return { type: ORDER_BY_NAME, payload };
 };
 
-// export const orderByWeight = (payload) => {
-//     return { type: ORDER_BY_WEIGHT, payload };
-//   };
-
 export const orderByWeight = (payload) => {
   const weightOrder = payload === "asc" ? "WeightMin" : "WeightMax";
   return { type: ORDER_BY_WEIGHT, payload: weightOrder };
 };
-
-// export const orderByWeightMax = (payload) => {
-//     return { type: ORDER_BY_WEIGHT_MAX, payload };
-//   };
 
 export function filterByOrigin(payload) {
   return { type: FILTER_BY_ORIGIN, payload };
@@ -122,16 +113,16 @@ export const createDog = (input) => {
   };
 };
 
-//   export const deleteDog = (id) => {
-//     return async (dispatch) => {
-//       try {
-//         let response = await axios.delete(`http://localhost:3001/dogs/${id}`)
-//         return dispatch({ type: DELETE_DOG, payload:response.data })
-//       } catch (error) {
-//         return dispatch({ type: DELETE_DOG, payload: error.response.data })
-//       }
-//     };
-//   }
+// export const deleteDog = (id) => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await axios.delete(`http://localhost:3001/dogs/${id}`);
+//       return dispatch({ type: DELETE_DOG, payload: response.data });
+//     } catch (error) {
+//       return dispatch({ type: DELETE_DOG, payload: error.response.data });
+//     }
+//   };
+// };
 
 export const pageDogs = (start, end) => {
   return {

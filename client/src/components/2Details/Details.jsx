@@ -35,6 +35,8 @@ const Details = () => {
 
     return(
         <div className={styles.cardsGrid}>
+
+            
             {dogsDetails.length > 0 ?
             <div className={styles.container}>
                 <div className={styles.parrafo}>
