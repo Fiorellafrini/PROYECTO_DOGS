@@ -2,13 +2,11 @@ import styles from "../5About/About.module.css";
 import li from "../13Extras/li.png";
 import gh from "../13Extras/gh.png";
 import { Link } from "react-router-dom";
+// import thalita from "../13Extras/thalita.jpg";
 
 const About = () => {
   return (
     <div className={styles.body}>
-
-
-
       <p className={styles.p}>
         Mi nombre es Fiorella Frini, tengo 31 años, naci en Cordoba y vivo en
         Santiago del Estero, Argentina.
@@ -26,9 +24,10 @@ const About = () => {
         tecnologia!!!
         <br></br>
         <br></br>
-        Esta Api es mi primer Proyecto creado 100% por mi! Utilizando las tecnologías: React, Redux, Node, Express y Sequelize.Me entusiasmo la
+        Esta Api es mi primer Proyecto creado 100% por mi! Utilizando las
+        tecnologías: React, Redux, Node, Express y Sequelize.Me entusiasmo la
         tematica que me toco y di lo mejor para conseguir cada objetivo exigido
-        en Henry!!! 
+        en Henry!!!
         <br></br>
         <br></br>
         Espero estar a la altura!🚀 Muchas gracias!!!!
@@ -37,10 +36,14 @@ const About = () => {
         <br></br>
         <br></br>
       </p>
-  
-            <h1 className={styles.go}><Link to="/home">Go Api Dogs!</Link></h1>
-            <br></br>
-        <br></br>
+      {/* <div>
+      <img src={thalita} alt="img" className={styles.thalita}></img>
+      </div> */}
+      <h1 className={styles.go}>
+        <Link to="/home">Go Api Dogs!</Link>
+      </h1>
+      <br></br>
+      <br></br>
 
       <div className={styles.social}>
         <h2>

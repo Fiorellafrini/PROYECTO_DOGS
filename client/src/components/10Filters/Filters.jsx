@@ -31,6 +31,10 @@ export default function Filters() {
     }
   }, []);
 
+
+ 
+
+
   function handleTemperament(event) {
     event.preventDefault();
     dispatch(filterTemperament(event.target.value));

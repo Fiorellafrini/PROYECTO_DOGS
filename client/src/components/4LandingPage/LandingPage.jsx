@@ -11,7 +11,6 @@ const LandingPage = () => {
 
       <div className={styles.title2}>to the Dogs Api!</div>
 
-
       <div className={styles.button}>
         <Link to="/home">
           <button>HOME</button>
@@ -21,7 +20,6 @@ const LandingPage = () => {
           <button>ABOUT</button>
         </Link>
       </div>
-
 
       <h2 className={styles.yellow}>
         Developed by
@@ -35,7 +33,6 @@ const LandingPage = () => {
         </a>
         with <span className={styles.red}>❤</span>
       </h2>
-
 
       <video autoPlay muted loop className={styles.video}>
         <source src={video1} type="video/mp4"></source>

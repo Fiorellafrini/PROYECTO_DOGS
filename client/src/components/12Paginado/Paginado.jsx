@@ -4,17 +4,19 @@ import { pageDogs } from "../../redux/action";
 import styles from "../12Paginado/Paginado.module.css";
 
 const Paginado = ({ copyDogs, pageDogs }) => {
+  // La variable dogs representa la lista de elementos que se paginará.
+
   const [dogs, setDogs] = useState(copyDogs);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(8);
 
   let totalPages = Math.ceil(dogs.length / perPage);
-
+ 
   const pagination = [];
   for (let i = 1; i <= totalPages; i++) {
-    //para que me muestre todas la paginas
     pagination.push(i);
   }
+
 
   const handlePrev = () => {
     currentPage === 1
@@ -27,7 +29,7 @@ const Paginado = ({ copyDogs, pageDogs }) => {
       ? setCurrentPage(currentPage)
       : setCurrentPage(currentPage + 1);
   };
-
+ 
   const start = () => {
     setCurrentPage(1);
   };
@@ -39,35 +41,41 @@ const Paginado = ({ copyDogs, pageDogs }) => {
   const [currentPaginado, setCurrentPaginado] = useState([]);
 
   const handleChange = (start, end) => {
-    !isNaN(start) && !isNaN(end) && pageDogs(start, end);
+    if (!isNaN(start) && !isNaN(end)) {
+      pageDogs(start, end);
+    }
   };
+  // La función primero verifica si ambos start y end son números válidos y si no lo son, llama pageDogscon los argumentos start y . end.
 
   useEffect(() => {
     if (dogs.length !== copyDogs.length) setDogs(copyDogs);
-
-    let templateNumbers = [...currentPaginado];
-
+    // verifica si la dogsmatriz de estado tiene la misma longitud que la copyDogsmatriz de prop. Si no, actualiza el dogsestado con la copyDogsmatriz.
+    let numbers = [...currentPaginado];
+    // actualiza la templateNumbersmatriz de estado en función de la página actual y el número total de páginas. 
     if (pagination.length < 6) {
-      templateNumbers = pagination;
+    numbers = pagination;
     } else if (currentPage >= 1 && currentPage <= 2) {
-      templateNumbers = [1, 2, 3];
+      numbers = [1, 2, 3];
     } else if (currentPage > 2 && currentPage < pagination.length - 1) {
       const prevNum = pagination.slice(currentPage - 2, currentPage);
       const nextNum = pagination.slice(currentPage, currentPage + 1);
-      templateNumbers = [...prevNum, ...nextNum];
+      // El método slice() no modifica el arreglo original, sino que devuelve un nuevo arreglo con los elementos seleccionados.
+      numbers = [...prevNum, ...nextNum];
     } else if (currentPage > pagination.length - 3) {
       const sliced = pagination.slice(pagination.length - 1);
-      templateNumbers = [...sliced];
+      numbers = [...sliced];
     }
     if (currentPage > totalPages) {
       start();
     }
-    setCurrentPaginado(templateNumbers);
+    setCurrentPaginado(numbers);
 
-    const value = currentPage * perPage;
+    const value = currentPage * perPage; //paginaactual y cantidad de dogs por pagina
     handleChange(value - perPage, value);
   }, [copyDogs, currentPage, perPage, totalPages]);
+  // Cuando alguna de estas dependencias cambia, la función de efecto se vuelve a ejecutar.
 
+  // Dentro de la función de efecto, primero, comprueba si la longitud de dogsy copyDogses diferente. Si es diferente, significa que copyDogsse actualizó, por lo que dogsse actualizó a copyDogs.
   return (
     <>
       <div className={styles.container}>

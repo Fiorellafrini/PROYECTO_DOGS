@@ -2,14 +2,12 @@ const { Router } = require('express');
 const dogRouter = Router();
 const { searchDogsInApiAndDB, searchByName, createDog } = require('../Controllers/dogControllers');
 const { getApiDb} = require('../dataTotalDogs/getApiDb');
-const { getDogsApi } = require('../dataTotalDogs/getDogsApi');
+// const { getDogsApi } = require('../dataTotalDogs/getDogsApi');
 const { Dog, Temperament } = require("../db");
 
 
 // #### **📍 GET | /dogs**
 // -  Obtiene un arreglo de objetos, donde cada objeto es la raza de un perro.
-
-
 dogRouter.get('/getAll', async (req,res) => {
   try {
      const allDogs = await searchDogsInApiAndDB();
@@ -33,20 +31,12 @@ dogRouter.get('/:id', async (req,res) =>{
   const {id} = req.params
 
   const allBreeds = await getApiDb()
-  const filtredBreed = allBreeds.filter(e =>e.id == id);
-  filtredBreed.length > 0
-  ? res.status(200).send(filtredBreed)
+  const filtredId = allBreeds.filter(element =>element.id == id);
+  filtredId.length > 0
+  ? res.status(200).send(filtredId)
   : res.status(404).send(`Dog not found`);
 console.log(allBreeds);
 
-// dogRouter.get('/:id', async (req,res) =>{
-//     const {id} = req.params
-//     try {
-//       const allBreeds = await getApiDb(id)
-//       res.status(200).json(allBreeds)
-//     } catch (error) {
-//       res.status(400).send({error: error.message})
-//     }
 
 })
 
@@ -57,8 +47,6 @@ console.log(allBreeds);
 // -  Si no existe la raza, debe mostrar un mensaje adecuado.
 // -  Debe buscar tanto los de la API como los de la base de datos.
 
-
-  //Buscamos un dogs por nombre
   dogRouter.get("/", async (req, res) => {
     try {
       const { name } = req.query;
@@ -75,7 +63,6 @@ console.log(allBreeds);
 // -  Esta ruta recibirá todos los datos necesarios para crear un nuevo perro y relacionarlo con los temperamentos asociados.
 // -  Toda la información debe ser recibida por body.
 // -  Debe crear la raza de perro en la base de datos, y esta debe estar relacionada con los temperamentos indicados (al menos uno).
-
 
 dogRouter.post("/", async (req, res) => {
   //los datos que recibo por body son los modelos 
@@ -114,7 +101,10 @@ dogRouter.post("/", async (req, res) => {
   }
 });
 
+
+
 //RUTA EXTRA DELETE ID
+
 dogRouter.delete('/delete/:id', async (req,res) =>{
   try {
     const { id } = req.params;
@@ -125,6 +115,14 @@ dogRouter.delete('/delete/:id', async (req,res) =>{
     res.status(400).send(error.message);
   }
 })
+
+
+//como es una promesa se puede resolver con async o .then
+// Dog.findByPk(id).then((dog) => {
+//   console.log(dog); // 
+// }).catch((error) => {
+//   console.error(error); // manejar errores
+// });
 
 
 

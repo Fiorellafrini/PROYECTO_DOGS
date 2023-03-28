@@ -1,5 +1,5 @@
 import React from "react";
-import { getDetails, cleanDetails } from "../../redux/action";
+import { getDetails, cleanDetails, pageDogs, getDogs } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
@@ -19,17 +19,21 @@ const Details = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
           setLoading(false);
-        }, 3000); //  cantidad de tiempo que se muestre el GIF
+        }, 1000); //  cantidad de tiempo que se muestre el GIF
         return () => clearTimeout(timer);
       }, []);
   
     
 // console.log(id);
 
+
+
     useEffect(()=> {// ciclos de vida 
         dispatch(getDetails(id)) //cuando se monta, didmount
-        return () => dispatch(cleanDetails()) //cuando desmonto el componente deja un obj vacio, unmount
+     return () => dispatch(cleanDetails()) //cuando desmonto el componente deja un obj vacio, unmount
     }, [dispatch, id]) //update
+    // El array de dependencias [dispatch, id] se utiliza para asegurarse de que se vuelva a cargar los detalles solo si cambia el id del perro en la URL o si cambia la función dispatch.
+
 
     return(
         <div className={styles.cardsGrid}>

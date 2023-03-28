@@ -8,15 +8,14 @@ import { createDog, getTemperaments } from "../../redux/action";
 import { useHistory } from "react-router-dom";
 
 const Create = () => {
+
+
   //Para traerme los temperaments
   const dispatch = useDispatch();
   const allTemperament = useSelector((state) => state.temperaments);
+  // useSelector es un hook de React Redux que te permite seleccionar un valor del store Redux en un componente de React. Con este hook, puedes suscribirte a cambios en una parte del store y actualizar el estado local de tu componente cuando sea necesario.
   const history = useHistory();
-  // const [loading, setLoading] = useState(true);
-
- 
-
-  //El método find() devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada.
+  // useHistory() es un hook de React Router que proporciona acceso al historial de navegación, lo que permite navegar hacia adelante y hacia atrás en la historia del navegador.
 
   useEffect(() => {
     if (allTemperament.length < 1) {
@@ -25,7 +24,6 @@ const Create = () => {
   }, [dispatch]);
 
   //PARA CONTROLAR EL FORMULARIO TENGO QUE TRABAJAR CON UN ESTADO GLOBAL
-
   const [input, setInput] = useState({
     //esto es un estado local, que va a ser un obj con las siguientes propiedades
     name: "",
@@ -48,29 +46,12 @@ const Create = () => {
     life_span: "",
   });
 
-  // Esta función toma el nombre del temperamento como argumento y devuelve el id correspondiente si lo encuentra en el array allTemperament. Si no lo encuentra, devuelve null.
-
-  // Luego, en la función handleSelectChange, puedes llamar a esta función para obtener el id del temperamento seleccionado y agregarlo al array temperaments del estado input:
-
-  const findTemperamentId = (name) => {
-    const temperament = allTemperament.find((t) => t.name === name);
-    return temperament ? temperament.id : null;
+  const handleTemperament = (event) => {
+    setInput({
+      ...input,
+      temperaments: [...input.temperaments, event.target.value],
+    });
   };
-
-  // La función findTemperamentId recibe un nombre de temperamento como argumento y busca en el arreglo allTemperament el objeto correspondiente que tenga ese nombre. Si se encuentra el objeto, se devuelve su propiedad id. De lo contrario, se devuelve null.
-
-  const handleTemperament = (e) => {
-    const temperamentName = e.target.value;
-    const temperamentId = findTemperamentId(temperamentName);
-    if (temperamentId) {
-      setInput({
-        ...input,
-        temperaments: [...input.temperaments, temperamentId],
-      });
-    }
-  };
-
-  // La función handleTemperament es llamada cada vez que el usuario selecciona una opción del menú desplegable. Recibe como argumento un evento que contiene la opción seleccionada. Dentro de la función, se extrae el valor seleccionado (temperamentName) del evento. Luego, se llama a la función findTemperamentId para obtener el id correspondiente al nombre de temperamento seleccionado. Si se encuentra un id, la función actualiza el estado del componente input con un nuevo objeto que incluye el id del temperamento seleccionado en la propiedad temperaments.
 
   //Controlador de evento
   const hanbleInputChange = (event) => {
@@ -88,18 +69,6 @@ const Create = () => {
     );
   };
 
-  //hago un onclose para eliminar los temp  que no quiero cuando los selecciono
-  //   const onclose = (event) => {
-  //     event.preventDefault();
-  //     const newTemp = input.temperaments.filter(
-  //       (temp) => temp !== event.target.value
-  //     );
-  //     setInput({
-  //       ...input,
-  //       temperaments: newTemp,
-  //     });
-  //   };
-
   const handleDelete = (element) => {
     setInput({
       ...input,
@@ -112,6 +81,9 @@ const Create = () => {
   //para crear el perro
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // if (input.name && !error.name && !error.heightMin && !error.heightMax && !error.weightMin && !error.weightMax && !error.life_span && !error.temperaments) {
+
     dispatch(createDog(input)); // le paso el input pq es lo q creo el usuario
     alert("Created successfully");
     setInput({
@@ -126,7 +98,7 @@ const Create = () => {
     });
     history.push("/home"); //luego de crear vaya a home
   };
-
+  // }
   //conecto mi estado local con los input con la propiedad value , bindeo el value con el usestate de arriba value={input.name}
   //uso onchange para poder guardar la informacion del usuario
   return (
@@ -144,12 +116,10 @@ const Create = () => {
             className={styles.inputName}
             type="text"
             name="name"
-            // autoComplete="off"
             value={input.name}
             onChange={hanbleInputChange}
           ></input>
           {error.name && <p style={{ color: "red" }}>{error.name}</p>}
-          {/* aca renderizo. si tengo algo en input entonces muestro una etiqueta p con el mensaje */}
 
           {/* / -  Altura **(diferenciar entre altura mínima y máxima de la raza)**. */}
           <label htmlFor="heightMin" className={styles.label}>
@@ -217,24 +187,19 @@ const Create = () => {
           <label htmlFor="temperaments" className={styles.label}>
             Temperaments{" "}
           </label>
-          {/* NO TENGO INPUT PQ TENGO QUE SELECCIONAR, NO ESCRIBIR  */}
+
           <select
             name="filterByTemperament"
             className={styles.selectT}
             value={""}
-            onChange={(event) => handleTemperament(event)}
+            onChange={(selection) => handleTemperament(selection)}
           >
-            <option key="Temperaments" value="" hidden></option>
-
-            {allTemperament.length > 0 &&
-              allTemperament.map((temperaments, indice) => {
-                return (
-                  <option key={temperaments.name + indice} value={temperaments.name}>
-                    {temperaments.name }
-                  </option>
-                );
-              })}
+            {allTemperament.map((temp) => (
+              <option value={temp.id}>{temp.name}</option>
+            ))}
           </select>
+          {/* <div>{input.temperaments.map((seleccionado) => seleccionado + " ")}</div> */}
+
           {error.temperaments && (
             <p style={{ color: "red" }}>{error.temperaments}</p>
           )}
@@ -267,7 +232,9 @@ const Create = () => {
               input.weightMin === "" ||
               input.weightMax === "" ||
               input.life_span === "" ||
-              input.temperaments.length === 0
+              input.temperaments.length === 0 ||
+              input.temperaments.length >= 5 
+              // allNames.hasOwnProperty(input.name)
             }
           >
             CREATE ❤

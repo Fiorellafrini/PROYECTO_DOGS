@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+// const { default: axios } = require("axios");
 const {getApiDb} = require("../dataTotalDogs/getApiDb");
 const { Dog, Temperament } = require("../db");
 const specialCharactresTypeRegex = /[0-9@:%._+~#=]/gi;
@@ -15,16 +15,6 @@ async function searchDogsInApiAndDB() {
     //En la ruta getAll si pido lo de la db primero(getDb) me sale un array vacio pq no cree nada, recien se empieza a cargar despues de hacer los post.
     
   
-
-// <=============== controller getId ===============>
-
-// const getId = async(id) => {
-//   const allBreeds = await getApiDb();
-//   // if(!data) throw Error ('No hay data')
-//   const filtredBreed = allBreeds.filter(e =>e.id == id);
-// if(filtredBreed.length < 0) throw Error ('No hay dogs con ese id')
-// return filtredBreed
-// }
 // <=============== controller searchByName ===============>
       
 async function searchByName(name) {
@@ -56,10 +46,6 @@ async function searchByName(name) {
 // <=============== controller createDog ===============>
 
 // Creamos un dog y la guardamos en la base de datos
-// const createDog = async ( name, heightMin, heightMax, weightMin, weightMax, life_span, image, bred_for, breed_group, origin, temperaments ) => {
-
-  // if (!name || !heightMin || !heightMax || !weightMin || !weightMax) throw Error("Mandatory data is missing");
-
 
   const createDog = async ( 
     name, 
@@ -74,28 +60,17 @@ async function searchByName(name) {
       origin, 
       temperaments 
              ) => {
+
+//Validacion los datos
+
     if (!name || !heightMin || !heightMax || !weightMin || !weightMax) {
       throw new Error("Mandatory data is missing");
     }
-  
-//   //Validacion los datos
-//     if (!name || !height || !weight ) throw Error("Mandatory data is missing");
-
   //No pongo todas las prop de modelos porque los que dicen defaultvalue o allownull true no los pongo ya que se crean solas.
  
 
  //Agrego el newDog a mi base de datos, con un llamado asyn
-  const newDog = await Dog.create({ 
-    // name: name ? name : null, 
-    // heightMin: heightMin ?  heightMin : null,
-    // heightMax: heightMax ?  heightMax : null,
-    // weightMax: weightMax ?  weightMax : null,
-    // weightMin :  weightMin ?  weightMin : null,
-    // life_span: life_span ? life_span : null, 
-    // breed_group: breed_group ? breed_group : null,
-    // bred_for: bred_for ? bred_for : null, 
-    // origin: origin ? origin :null,
-    // image: image ? image : null,
+  const newDog = await Dog.create({
     name, 
     heightMin, 
     heightMax, 
@@ -107,14 +82,12 @@ async function searchByName(name) {
     image, 
     origin, 
     temperaments 
-    // createdInDb: true // agregar el campo createdInDb y asignarle el valor de true. entonces cuando creo un perro en bd se le asigna este valor. que luego lo uso en el front
-  
     })
     
   //console.log(newDog);
 
-  await newDog.addTemperaments(temperaments); 
   //Relaciona el newDog con los temperaments creados en la bd.
+  await newDog.addTemperaments(temperaments); 
 
   //los metodos se guardan en el prototipo, consologue lo de abajo, paso el insomnia y me consologuea los metodos.
   //Los metodos los crea  sequalize cuando se crea la relacion n:n.
@@ -126,6 +99,8 @@ async function searchByName(name) {
   
   return newDog;
 };
+
+
 
 
 //------------------/delete/:id------------------------
@@ -148,4 +123,27 @@ async function searchByName(name) {
 //     return result;
 //   };
 
+
+
+
+
+
 module.exports= {searchDogsInApiAndDB, searchByName, createDog}
+
+
+
+
+
+
+
+
+
+// <=============== controller getId ===============> 
+
+// const getId = async(id) => {
+//   const allBreeds = await getApiDb();
+//   // if(!data) throw Error ('No hay data')
+//   const filtredBreed = allBreeds.filter(e =>e.id == id);
+// if(filtredBreed.length < 0) throw Error ('No hay dogs con ese id')
+// return filtredBreed
+// }

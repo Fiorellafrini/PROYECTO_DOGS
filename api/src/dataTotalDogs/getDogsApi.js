@@ -4,36 +4,39 @@ const axios = require("axios");
 //Llamo a la api, y despues me traigo lo que necesito(lo que tengo en modelos)
 //Tengo un arreglo con los dogs de la api
 const getDogsApi = async () => {
-try {
+  try {
+    const dogsApi = await axios.get(
+      "https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ"
+    );
 
-    const dogsApi = await axios.get("https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ");
+    const dogsApiData = dogsApi.data.map((dog) => {
+      const [heightMin, heightMax] = dog.height.metric
+        ? dog.height.metric.split(" - ")
+        : [null, null];
+      const [weightMin, weightMax] = dog.weight.metric
+        ? dog.weight.metric.split(" - ")
+        : [null, null];
 
-const dogsApiData = dogsApi.data.map((dog) => {
-  const [heightMin, heightMax] = dog.height.metric ? dog.height.metric.split(" - ") : [null, null];
-  const [weightMin, weightMax] = dog.weight.metric ? dog.weight.metric.split(" - ") : [null, null];
-
-  return {
-    id: dog.id,
-    name: dog.name,
-    heightMin,
-    heightMax,
-    weightMin,
-    weightMax,
-    breed_group: dog.breed_group,
-    life_span: dog.life_span,
-    image: dog.image.url,
-    bred_for: dog.bred_for,
-    origin: dog.origin,
-    temperaments: dog.temperament,
-  };
-// console.log(dogsApiData);
-});
-return dogsApiData;
-
-    } catch (error){
-        return {error:error.message};
-    }
+      return {
+        id: dog.id,
+        name: dog.name,
+        heightMin,
+        heightMax,
+        weightMin,
+        weightMax,
+        breed_group: dog.breed_group,
+        life_span: dog.life_span,
+        image: dog.image.url,
+        bred_for: dog.bred_for,
+        origin: dog.origin,
+        temperaments: dog.temperament,
+      };
+      // console.log(dogsApiData);
+    });
+    return dogsApiData;
+  } catch (error) {
+    return { error: error.message };
+  }
 };
 
-
-module.exports = {getDogsApi};
+module.exports = { getDogsApi };
