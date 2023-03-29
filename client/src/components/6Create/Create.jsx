@@ -8,14 +8,11 @@ import { createDog, getTemperaments } from "../../redux/action";
 import { useHistory } from "react-router-dom";
 
 const Create = () => {
-
-
-  //Para traerme los temperaments
   const dispatch = useDispatch();
   const allTemperament = useSelector((state) => state.temperaments);
-  // useSelector es un hook de React Redux que te permite seleccionar un valor del store Redux en un componente de React. Con este hook, puedes suscribirte a cambios en una parte del store y actualizar el estado local de tu componente cuando sea necesario.
+  const allDogs =useSelector((state) => state.pageDogs)
+
   const history = useHistory();
-  // useHistory() es un hook de React Router que proporciona acceso al historial de navegación, lo que permite navegar hacia adelante y hacia atrás en la historia del navegador.
 
   useEffect(() => {
     if (allTemperament.length < 1) {
@@ -23,27 +20,26 @@ const Create = () => {
     }
   }, [dispatch]);
 
-  //PARA CONTROLAR EL FORMULARIO TENGO QUE TRABAJAR CON UN ESTADO GLOBAL
   const [input, setInput] = useState({
-    //esto es un estado local, que va a ser un obj con las siguientes propiedades
     name: "",
     heightMin: "",
     heightMax: "",
     weightMin: "",
     weightMax: "",
-    temperaments: [],
     life_span: "",
+    bred_for: "",
+    temperaments: [],
   });
 
-  //Validacion , se crea un nvo estado para encontrar errores en el formulario
   const [error, setErrors] = useState({
     name: "",
     heightMin: "",
     heightMax: "",
     weightMin: "",
     weightMax: "",
-    temperaments: [],
     life_span: "",
+    bred_for: "",
+    temperaments: [],
   });
 
   const handleTemperament = (event) => {
@@ -60,6 +56,7 @@ const Create = () => {
       ...input, //hago una copia del estado para no perder las props
       [event.target.name]: event.target.value, // depende que value esta usando el usuario, es el value que hago. hago los corchetes pq no se en que input esta escribiendo el usuario
     }); //event es un obj enorme con muchas props. y una de esas es target y target es otro obj
+    nameExist(input.name)
     setErrors(
       //voy a setear el estado de error y le voy a ir pasando todo lo que pasa en el input
       validation({
@@ -69,8 +66,10 @@ const Create = () => {
     );
   };
 
-
-
+  const hasError = () => {
+    const errors = validation(input); // obtiene los errores de validación
+    return Object.keys(errors).length > 0; // devuelve true si hay errores, false si no los hay
+  };
 
   const handleDelete = (element) => {
     setInput({
@@ -84,10 +83,7 @@ const Create = () => {
   //para crear el perro
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // if (input.name && !error.name && !error.heightMin && !error.heightMax && !error.weightMin && !error.weightMax && !error.life_span && !error.temperaments) {
-
-    dispatch(createDog(input)); // le paso el input pq es lo q creo el usuario
+    dispatch(createDog(input)); 
     alert("Created successfully");
     setInput({
       // para que luego de llenar los datos y apretar el create, se seteen los datos, es decir q quede todo vacio
@@ -96,14 +92,28 @@ const Create = () => {
       heightMax: "",
       weightMin: "",
       weightMax: "",
-      temperaments: [],
       life_span: "",
+      bred_for: "",
+      temperaments: [],
     });
-    history.push("/home"); //luego de crear vaya a home
+    history.push("/home"); 
   };
-  // }
-  //conecto mi estado local con los input con la propiedad value , bindeo el value con el usestate de arriba value={input.name}
-  //uso onchange para poder guardar la informacion del usuario
+
+  const nameExist = (name) => {
+    const nameExist = allDogs.find((elemnt) => elemnt.name === name);
+    if (nameExist) {
+      alert("pokemon alredy exist, Change the name");
+      setInput({
+        ...input,
+        name: "",
+      });
+    }
+  };
+
+
+
+
+
   return (
     <div className={styles.body}>
       <div className={styles.container}>
@@ -124,7 +134,6 @@ const Create = () => {
           ></input>
           {error.name && <p className={styles.warning}>{error.name}</p>}
 
-
           <label htmlFor="heightMin" className={styles.label}>
             Height Min:
           </label>
@@ -135,7 +144,9 @@ const Create = () => {
             value={input.heightMin}
             onChange={hanbleInputChange}
           ></input>
-          {error.heightMin && <p className={styles.warning}>{error.heightMin}</p>}
+          {error.heightMin && (
+            <p className={styles.warning}>{error.heightMin}</p>
+          )}
 
           <label htmlFor="heightMax" className={styles.label}>
             Height Max:
@@ -147,8 +158,9 @@ const Create = () => {
             value={input.heightMax}
             onChange={hanbleInputChange}
           ></input>
-           {error.heightMax && <p className={styles.warning}>{error.heightMax}</p>}
-
+          {error.heightMax && (
+            <p className={styles.warning}>{error.heightMax}</p>
+          )}
 
           <label htmlFor="weightMin" className={styles.label}>
             Weight Min:
@@ -160,8 +172,9 @@ const Create = () => {
             value={input.weightMin}
             onChange={hanbleInputChange}
           ></input>
-           {error.weightMin && <p className={styles.warning}>{error.weightMin}</p>}
-
+          {error.weightMin && (
+            <p className={styles.warning}>{error.weightMin}</p>
+          )}
 
           <label htmlFor="weightMax" className={styles.label}>
             Weight Max:
@@ -173,8 +186,9 @@ const Create = () => {
             value={input.weightMax}
             onChange={hanbleInputChange}
           ></input>
-           {error.weightMax && <p className={styles.warning}>{error.weightMax}</p>}
-
+          {error.weightMax && (
+            <p className={styles.warning}>{error.weightMax}</p>
+          )}
 
           <label htmlFor="life_span" className={styles.label}>
             Life Span:{" "}
@@ -186,23 +200,42 @@ const Create = () => {
             value={input.life_span}
             onChange={hanbleInputChange}
           ></input>
-           {error.life_span && <p className={styles.warning}>{error.life_span}</p>}
+          {error.life_span && (
+            <p className={styles.warning}>{error.life_span}</p>
+          )}
 
+          <label htmlFor="bred_for" className={styles.label}>
+            {" "}
+            Bred for:{" "}
+          </label>
+          <input
+            className={styles.inputName}
+            type="text"
+            name="bred_for"
+            value={input.bred_for}
+            onChange={hanbleInputChange}
+          ></input>
+          {error.bred_for && <p className={styles.warning}>{error.bred_for}</p>}
 
           <label htmlFor="temperaments" className={styles.label}>
-            Temperaments{" "}
+            Temperaments
           </label>
           <select
             name="filterByTemperament"
             className={styles.selectT}
-            value={null}
+            value={" "}
             onChange={(selection) => handleTemperament(selection)}
+            // onChange={handleTemperament}
           >
             {allTemperament.map((temp) => (
-              <option value={temp.id}>{temp.name}</option>
+              <option value={temp.id}>
+                {temp.name} - {temp.id}
+              </option>
             ))}
           </select>
-          {error.temperaments && <p className={styles.warning}>{error.temperaments}</p>}
+          {error.temperaments && (
+            <p className={styles.warning}>{error.temperaments}</p>
+          )}
 
           <div className={styles.divTemp}>
             {input.temperaments?.length > 0 &&
@@ -221,25 +254,33 @@ const Create = () => {
                 );
               })}
           </div>
-         
-  
 
           <button
             className={styles.btn}
             type="submit"
-            disabled={
+            disabled={hasError()} // deshabilita el botón si hay errores
+          >
+            CREATE ❤
+          </button>
+
+          {/* <button
+            className={styles.btn}
+            type="submit"
+            disabled={ // que el input esta deshalitado si :
               input.name === "" ||
               input.heightMin === "" ||
               input.heightMax === "" ||
               input.weightMin === "" ||
               input.weightMax === "" ||
               input.life_span === "" ||
+              input.bred_for === "" ||
               input.temperaments.length === 0 ||
               input.temperaments.length > 4 
             }
           >
             CREATE ❤
-          </button>
+          </button> */}
+
           <button className={styles.btn1}>
             <Link to="/home">RETURN</Link>
           </button>

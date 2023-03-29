@@ -3,11 +3,10 @@ const dogRouter = Router();
 const { searchDogsInApiAndDB, searchByName, createDog } = require('../Controllers/dogControllers');
 const { getApiDb} = require('../dataTotalDogs/getApiDb');
 // const { getDogsApi } = require('../dataTotalDogs/getDogsApi');
-const { Dog, Temperament } = require("../db");
+const { Dog  } = require("../db");
 
 
 // #### **📍 GET | /dogs**
-// -  Obtiene un arreglo de objetos, donde cada objeto es la raza de un perro.
 dogRouter.get('/getAll', async (req,res) => {
   try {
      const allDogs = await searchDogsInApiAndDB();
@@ -19,13 +18,7 @@ dogRouter.get('/getAll', async (req,res) => {
 });
 
 
-// #### **📍 GET | /dogs/:idRaza**
-// -  Esta ruta obtiene el detalle de una raza específica. Es decir que devuelve un objeto con la información pedida en el detalle de un perro.
-// -  La raza es recibida por parámetro (ID).
-// -  Tiene que incluir los datos de los temperamentos asociadas a esta raza.
-// -  Debe funcionar tanto para los perros de la API como para los de la base de datos.
-
-
+// #### **📍 GET | /dogs/:id**
   // El ultimo id es el 264,  pero no estan todos, se saltea algunos numeros( por ejemplo el 99 y 100)
 dogRouter.get('/:id', async (req,res) =>{
   const {id} = req.params
@@ -42,11 +35,6 @@ console.log(allBreeds);
 
 
 // #### **📍 GET | /dogs/name?="..."**
-// -  Esta ruta debe obtener todas aquellas razas de perros que coinciden con el nombre recibido por query. (No es necesario que sea una coincidencia exacta).
-// -  Debe poder buscarlo independientemente de mayúsculas o minúsculas.
-// -  Si no existe la raza, debe mostrar un mensaje adecuado.
-// -  Debe buscar tanto los de la API como los de la base de datos.
-
   dogRouter.get("/", async (req, res) => {
     try {
       const { name } = req.query;
@@ -60,10 +48,6 @@ console.log(allBreeds);
 
 
 // #### **📍 POST | /dogs**
-// -  Esta ruta recibirá todos los datos necesarios para crear un nuevo perro y relacionarlo con los temperamentos asociados.
-// -  Toda la información debe ser recibida por body.
-// -  Debe crear la raza de perro en la base de datos, y esta debe estar relacionada con los temperamentos indicados (al menos uno).
-
 dogRouter.post("/", async (req, res) => {
   //los datos que recibo por body son los modelos 
   const { 
@@ -102,7 +86,6 @@ dogRouter.post("/", async (req, res) => {
 });
 
 
-
 //RUTA EXTRA DELETE ID
 
 dogRouter.delete('/delete/:id', async (req,res) =>{
@@ -115,16 +98,6 @@ dogRouter.delete('/delete/:id', async (req,res) =>{
     res.status(400).send(error.message);
   }
 })
-
-
-//como es una promesa se puede resolver con async o .then
-// Dog.findByPk(id).then((dog) => {
-//   console.log(dog); // 
-// }).catch((error) => {
-//   console.error(error); // manejar errores
-// });
-
-
 
 
 module.exports = dogRouter;

@@ -78,9 +78,9 @@ export default function Filters() {
         <option key="All" value="All">
           All
         </option>
-        {allTemperaments?.map((temperament, i) => {
+        {allTemperaments?.map((temperament, index) => {
           return (
-            <option key={temperament.name + i} value={temperament.name}>
+            <option key={temperament.name + index} value={temperament.name}>
               {temperament.name}
             </option>
           );

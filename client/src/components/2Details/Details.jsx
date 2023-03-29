@@ -67,7 +67,7 @@ const Details = () => {
            
             </div> :
              <div class="loading">
-             <img src={gif} alt="Loading..." />
+             <img src={gif} alt="Loading..." className={styles.gif}/>
             </div>
              }
         </div>
