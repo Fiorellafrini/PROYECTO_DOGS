@@ -2,12 +2,12 @@
 
 .body {
   background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
-  padding: 2em;
+  padding: 1em;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.452);
-  height: 800px;
+  height: 900px;
 }
 
 .container {
@@ -121,3 +121,10 @@ input {
   margin-left: 20px;
   margin-top: 10px;
 }
+.warning {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  margin-left: 10px;
+  color: rgb(171, 0, 0);
+}
+

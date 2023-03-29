@@ -1,6 +1,6 @@
 // const { default: axios } = require("axios");
 const {getApiDb} = require("../dataTotalDogs/getApiDb");
-const { Dog, Temperament } = require("../db");
+const { Dog } = require("../db");
 const specialCharactresTypeRegex = /[0-9@:%._+~#=]/gi;
 
 
@@ -66,8 +66,10 @@ async function searchByName(name) {
     if (!name || !heightMin || !heightMax || !weightMin || !weightMax) {
       throw new Error("Mandatory data is missing");
     }
-  //No pongo todas las prop de modelos porque los que dicen defaultvalue o allownull true no los pongo ya que se crean solas.
- 
+
+     if (!Array.isArray(temperaments)) {
+      throw new Error("Temperaments should be an array");
+    }
 
  //Agrego el newDog a mi base de datos, con un llamado asyn
   const newDog = await Dog.create({

@@ -1,5 +1,5 @@
 import React from "react";
-import { getDetails, cleanDetails, pageDogs, getDogs } from "../../redux/action";
+import { getDetails, cleanDetails } from "../../redux/action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"

@@ -53,7 +53,7 @@ const Create = () => {
     });
   };
 
-  //Controlador de evento
+  // Controlador de evento
   const hanbleInputChange = (event) => {
     //cada vez que haya un cambio en el input se ejecuta  un event que lo maneja esta fn
     setInput({
@@ -68,6 +68,9 @@ const Create = () => {
       })
     );
   };
+
+
+
 
   const handleDelete = (element) => {
     setInput({
@@ -119,9 +122,9 @@ const Create = () => {
             value={input.name}
             onChange={hanbleInputChange}
           ></input>
-          {error.name && <p style={{ color: "red" }}>{error.name}</p>}
+          {error.name && <p className={styles.warning}>{error.name}</p>}
 
-          {/* / -  Altura **(diferenciar entre altura mínima y máxima de la raza)**. */}
+
           <label htmlFor="heightMin" className={styles.label}>
             Height Min:
           </label>
@@ -132,7 +135,7 @@ const Create = () => {
             value={input.heightMin}
             onChange={hanbleInputChange}
           ></input>
-          {error.heightMin && <p style={{ color: "red" }}>{error.heightMin}</p>}
+          {error.heightMin && <p className={styles.warning}>{error.heightMin}</p>}
 
           <label htmlFor="heightMax" className={styles.label}>
             Height Max:
@@ -144,9 +147,9 @@ const Create = () => {
             value={input.heightMax}
             onChange={hanbleInputChange}
           ></input>
-          {error.heightMax && <p style={{ color: "red" }}>{error.heightMax}</p>}
+           {error.heightMax && <p className={styles.warning}>{error.heightMax}</p>}
 
-          {/* Peso **(diferenciar entre peso mínimo y máximo de la raza)**. */}
+
           <label htmlFor="weightMin" className={styles.label}>
             Weight Min:
           </label>
@@ -157,7 +160,8 @@ const Create = () => {
             value={input.weightMin}
             onChange={hanbleInputChange}
           ></input>
-          {error.weightMin && <p style={{ color: "red" }}>{error.weightMin}</p>}
+           {error.weightMin && <p className={styles.warning}>{error.weightMin}</p>}
+
 
           <label htmlFor="weightMax" className={styles.label}>
             Weight Max:
@@ -169,7 +173,8 @@ const Create = () => {
             value={input.weightMax}
             onChange={hanbleInputChange}
           ></input>
-          {error.weightMax && <p style={{ color: "red" }}>{error.weightMax}</p>}
+           {error.weightMax && <p className={styles.warning}>{error.weightMax}</p>}
+
 
           <label htmlFor="life_span" className={styles.label}>
             Life Span:{" "}
@@ -181,28 +186,23 @@ const Create = () => {
             value={input.life_span}
             onChange={hanbleInputChange}
           ></input>
-          {error.life_span && <p style={{ color: "red" }}>{error.life_span}</p>}
+           {error.life_span && <p className={styles.warning}>{error.life_span}</p>}
 
-          {/* -  Posibilidad de seleccionar/agregar varios temperamentos en simultáneo. */}
+
           <label htmlFor="temperaments" className={styles.label}>
             Temperaments{" "}
           </label>
-
           <select
             name="filterByTemperament"
             className={styles.selectT}
-            value={""}
+            value={null}
             onChange={(selection) => handleTemperament(selection)}
           >
             {allTemperament.map((temp) => (
               <option value={temp.id}>{temp.name}</option>
             ))}
           </select>
-          {/* <div>{input.temperaments.map((seleccionado) => seleccionado + " ")}</div> */}
-
-          {error.temperaments && (
-            <p style={{ color: "red" }}>{error.temperaments}</p>
-          )}
+          {error.temperaments && <p className={styles.warning}>{error.temperaments}</p>}
 
           <div className={styles.divTemp}>
             {input.temperaments?.length > 0 &&
@@ -221,6 +221,8 @@ const Create = () => {
                 );
               })}
           </div>
+         
+  
 
           <button
             className={styles.btn}
@@ -233,15 +235,13 @@ const Create = () => {
               input.weightMax === "" ||
               input.life_span === "" ||
               input.temperaments.length === 0 ||
-              input.temperaments.length >= 5 
-              // allNames.hasOwnProperty(input.name)
+              input.temperaments.length > 4 
             }
           >
             CREATE ❤
           </button>
-
           <button className={styles.btn1}>
-            <Link to="/home">HOME</Link>
+            <Link to="/home">RETURN</Link>
           </button>
         </form>
       </div>

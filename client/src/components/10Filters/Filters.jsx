@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+// import { useHistory } from "react-router-dom";
+// import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -10,7 +10,6 @@ import {
   filterTemperament,
   getTemperaments,
   orderByName,
-  // orderByWeightMax,
   orderByWeight,
 } from "../../redux/action";
 import style from "./Filters.module.css";
@@ -20,9 +19,9 @@ export default function Filters() {
 
   const allTemperaments = useSelector((state) => state.temperaments);
 
-  const [selectedOption, setSelectedOption] = useState("default");
+  // const [selectedOption, setSelectedOption] = useState("default");
 
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     if (!allTemperaments || allTemperaments.length === 0) {
