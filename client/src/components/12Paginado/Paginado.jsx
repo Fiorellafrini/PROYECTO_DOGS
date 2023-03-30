@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { pageDogs } from "../../redux/action";
 import styles from "../12Paginado/Paginado.module.css";
+// import { useRef } from "react";
 
 const Paginado = ({ copyDogs, pageDogs }) => {
   // La variable dogs representa la lista de elementos que se paginará.
@@ -9,6 +10,8 @@ const Paginado = ({ copyDogs, pageDogs }) => {
   const [dogs, setDogs] = useState(copyDogs);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(8);
+  const [currentPaginado, setCurrentPaginado] = useState([]);
+
 
   let totalPages = Math.ceil(dogs.length / perPage);
  
@@ -17,18 +20,19 @@ const Paginado = ({ copyDogs, pageDogs }) => {
     pagination.push(i);
   }
 
-
   const handlePrev = () => {
     currentPage === 1
       ? setCurrentPage(currentPage)
       : setCurrentPage(currentPage - 1);
   };
-
+ 
   const handleNext = () => {
     currentPage === pagination.length
       ? setCurrentPage(currentPage)
       : setCurrentPage(currentPage + 1);
   };
+
+
  
   const start = () => {
     setCurrentPage(1);
@@ -37,8 +41,6 @@ const Paginado = ({ copyDogs, pageDogs }) => {
   const end = () => {
     setCurrentPage(pagination.length);
   };
-
-  const [currentPaginado, setCurrentPaginado] = useState([]);
 
   const handleChange = (start, end) => {
     if (!isNaN(start) && !isNaN(end)) {
@@ -74,6 +76,24 @@ const Paginado = ({ copyDogs, pageDogs }) => {
     handleChange(value - perPage, value);
   }, [copyDogs, currentPage, perPage, totalPages]);
   // Cuando alguna de estas dependencias cambia, la función de efecto se vuelve a ejecutar.
+
+
+
+
+  // Mantener el estado anterior al regresar a la página
+  useEffect(() => {
+    const currentPageFromStorage = localStorage.getItem("currentPage");
+    if (currentPageFromStorage) {
+      setCurrentPage(parseInt(currentPageFromStorage));
+    }
+  }, []);
+
+  // Actualizar el estado de la página actual al cambiar de página
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
+
+
 
   // Dentro de la función de efecto, primero, comprueba si la longitud de dogsy copyDogses diferente. Si es diferente, significa que copyDogsse actualizó, por lo que dogsse actualizó a copyDogs.
   return (

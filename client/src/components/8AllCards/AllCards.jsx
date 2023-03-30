@@ -31,13 +31,11 @@ const AllCards = () => {
 
 
 
-    useEffect(() => {
-    //cuando se monta
-    dispatch(getDogs()); //le digo que busque la info de getDogs
-    return () => dispatch(cleanCards()); //cuando desmonto el componente deja un arr vacio, unmount
-  }, [dispatch]);
-
-  // console.log(allDogs);
+  //   useEffect(() => {
+  //   //cuando se monta
+  //   dispatch(getDogs()); //le digo que busque la info de getDogs
+  //   return () => dispatch(cleanCards()); //cuando desmonto el componente deja un arr vacio, unmount
+  // }, [dispatch]);
 
   // const handleDelete = (id) => {
   //   dispatch(deleteDog(id));
