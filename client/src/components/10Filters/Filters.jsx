@@ -19,9 +19,6 @@ export default function Filters() {
 
   const allTemperaments = useSelector((state) => state.temperaments);
 
-  // const [selectedOption, setSelectedOption] = useState("default");
-
-  // const history = useHistory();
 
   useEffect(() => {
     if (!allTemperaments || allTemperaments.length === 0) {
@@ -29,9 +26,6 @@ export default function Filters() {
       dispatch(getTemperaments());
     }
   }, []);
-
-
- 
 
 
   function handleTemperament(event) {
@@ -52,11 +46,6 @@ export default function Filters() {
     // history.push("/home")
   }
 
-  // function handleOrderWeightMax(e) {
-  //     e.preventDefault();
-  //     dispatch(orderByWeightMax(e.target.value))
-  //     history.push("/home")
-  // };
 
   function handleOrderWeight(e) {
     e.preventDefault();
@@ -130,13 +119,6 @@ export default function Filters() {
         <option value="dec"> + Weight</option>
       </select>
 
-      {/* <select className={style.selectList} name="orderByWeightMax"
-                    defaultValue={"default"} 
-                    onChange={handleOrderWeightMax}>
-                        <option value="default" disabled>  Order Weight Max</option>
-                        <option value='asc'> - Weight</option>
-                        <option value='dec'> + Weight</option>
-                </select> */}
     </div>
   );
 }

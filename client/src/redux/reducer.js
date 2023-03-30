@@ -11,7 +11,7 @@ import {
   GET_TEMPERAMENTS,
   ORDER_BY_NAME,
   FILTER_BY_ORIGIN,
-  DELETE_DOG,
+  // DELETE_DOG,
 } from "./action-types";
 
 const initialState = {
@@ -110,9 +110,7 @@ const rootReducer = (state = initialState, action) => {
         copyDogs: filteredDogs,
         pageDogs: filteredDogs, // también actualiza la variable pageDogs
       };
-
-
-
+      
     case FILTER_BY_ORIGIN:
       let allDogs = state.dogs;
       if (action.payload !== "allDogs") {
@@ -123,7 +121,7 @@ const rootReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        pageDogs: [...allDogs],
+        copyDogs: [...allDogs],
       };
 
     case CREATE_DOG:
@@ -140,11 +138,11 @@ const rootReducer = (state = initialState, action) => {
         ],
       };
 
-    case DELETE_DOG:
-      return {
-        ...state,
-        pageDogs: state.copyDogs.filter((dog) => dog.id !== action.payload),
-      };
+    // case DELETE_DOG:
+    //   return {
+    //     ...state,
+    //     pageDogs: state.copyDogs.filter((dog) => dog.id !== action.payload),
+    //   };
 
     default:
       return { ...state }; // una copia del estado inicial

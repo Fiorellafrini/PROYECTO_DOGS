@@ -27,7 +27,6 @@ const Create = () => {
     weightMin: "",
     weightMax: "",
     life_span: "",
-    bred_for: "",
     temperaments: [],
   });
 
@@ -38,7 +37,6 @@ const Create = () => {
     weightMin: "",
     weightMax: "",
     life_span: "",
-    bred_for: "",
     temperaments: [],
   });
 
@@ -47,6 +45,13 @@ const Create = () => {
       ...input,
       temperaments: [...input.temperaments, event.target.value],
     });
+    setErrors(
+      //voy a setear el estado de error y le voy a ir pasando todo lo que pasa en el input
+      validation({
+        ...input, // va a tener una copia de input
+       temperaments: input.temperaments, 
+      })
+    );
   };
 
   // Controlador de evento
@@ -93,7 +98,6 @@ const Create = () => {
       weightMin: "",
       weightMax: "",
       life_span: "",
-      bred_for: "",
       temperaments: [],
     });
     history.push("/home"); 
@@ -204,18 +208,6 @@ const Create = () => {
             <p className={styles.warning}>{error.life_span}</p>
           )}
 
-          <label htmlFor="bred_for" className={styles.label}>
-            {" "}
-            Bred for:{" "}
-          </label>
-          <input
-            className={styles.inputName}
-            type="text"
-            name="bred_for"
-            value={input.bred_for}
-            onChange={hanbleInputChange}
-          ></input>
-          {error.bred_for && <p className={styles.warning}>{error.bred_for}</p>}
 
           <label htmlFor="temperaments" className={styles.label}>
             Temperaments
@@ -225,7 +217,6 @@ const Create = () => {
             className={styles.selectT}
             value={" "}
             onChange={(selection) => handleTemperament(selection)}
-            // onChange={handleTemperament}
           >
             {allTemperament.map((temp) => (
               <option value={temp.id}>
@@ -238,22 +229,15 @@ const Create = () => {
           )}
 
           <div className={styles.divTemp}>
-            {input.temperaments?.length > 0 &&
-              input.temperaments?.map((temp) => {
-                return (
-                  <span>
-                    <button
-                      value={temp}
-                      className={styles.button}
-                      onClick={() => handleDelete(temp)}
-                    >
-                      X
-                    </button>
-                    {temp + " "}
-                  </span>
-                );
-              })}
-          </div>
+              {allTemperament
+              .filter((temp) => input.temperaments.includes(`${temp.id}`))
+              .map((t) => (
+                <p key={t.id}>
+                <button onClick={()=> handleDelete(`${t.id}`)} className={styles.x}>{t.name}❌</button>
+                </p>
+              ))}
+              </div>
+
 
           <button
             className={styles.btn}
@@ -262,25 +246,7 @@ const Create = () => {
           >
             CREATE ❤
           </button>
-
-          {/* <button
-            className={styles.btn}
-            type="submit"
-            disabled={ // que el input esta deshalitado si :
-              input.name === "" ||
-              input.heightMin === "" ||
-              input.heightMax === "" ||
-              input.weightMin === "" ||
-              input.weightMax === "" ||
-              input.life_span === "" ||
-              input.bred_for === "" ||
-              input.temperaments.length === 0 ||
-              input.temperaments.length > 4 
-            }
-          >
-            CREATE ❤
-          </button> */}
-
+          
           <button className={styles.btn1}>
             <Link to="/home">RETURN</Link>
           </button>

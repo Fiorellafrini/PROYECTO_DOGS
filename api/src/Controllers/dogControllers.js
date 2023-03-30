@@ -63,6 +63,7 @@ let findName = await Dog.findOne({ where: { name: name } });
   if (findName) {
     throw new Error("The name is used");
   }
+  
   //Agrego el newDog a mi base de datos, con un llamado asyn
   const newDog = await Dog.create({
     name,
@@ -76,6 +77,7 @@ let findName = await Dog.findOne({ where: { name: name } });
     image,
     origin,
     temperaments,
+    // isFromDB: true,
   });
 
   //Relaciona el newDog con los temperaments creados en la bd.

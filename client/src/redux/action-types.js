@@ -10,5 +10,3 @@ export const FILTER_BY_TEMPERAMENTS = "FILTER_BY_TEMPERAMENTS";
 export const PAGE_DOGS = "PAGE_DOGS";
 export const CREATE_DOG = "CREATE_DOG";
 export const FILTER_BY_ORIGIN = "FILTER_BY_ORIGIN";
-
-export const DELETE_DOG = "DELETE_DOG"

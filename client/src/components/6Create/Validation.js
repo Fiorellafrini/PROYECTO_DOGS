@@ -8,9 +8,7 @@ const validation = (input) => {
   else if (!regexLetras.test(input.name)) error.name = "Invalid name"
   else if (input.name.length > 30)
     error.name = "Name must be under 30 characters.";
-    // else if(allNames[input.name]) error.name = "This name is already used!"; // Validación de nombre repetido
   
-  // else if(allNames[input.name]) error.name = "This breed already exists!"; // Validación de nombre repetido
    if (!input.heightMin) error.heightMin = "";
   else if (input.heightMin < 5) error.heightMin = "Must be a minimum height of 5cm";
   else if (input.heightMin > 89) error.heightMin = "Must be a maximum of 89cm";
@@ -36,7 +34,7 @@ const validation = (input) => {
  
 
   if (!input.temperaments || input.temperaments.length === 0) error.temperaments = "Please select at least one temperament";
-  else if (input.temperaments.length > 4) error.temperaments = "Please select a maximum of four temperaments";
+  else if (input.temperaments.length > 5) error.temperaments = "Please select a maximum of four temperaments";
 
 
   return error;

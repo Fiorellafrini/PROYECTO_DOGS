@@ -9,15 +9,9 @@ const Card = ({
   weightMin,
   weightMax,
   temperaments,
-  handleDelete,
-
 }) => {
   return (
     <div className={styles.card}>
-      <button className={styles.button} onClick={() => handleDelete(id)}>
-        X
-      </button>
-
       <Link className={styles.link} to={`/dogs/${id}`}>
         <h1 className={styles.name}>{name}</h1>
         <img className={styles.img} src={image} alt={image}></img>

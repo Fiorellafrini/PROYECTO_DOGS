@@ -7,17 +7,20 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.452);
-  height: 900px;
+  height: 1200px;
 }
 
 .container {
   position: relative;
   padding: 60px;
   background-color: rgba(145, 14, 150, 0.13);
-  height: 500px;
+  /* height: 600px; */
   display: inline-block;
   top: 20px;
   width: 500px;
+  /* width: fit-content; */
+  height: fit-content;
+  
 }
 
 .inputTitulo {
@@ -120,6 +123,7 @@ input {
   transition-duration: 0.2s;
   margin-left: 20px;
   margin-top: 10px;
+  
 }
 .warning {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -127,4 +131,16 @@ input {
   margin-left: 100px;
   color: rgb(171, 0, 0);
 }
+
+/* .x{
+  background-color: rgba(110, 103, 103, 0.295) ;
+border-radius: 50%  ;
+border-style: 5px solid black; */
+
+
+.x{
+  
+    background-color: rgba(110, 103, 103, 0);
+  }
+  
 

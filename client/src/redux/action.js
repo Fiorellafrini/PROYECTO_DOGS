@@ -10,8 +10,6 @@ import { ORDER_BY_WEIGHT } from "./action-types";
 import { PAGE_DOGS } from "./action-types";
 import { FILTER_BY_ORIGIN } from "./action-types";
 import { CREATE_DOG } from "./action-types";
-import { DELETE_DOG } from "./action-types";
-
 import axios from "axios"; // si quiero traerme o pedir info del back a mi front voy a usar axios o fetch
 
 export const getDogs = () => {
@@ -24,6 +22,7 @@ export const getDogs = () => {
       });
   };
 };
+
 
 export const getDetails = (id) => {
   return async function (dispatch) {
@@ -119,19 +118,27 @@ export const pageDogs = (start, end) => {
 
 
 
-export const deleteDog = (id) => {
-  return async (dispatch) => {
-    // try {
-      const response = await axios.delete(
-        `http://localhost:3001/dogs/delete/${id}`
-      );
-      dispatch({
-        type: DELETE_DOG,
-        payload: response.data,
-      });
-    // } catch (error) {
-      // console.log(error);
-    // }
-  };
-};
+
+
+
+
+
+
+
+
+
+
+
+
+// export const deleteDog = (id) => {
+//   return async (dispatch) => {
+//       const response = await axios.delete(
+//         `http://localhost:3001/dogs/delete/${id}`
+//       );
+//       dispatch({
+//         type: DELETE_DOG,
+//         payload: response.data,
+//       });
+//   };
+// };
 
