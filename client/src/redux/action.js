@@ -23,7 +23,6 @@ export const getDogs = () => {
   };
 };
 
-
 export const getDetails = (id) => {
   return async function (dispatch) {
     // como hago una peticion a la api me retorna una fn
@@ -32,17 +31,6 @@ export const getDetails = (id) => {
   };
 };
 
-// export const getDetails = (id) => {
-//     return (dispatch) => {
-//       fetch(`http://localhost:3001/dogs/${id}`)
-//         .then((response) => response.json())
-//         .then((data) =>
-//           dispatch({ type: GET_DETAILS, payload: data }))
-//         .catch((error) => {
-//           // console.log(error);
-//         })
-//     };
-//   };
 
 export const getDogsName = (name) => {
   return function (dispatch) {
@@ -65,18 +53,6 @@ export function getTemperaments() {
   };
 }
 
-// export const getTemperaments = () => {
-//     return (dispatch) => {
-//       fetch(`http://localhost:3001/temperaments`)
-//         .then((response) => response.json())
-//         .then((data) =>
-//           dispatch({ type: GET_TEMPERAMENTS, payload: data })
-//         )
-//         .catch((error) => {
-//           // console.log(error);
-//         })
-//     };
-//   };
 export const cleanDetails = () => {
   return { type: CLEAN_DETAILS };
 };

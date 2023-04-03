@@ -1,11 +1,12 @@
 .body {
   background-image: url("https://cdn.shopify.com/s/files/1/0277/2615/1768/products/0056625_yoop-grey-dog-wallpaper_800x1026_crop_center@2x.jpg?v=1648232607");
-  padding: 2em;
+  padding: 4em;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.452);
-  height: 900px;
+  height: fit-content;
+
 }
 .go{
   font-size: 30px;
@@ -31,25 +32,32 @@
   
   .p{
     position: relative;
-    padding: 40px;
+    padding: 70px;
     background-color: rgba(86, 17, 88, 0.219);
-    height: 500px;
+    height: 590px;
     display: inline-block;
-    top: 20px;
-    width: 500px;
+    top: 40px;
+    width: 590px;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 20px;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
     text-align: center;
     align-items: center;
     clear: left;
-  }
+  border: 5px solid rgba(0, 0, 0, 0.247);
+
+    /* display: block; */
+    /* margin: auto; */
+;  }
     
   
-  /* .thalita{
+  .thalita{
     float:left;
-    width: 20em;
-    height: 20em ;
-    display: flex;
-    position:static;
-    margin-right: 5em;
-  } */
+    width: 10em;
+    height: 15em ;
+    border-radius: 20px;
+    border: 4px solid rgba(0, 0, 0, 0.247);
+
+  }
+  

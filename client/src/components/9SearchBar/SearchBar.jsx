@@ -7,7 +7,6 @@ import { cleanCards, getDogs, getDogsName } from "../../redux/action";
 const SearchBar = () => {
   const dispatch = useDispatch();
 
-
   const [name, setName] = useState(""); //creamos un estado
   //------nombre del estado, nombre de la fn de ese estado, q me permite actualizar el estado= (valor inicial)
   // fn hadler son ejecutadoras de eventos
@@ -19,7 +18,7 @@ const SearchBar = () => {
   function handleSubmit(event) {
     event.preventDefault(); // evita que se recargue la pagina, es necesario para evitar que se recargue y se pierda la info del estado
     dispatch(getDogsName(name)); // el dispatch envia una accion a redux,donde esa fn( que fue previamente definida) de encarga de hacer la péticion para obtener el name a partir de name que puso el usuario.
-    setName("");
+    setName(""); //dsp que sedespacha la action queda vacio
   }
 
   const reset = () => {
@@ -27,9 +26,11 @@ const SearchBar = () => {
     dispatch(getDogs());
   };
 
-
   return (
     <div>
+      <Link to="/about">
+        <button className={styles.btn1}>ABOUT 📍</button>
+      </Link>
       <input
         className={styles.input}
         type="text"
@@ -51,10 +52,6 @@ const SearchBar = () => {
           Delete Search and Filters 🗑
         </button>
       </Link>
-
-   
-  
-
     </div>
   );
 };

@@ -111,18 +111,39 @@ const rootReducer = (state = initialState, action) => {
         pageDogs: filteredDogs, // también actualiza la variable pageDogs
       };
       
-    case FILTER_BY_ORIGIN:
-      let allDogs = state.dogs;
-      if (action.payload !== "allDogs") {
-        allDogs =
-          action.payload === "Api"
-            ? allDogs.filter((dog) => typeof dog.id === "number")
-            : allDogs.filter((dog) => typeof dog.id !== "number");
-      }
-      return {
-        ...state,
-        copyDogs: [...allDogs],
-      };
+    // case FILTER_BY_ORIGIN:
+    //   let allDogs = state.dogs;
+    //   if (action.payload !== "allDogs") {
+    //     allDogs =
+    //       action.payload === "Api"
+    //         ? allDogs.filter((dog) => typeof dog.id === "number")
+    //         : allDogs.filter((dog) => typeof dog.id !== "number");
+    //   }
+    //   return {
+    //     ...state,
+    //     pageDogs: [...allDogs],
+        
+    //   };
+
+
+      case FILTER_BY_ORIGIN:
+        let allDogs = state.dogs;
+        if (action.payload !== "allDogs") {
+          allDogs =
+            action.payload === "Api"
+              ? allDogs.filter((dog) => typeof dog.id === "number")
+              : allDogs.filter((dog) => typeof dog.id !== "number");
+        }
+        // Aplicar paginación en los perros filtrados por origen
+        const start = 0;
+        const end = 8;
+        const pageDogs = allDogs.slice(start, end);
+        return {
+          ...state,
+          pageDogs: [...pageDogs],
+        };
+      
+
 
     case CREATE_DOG:
       return {
@@ -130,13 +151,29 @@ const rootReducer = (state = initialState, action) => {
         ...action.payload,
       };
 
-    case PAGE_DOGS:
-      return {
-        ...state,
-        pageDogs: [
-          ...state.copyDogs.slice(action.payload.start, action.payload.end),
-        ],
-      };
+    // case PAGE_DOGS:
+    //   return {
+    //     ...state,
+    //     pageDogs: [
+    //       ...state.copyDogs.slice(action.payload.start, action.payload.end),
+    //     ],
+    //   };
+
+
+      case PAGE_DOGS:
+        const itemsPerPage = 8; // cantidad de elementos por página
+        const totalItems = state.copyDogs.length; // cantidad total de elementos a paginar
+        const totalPages = Math.ceil(totalItems / itemsPerPage); // cantidad total de páginas, redondeada hacia arriba
+      
+        return {
+          ...state,
+          pageDogs: [
+            ...state.copyDogs.slice(action.payload.start, action.payload.end),
+          ],
+          totalPages: totalPages,
+        };
+      
+
 
     // case DELETE_DOG:
     //   return {

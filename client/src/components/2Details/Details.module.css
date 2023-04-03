@@ -4,7 +4,9 @@
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1200px;
+  /* height: 1200px; */
+  height: fit-content;
+
 }
 .container {
   position: relative;

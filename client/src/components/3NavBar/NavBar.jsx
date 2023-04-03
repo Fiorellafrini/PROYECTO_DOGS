@@ -27,6 +27,7 @@ const NavBar = () => {
           </Link>
         </div>
       </nav>
+  
 
       <SearchBar></SearchBar>
       <Filters></Filters>

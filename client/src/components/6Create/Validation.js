@@ -29,8 +29,8 @@ const validation = (input) => {
   else if (input.life_span < 5) error.life_span = "Must be a minimum life Span of 5 years old";
   else if (input.life_span > 20) error.life_span = "Must be a maximum of 20 years old";
 
-  if (!input.bred_for) error.bred_for = "no puede estar vacio";
-  else if (!regexLetras.test(input.bred_for)) error.bred_for = "debe tener solo letras"
+  // if (!input.bred_for) error.bred_for = "no puede estar vacio";
+  // else if (!regexLetras.test(input.bred_for)) error.bred_for = "debe tener solo letras"
  
 
   if (!input.temperaments || input.temperaments.length === 0) error.temperaments = "Please select at least one temperament";

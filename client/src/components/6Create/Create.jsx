@@ -72,8 +72,9 @@ const Create = () => {
   };
 
   const hasError = () => {
-    const errors = validation(input); // obtiene los errores de validación
-    return Object.keys(errors).length > 0; // devuelve true si hay errores, false si no los hay
+    const error = validation(input);
+    console.log(error); // obtiene los errores de validación
+    return Object.keys(error).length > 0 ; // devuelve true si hay errores, false si no los hay
   };
 
   const handleDelete = (element) => {
@@ -246,7 +247,6 @@ const Create = () => {
           >
             CREATE ❤
           </button>
-          
           <button className={styles.btn1}>
             <Link to="/home">RETURN</Link>
           </button>

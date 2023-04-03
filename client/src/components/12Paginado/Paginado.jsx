@@ -12,7 +12,6 @@ const Paginado = ({ copyDogs, pageDogs }) => {
   const [perPage, setPerPage] = useState(8);
   const [currentPaginado, setCurrentPaginado] = useState([]);
 
-
   let totalPages = Math.ceil(dogs.length / perPage);
  
   const pagination = [];
@@ -82,9 +81,9 @@ const Paginado = ({ copyDogs, pageDogs }) => {
 
   // Mantener el estado anterior al regresar a la página
   useEffect(() => {
-    const currentPageFromStorage = localStorage.getItem("currentPage");
-    if (currentPageFromStorage) {
-      setCurrentPage(parseInt(currentPageFromStorage));
+    const currentPageFrom = localStorage.getItem("currentPage");
+    if (currentPageFrom) {
+      setCurrentPage(parseInt(currentPageFrom));
     }
   }, []);
 
@@ -93,7 +92,7 @@ const Paginado = ({ copyDogs, pageDogs }) => {
     localStorage.setItem("currentPage", currentPage);
   }, [currentPage]);
 
-
+  // localStorage es una propiedad del objeto global window en los navegadores web que permite a las páginas web almacenar datos 
 
   // Dentro de la función de efecto, primero, comprueba si la longitud de dogsy copyDogses diferente. Si es diferente, significa que copyDogsse actualizó, por lo que dogsse actualizó a copyDogs.
   return (
@@ -149,13 +148,13 @@ const Paginado = ({ copyDogs, pageDogs }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { //me permite acceder al esado global
   return {
     copyDogs: state.copyDogs,
     dogs: state.dogs,
   };
 };
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch) => { //me permite despachar action                                        00
   return {
     pageDogs: (start, end) => {
       dispatch(pageDogs(start, end));
