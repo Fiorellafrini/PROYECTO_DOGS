@@ -9,7 +9,7 @@ const LandingPage = () => {
         <h1>Welcome</h1>
       </div>
 
-      <div className={styles.title2}>to the Dogs Api!</div>
+      <div className={styles.title2}>to the Dog App!</div>
 
       <div className={styles.button}>
         <Link to="/home">
