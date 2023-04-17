@@ -1,6 +1,6 @@
 .video {
   position: fixed;
-  height: 900px;
+  height: 1000px;
   top: 60%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);

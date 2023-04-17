@@ -4,8 +4,8 @@
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  /* height: 1200px; */
-  height: fit-content;
+  height: 1200px;
+  /* height: fit-content; */
 
 }
 .container {
@@ -69,7 +69,7 @@
 }
 
 .gif{
-  width: 350px;
-  height: 350px;
+  width: 250px;
+  height: 250px;
  margin-top: 20%;
 }
