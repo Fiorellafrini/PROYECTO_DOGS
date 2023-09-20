@@ -7,7 +7,7 @@ const { Dog  } = require("../db");
 
 
 // #### **📍 GET | /dogs**
-dogRouter.get('/getAll', async (req,res) => {
+dogRouter.get('/', async (req,res) => {
   try {
      const allDogs = await searchDogsInApiAndDB();
       res.status(200).send(allDogs);   
