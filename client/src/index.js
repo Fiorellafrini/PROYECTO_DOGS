@@ -6,8 +6,13 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import axios from "axios";
 
 // el store se encarga de manejar el estado global de la api 
+
+
+// axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://pidogsback-production-008e.up.railway.app/';
 
 
 ReactDOM.render(

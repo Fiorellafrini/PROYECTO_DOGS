@@ -14,7 +14,7 @@ import axios from "axios"; // si quiero traerme o pedir info del back a mi front
 
 export const getDogs = () => {
   return function (dispatch) {
-    fetch(`http://localhost:3001/dogs/getAll`)
+    fetch(`/dogs/getAll`)
       // fetch("https://api.thedogapi.com/v1/breeds?api_key=live_pzIXSPWa66AzR9wONkfiSPwnSy2aKyfy82MQNexrZXZxsSHqUOFJ2jTS3XNhTuSQ")
       .then((response) => response.json())
       .then((data) => {
@@ -26,7 +26,7 @@ export const getDogs = () => {
 export const getDetails = (id) => {
   return async function (dispatch) {
     // como hago una peticion a la api me retorna una fn
-    const response = await axios(`http://localhost:3001/dogs/${id}`);
+    const response = await axios(`/dogs/${id}`);
     return dispatch({ type: GET_DETAILS, payload: response.data });
   };
 };
